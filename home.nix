@@ -139,6 +139,10 @@ in {
     fish = {
       enable = true;
 
+      loginShellInit = ''
+        source /etc/profile.d/nix-daemon.fish
+      '';
+
       interactiveShellInit = ''
         # Remove default greeting
         set fish_greeting
@@ -223,4 +227,13 @@ in {
     defaultCacheTtl = 31536000;
     maxCacheTtl = 31536000;
   };
+
+  xdg.configFile."fish/conf.d/plugin-bobthefish.fish".text = ''
+
+    for plugin in ${pkgs.fishPlugins.bobthefish} ${pkgs.fishPlugins.fzf}
+      for f in $plugin/share/fish/vendor_functions.d/*.fish
+        source $f
+      end
+    end
+  '';
 }
