@@ -30,6 +30,8 @@ $ nix run .
 $ nix run . -- switch
 ```
 
+On your first install, there might be a conflict for `~/.config/nix/nix.conf`. You can use the `-b backup` flag so the file is moved if in he way. Further reconcialiation will work.
+
 ## Login shell
 
 If you want home-manager to control the login shell, you'll need to:

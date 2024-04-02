@@ -72,6 +72,12 @@ in
     file."./.config/fontconfig/fonts.conf" = {
       source = ./files/fontconfig/fonts.conf;
     };
+
+    file.".config/nix/nix.conf".text = ''
+      # keep-derivations = true
+      # keep-outputs = true
+      experimental-features = nix-command flakes
+    '';
   };
 
   programs = {
@@ -238,7 +244,6 @@ in
   };
 
   xdg.configFile."fish/conf.d/plugin-bobthefish.fish".text = ''
-
     for plugin in ${pkgs.fishPlugins.bobthefish} ${pkgs.fishPlugins.fzf}
       for f in $plugin/share/fish/vendor_functions.d/*.fish
         source $f
