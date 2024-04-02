@@ -11,6 +11,7 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
     homeConfigurations = {
       "mycroft" = inputs.home-manager.lib.homeManagerConfiguration {

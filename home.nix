@@ -2,8 +2,10 @@
 let
   username = "mycroft";
   homeDirectory = "/home/${username}";
-in {
+in
+{
   imports = [
+    ./tools/krewfile.nix
     ./tools/neovim.nix
     ./tools/tmux.nix
   ];
@@ -38,7 +40,7 @@ in {
       fish
       fishPlugins.fzf
       fishPlugins.bobthefish
-      
+
       bat
       eza
       fd
@@ -160,14 +162,14 @@ in {
       '';
 
       shellInit = ''
-      function fish_greeting
-        # Remove bobthefish default greetings
-        # XXX: Duplicate with set fish_greeting ?
-      end
+        function fish_greeting
+          # Remove bobthefish default greetings
+          # XXX: Duplicate with set fish_greeting ?
+        end
       '';
 
       shellAbbrs = {
-        l =  "eza --bytes --git --group --long -snew --group-directories-first";
+        l = "eza --bytes --git --group --long -snew --group-directories-first";
         ls = "eza";
         ll = "eza --bytes --git --group --long -snew --group-directories-first";
         la = "eza --bytes --git --group --long -snew --group-directories-first -a";
