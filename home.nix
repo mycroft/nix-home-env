@@ -159,6 +159,13 @@ in {
         fish_add_path -p $KREW_ROOT/bin
       '';
 
+      shellInit = ''
+      function fish_greeting
+        # Remove bobthefish default greetings
+        # XXX: Duplicate with set fish_greeting ?
+      end
+      '';
+
       shellAbbrs = {
         l =  "eza --bytes --git --group --long -snew --group-directories-first";
         ls = "eza";
