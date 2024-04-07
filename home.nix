@@ -5,10 +5,14 @@ let
 in
 {
   imports = [
+    ./tools/alacritty.nix
+    ./tools/fish.nix
+    ./tools/git.nix
     ./tools/krewfile.nix
     ./tools/neovim.nix
     ./tools/tmux.nix
   ];
+
   home = {
     stateVersion = "23.11";
     inherit username homeDirectory;
@@ -45,6 +49,12 @@ in
       eza
       fd
       ripgrep
+      dust
+      lsd
+      duf
+      silver-searcher
+      procs
+      doggo
 
       glow
 
@@ -53,6 +63,7 @@ in
       pre-commit
       tea
       drone-cli
+      tig
 
       # container tools
       dive
@@ -82,111 +93,18 @@ in
 
   programs = {
     home-manager.enable = true;
-    alacritty = {
-      # Disabled as 
+
+    starship = {
       enable = false;
+      enableFishIntegration = true;
       settings = {
-        colors = {
-          bright = {
-            black = "0x7f7f7f";
-            blue = "0x5c5cff";
-            cyan = "0x00ffff";
-            green = "0x00ff00";
-            magenta = "0xff00ff";
-            red = "0xff0000";
-            white = "0xffffff";
-            yellow = "0xffff00";
-          };
-          normal = {
-            black = "0x000000";
-            blue = "0x0d73cc";
-            cyan = "0x00cdcd";
-            green = "0x00cd00";
-            magenta = "0xcd00cd";
-            red = "0xcd0000";
-            white = "0xe5e5e5";
-            yellow = "0xcdcd00";
-          };
-          primary = {
-            background = "0x000000";
-            foreground = "0xffffff";
-          };
+        add_newline = false;
+        gcloud = {
+          disabled = true;
         };
-        font = {
-          size = 7;
-          bold = {
-            style = "Bold";
-          };
-          glyph_offset = {
-            x = 0;
-            y = 0;
-          };
-          italic = {
-            style = "Italic";
-          };
-          normal = {
-            family = "TerminalMono";
-            style = "Regular";
-          };
-          offset = {
-            x = 0;
-            y = 0;
-          };
+        kubernetes = {
+          disabled = false;
         };
-        selection = {
-          save_to_clipboard = true;
-          semantic_escape_chars = ",│`|:\"' ()[]{}<>\t^";
-        };
-        window = {
-          decorations = "full";
-          opacity = 0.9;
-        };
-      };
-    };
-
-    fish = {
-      enable = true;
-
-      loginShellInit = ''
-        source /etc/profile.d/nix-daemon.fish
-      '';
-
-      interactiveShellInit = ''
-        # Remove default greeting
-        set fish_greeting
-
-        # Change fzf behavior
-
-        bind \ct transpose-chars
-        bind \cg transpose-words
-
-        # Was \ct, but conflict with bash' transpose-chars
-        bind \cf fzf-file-widget
-        bind \cr fzf-history-widget
-
-        fish_add_path -p $KREW_ROOT/bin
-      '';
-
-      shellInit = ''
-        function fish_greeting
-          # Remove bobthefish default greetings
-          # XXX: Duplicate with set fish_greeting ?
-        end
-      '';
-
-      shellAbbrs = {
-        l = "eza --bytes --git --group --long -snew --group-directories-first";
-        ls = "eza";
-        ll = "eza --bytes --git --group --long -snew --group-directories-first";
-        la = "eza --bytes --git --group --long -snew --group-directories-first -a";
-        lt = "eza --bytes --git --group --long -snew --group-directories-first --tree --level=2";
-        lta = "eza --bytes --git --group --long -snew --group-directories-first --tree --level=2 -a";
-        vi = "nvim";
-        vim = "nvim";
-        cat = "bat -p";
-        k = "kubectl";
-        kns = "kubectl-ns";
-        kctx = "kubectl-ctx";
       };
     };
 
@@ -195,44 +113,16 @@ in
       enableFishIntegration = true;
     };
 
-    git = {
-      enable = true;
-      userName = "Patrick Marie";
-      userEmail = "pm@mkz.me";
-      aliases = {
-        br = "branch";
-        co = "checkout";
-        gra = "gra = log --pretty=format:'\"%Cgreen%h %Creset%cd %C(bold blue)[%cn] %Creset%s%C(yellow)%d%C(reset)\"' --graph --date=relative --decorate --all";
-        hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short";
-        lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-        st = "status";
-        staged = "diff --cached";
-      };
-      extraConfig = {
-        github.user = "mycroft";
-        help.autocorrect = 1;
-        init.defaultBranch = "main";
-        color = {
-          ui = true;
-          pager = true;
-        };
-        url = {
-          "ssh://git@git.mkz.me" = {
-            insteadOf = "https://git.mkz.me";
-          };
-        };
-      };
-      signing = {
-        key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";
-        signByDefault = true;
-      };
-    };
-
     go = {
       enable = true;
       goPrivate = [
         "git.mkz.me"
       ];
+    };
+
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
     };
   };
 
