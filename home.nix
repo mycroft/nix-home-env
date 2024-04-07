@@ -89,6 +89,12 @@ in
       # keep-outputs = true
       experimental-features = nix-command flakes
     '';
+
+    file."./.ssh/authorized_keys".text = ''
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMek8Cn3KNlEeHP2f9vZCbx/hzNc3xzJI9+2FM7Mbx5y mycroft@nee.mkz.me
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIASLd/ou8xDr81AKt37sMTad2jKNyRqF614kdJG829zp mycroft@glitter.mkz.me
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwRnU+roKCocfzqUruFf5GUs5IeticEBp9nAojNcEaf mycroft@zenzen.s3ns.io
+    '';
   };
 
   programs = {
