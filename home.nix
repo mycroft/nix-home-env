@@ -64,6 +64,7 @@ in
       tea
       drone-cli
       tig
+      nixfmt-rfc-style
 
       # container tools
       dive
@@ -121,9 +122,7 @@ in
 
     go = {
       enable = true;
-      goPrivate = [
-        "git.mkz.me"
-      ];
+      goPrivate = [ "git.mkz.me" ];
     };
 
     zoxide = {

@@ -1,12 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.programs.krewfile;
 in
 {
   options.programs.krewfile = {
-    enable =
-      mkEnableOption "krewfile - Declarative krew plugin management";
+    enable = mkEnableOption "krewfile - Declarative krew plugin management";
 
     plugins = mkOption {
       default = [ "krew" ];
@@ -32,13 +36,15 @@ in
     xdg.configFile.".krewfile".text = concatStringsSep "\n" (cfg.plugins);
 
     home.activation = {
-      updateKrewfile = (lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-        export PATH="$PATH:${pkgs.git}/bin/:/usr/bin/";
-        ${pkgs.krew}/bin/krew update 2>/dev/null;
-        ${pkgs.krewfile}/bin/krewfile \
-            -command ${pkgs.krew}/bin/krew \
-            -file ${config.xdg.configHome}/.krewfile
-      '');
+      updateKrewfile = (
+        lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+          export PATH="$PATH:${pkgs.git}/bin/:/usr/bin/";
+          ${pkgs.krew}/bin/krew update 2>/dev/null;
+          ${pkgs.krewfile}/bin/krewfile \
+              -command ${pkgs.krew}/bin/krew \
+              -file ${config.xdg.configHome}/.krewfile
+        ''
+      );
     };
   };
 }
