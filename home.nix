@@ -124,6 +124,45 @@ in
       enable = true;
       enableFishIntegration = true;
     };
+
+    ssh = {
+      enable = true;
+      serverAliveInterval = 30;
+      serverAliveCountMax = 2;
+      extraConfig = ''
+        HostKeyAlgorithms=+ssh-rsa
+        # PreferredAuthentications publickey
+      '';
+
+      matchBlocks = {
+        "maki" = {
+          hostname = "maki.mkz.me";
+          port = 2022;
+        };
+        "maki4" = {
+          hostname = "maki.mkz.me";
+          port = 2022;
+          addressFamily = "inet";
+        };
+        "maki6" = {
+          hostname = "maki.mkz.me";
+          port = 2022;
+          addressFamily = "inet6";
+        };
+        "maki-backup" = {
+          hostname = "abused.minithins.net";
+          port = 2022;
+        };
+        "everyday" = {
+          user = "pi";
+          hostname = "10.0.0.254";
+        };
+        "raspberrypi" = {
+          user = "mycroft";
+          hostname = "10.0.0.129";
+        };
+      };
+    };
   };
 
   services.gpg-agent = {
