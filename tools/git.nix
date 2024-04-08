@@ -17,6 +17,7 @@
       github.user = "mycroft";
       help.autocorrect = 1;
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
       color = {
         ui = true;
         pager = true;
