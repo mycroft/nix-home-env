@@ -43,6 +43,7 @@
       k = "kubectl";
       kns = "kubectl-ns";
       kctx = "kubectl-ctx";
+      cd = "z";
     };
   };
 }
