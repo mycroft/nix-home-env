@@ -14,6 +14,7 @@
       "stern"
       "ctx"
       "ns"
+      "oidc-login"
     ];
   };
 }

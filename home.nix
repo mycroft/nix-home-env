@@ -184,4 +184,7 @@ in
       end
     end
   '';
+
+  xdg.configFile."fish/conf.d/nix.fish".source = "${pkgs.nix}/etc/profile.d/nix.fish";
+  xdg.configFile."fish/completions/nix.fish".source = "${pkgs.nix}/share/fish/vendor_completions.d/nix.fish";
 }

@@ -3,10 +3,6 @@
   programs.fish = {
     enable = true;
 
-    loginShellInit = ''
-      source /etc/profile.d/nix-daemon.fish
-    '';
-
     interactiveShellInit = ''
       # Remove default greeting
       set fish_greeting
