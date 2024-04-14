@@ -32,5 +32,20 @@
       key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";
       signByDefault = true;
     };
+    includes = [
+      {
+        condition = "gitdir:~/s3ns/";
+        contents = {
+          user = {
+            userName = "Patrick Marie";
+            userEmail = "patrick.marie@s3ns.io";
+          };
+          signing = {
+            key = "10ACC1CBF03F906A841A75111009AE4FC025F6F1";
+            signByDefault = true;
+          };
+        };
+      }
+    ];
   };
 }
