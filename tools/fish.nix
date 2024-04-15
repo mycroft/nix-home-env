@@ -4,8 +4,13 @@ let
     then {
       prod = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-prod";
       quar = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-quarantine";
-      insp = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-inspectability";
+      insp = "set -x KUBECONFIG $HOME/.kube/parts/config.inspectability";
       siem = "set -x KUBECONFIG $HOME/.kube/parts/config.siem";
+
+      prod-ng = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-prod";
+      quar-ng = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-quarantine";
+      insp-ng = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.inspectability";
+      siem-ng = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.siem";
     }
     else {};
 in

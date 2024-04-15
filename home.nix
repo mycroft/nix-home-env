@@ -72,7 +72,7 @@ in
       dive
       kubectl
       krew
-      helm
+      kubernetes-helm
       helmfile
       fluxcd
       skopeo
