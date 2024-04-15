@@ -1,4 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, specialArgs, ... }:
+let
+  extraAliases = if specialArgs.enableJobFeatures
+    then {
+      prod = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-prod";
+      quar = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-quarantine";
+      insp = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-inspectability";
+      siem = "set -x KUBECONFIG $HOME/.kube/parts/config.siem";
+    }
+    else {};
+in
 {
   programs.fish = {
     enable = true;
@@ -40,6 +50,7 @@
       kns = "kubectl-ns";
       kctx = "kubectl-ctx";
       cd = "z";
-    };
+      dc = "z";
+    } // extraAliases;
   };
 }

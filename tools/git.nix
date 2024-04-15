@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, specialArgs, ... }:
 {
   programs.git = {
     enable = true;
@@ -37,15 +37,20 @@
         condition = "gitdir:~/s3ns/";
         contents = {
           user = {
-            userName = "Patrick Marie";
-            userEmail = "patrick.marie@s3ns.io";
-          };
-          signing = {
-            key = "10ACC1CBF03F906A841A75111009AE4FC025F6F1";
-            signByDefault = true;
+            name = "Patrick Marie";
+            email = "patrick.marie@s3ns.io";
+            signingKey = "10ACC1CBF03F906A841A75111009AE4FC025F6F1";
           };
         };
       }
     ];
+  };
+
+  # May be move this away?
+  xdg.configFile."fish/conf.d/s3ns.conf" = {
+    enable = specialArgs.enableJobFeatures;
+    text = ''
+      # There is nothing in there.
+    '';
   };
 }

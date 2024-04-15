@@ -1,7 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, specialArgs, ... }:
 let
   username = "mycroft";
   homeDirectory = "/home/${username}";
+
+  inherit specialArgs;
 in
 {
   imports = [
@@ -186,6 +188,10 @@ in
       for f in $plugin/share/fish/vendor_functions.d/*.fish
         source $f
       end
+    end
+
+    function fish_right_prompt
+      #intentionally left blank
     end
   '';
 
