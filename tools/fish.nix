@@ -19,11 +19,7 @@ in
     enable = true;
 
     interactiveShellInit = ''
-      # Remove default greeting
-      set fish_greeting
-
       # Change fzf behavior
-
       bind \ct transpose-chars
       bind \cg transpose-words
 
@@ -37,8 +33,11 @@ in
     shellInit = ''
       function fish_greeting
         # Remove bobthefish default greetings
-        # XXX: Duplicate with set fish_greeting ?
       end
+
+      set -g theme_display_date no
+      set -g theme_display_k8s_context yes
+      set -g theme_display_k8s_namespace yes
     '';
 
     shellAbbrs = {
@@ -58,4 +57,18 @@ in
       dc = "z";
     } // extraAliases;
   };
+
+  xdg.configFile."fish/conf.d/plugin-bobthefish.fish".text = ''
+    for plugin in ${pkgs.fishPlugins.bobthefish} ${pkgs.fishPlugins.fzf}
+      for f in $plugin/share/fish/vendor_functions.d/*.fish
+        source $f
+      end
+    end
+  '';
+
+  # I really don't understand what the hell is with nix & fish. Loading everything seems to make it ok.
+  xdg.configFile."fish/conf.d/nix.fish".source = "${pkgs.nix}/etc/profile.d/nix.fish";
+  xdg.configFile."fish/conf.d/nix-daemon.fish".source = "${pkgs.nix}/etc/profile.d/nix-daemon.fish";
+  xdg.configFile."fish/completions/nix.fish".source = "${pkgs.nix}/share/fish/vendor_completions.d/nix.fish";
+
 }

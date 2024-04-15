@@ -182,21 +182,4 @@ in
     defaultCacheTtl = 31536000;
     maxCacheTtl = 31536000;
   };
-
-  xdg.configFile."fish/conf.d/plugin-bobthefish.fish".text = ''
-    for plugin in ${pkgs.fishPlugins.bobthefish} ${pkgs.fishPlugins.fzf}
-      for f in $plugin/share/fish/vendor_functions.d/*.fish
-        source $f
-      end
-    end
-
-    function fish_right_prompt
-      #intentionally left blank
-    end
-  '';
-
-  # I really don't understand what the hell is with nix & fish. Loading everything seems to make it ok.
-  xdg.configFile."fish/conf.d/nix.fish".source = "${pkgs.nix}/etc/profile.d/nix.fish";
-  xdg.configFile."fish/conf.d/nix-daemon.fish".source = "${pkgs.nix}/etc/profile.d/nix-daemon.fish";
-  xdg.configFile."fish/completions/nix.fish".source = "${pkgs.nix}/share/fish/vendor_completions.d/nix.fish";
 }
