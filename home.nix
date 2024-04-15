@@ -130,6 +130,10 @@ in
       enableFishIntegration = true;
     };
 
+    direnv = {
+      enable = true;
+    };
+
     ssh = {
       enable = true;
       serverAliveInterval = 30;
@@ -185,6 +189,8 @@ in
     end
   '';
 
+  # I really don't understand what the hell is with nix & fish. Loading everything seems to make it ok.
   xdg.configFile."fish/conf.d/nix.fish".source = "${pkgs.nix}/etc/profile.d/nix.fish";
+  xdg.configFile."fish/conf.d/nix-daemon.fish".source = "${pkgs.nix}/etc/profile.d/nix-daemon.fish";
   xdg.configFile."fish/completions/nix.fish".source = "${pkgs.nix}/share/fish/vendor_completions.d/nix.fish";
 }
