@@ -67,6 +67,7 @@ in
       drone-cli
       tig
       nixfmt-rfc-style
+      cloc
 
       # container tools
       dive
