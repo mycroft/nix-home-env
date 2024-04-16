@@ -24,13 +24,14 @@ in
       EXA_COLORS = "da=36";
       FFSEND_HOST = "https://send.services.mkz.me/";
       GOPRIVATE = "git.mkz.me"; # to be replaced by programs.go.goPrivate
+      KAPILOGIN_CONFIG = "${homeDirectory}/.kapilogin.yaml";
       KREW_ROOT = "${homeDirectory}/.krew";
       LANG = "en_US.UTF-8";
       LC_CTYPE = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
-      PASSWORD_STORE_DIR = "$HOME/.sync/private/store";
+      PASSWORD_STORE_DIR = "${homeDirectory}/.sync/private/store";
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
-      XDG_DOWNLOAD_DIR = "$HOME/.downloads";
+      XDG_DOWNLOAD_DIR = "${homeDirectory}/.downloads";
     };
 
     packages = with pkgs; [
@@ -68,6 +69,7 @@ in
       tig
       nixfmt-rfc-style
       cloc
+      awscli2
 
       # container tools
       dive

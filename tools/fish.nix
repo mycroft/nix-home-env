@@ -2,15 +2,17 @@
 let
   extraAliases = if specialArgs.enableJobFeatures
     then {
-      prod = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-prod";
-      quar = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-quarantine";
-      insp = "set -x KUBECONFIG $HOME/.kube/parts/config.inspectability";
-      siem = "set -x KUBECONFIG $HOME/.kube/parts/config.siem";
+      prod-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-prod";
+      quar-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-quarantine";
+      insp-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.inspectability";
+      siem-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.siem";
 
-      prod-ng = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-prod";
-      quar-ng = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-quarantine";
-      insp-ng = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.inspectability";
-      siem-ng = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.siem";
+      prod = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-prod";
+      quar = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-quarantine";
+      insp = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.inspectability";
+      siem = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.siem";
+
+      clear-k8s = "set -e KUBECONFIG";
     }
     else {};
 in
@@ -38,7 +40,7 @@ in
       set -g theme_display_date no
       set -g theme_display_cmd_duration no
       set -g theme_display_k8s_context yes
-      set -g theme_display_k8s_namespace yes
+      set -g theme_display_k8s_namespace no
     '';
 
     shellAbbrs = {
