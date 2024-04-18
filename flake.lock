@@ -36,10 +36,24 @@
         "type": "github"
       }
     },
+    "private-repository": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713446680,
+        "narHash": "sha256-DY/F5VzU77epKSulnj9eNQaExd7AP5ZF3NpNM9WAvB4=",
+        "path": "/home/mycroft/dev/nix-home-private",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/mycroft/dev/nix-home-private",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "private-repository": "private-repository"
       }
     }
   },

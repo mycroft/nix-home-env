@@ -1,4 +1,10 @@
-{ pkgs, lib, specialArgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  specialArgs,
+  ...
+}:
 let
   username = "mycroft";
   homeDirectory = "/home/${username}";
@@ -31,7 +37,6 @@ in
       LC_ALL = "en_US.UTF-8";
       PASSWORD_STORE_DIR = "${homeDirectory}/.sync/private/store";
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
-      XDG_DOWNLOAD_DIR = "${homeDirectory}/.downloads";
     };
 
     packages = with pkgs; [
@@ -70,6 +75,7 @@ in
       nixfmt-rfc-style
       cloc
       awscli2
+      protoc-gen-go-grpc
 
       # container tools
       dive
@@ -94,12 +100,6 @@ in
       # keep-derivations = true
       # keep-outputs = true
       experimental-features = nix-command flakes
-    '';
-
-    file."./.ssh/authorized_keys".text = ''
-      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMek8Cn3KNlEeHP2f9vZCbx/hzNc3xzJI9+2FM7Mbx5y mycroft@nee.mkz.me
-      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIASLd/ou8xDr81AKt37sMTad2jKNyRqF614kdJG829zp mycroft@glitter.mkz.me
-      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwRnU+roKCocfzqUruFf5GUs5IeticEBp9nAojNcEaf mycroft@zenzen.s3ns.io
     '';
   };
 
@@ -138,45 +138,6 @@ in
     direnv = {
       enable = true;
     };
-
-    ssh = {
-      enable = true;
-      serverAliveInterval = 30;
-      serverAliveCountMax = 2;
-      extraConfig = ''
-        HostKeyAlgorithms=+ssh-rsa
-        # PreferredAuthentications publickey
-      '';
-
-      matchBlocks = {
-        "maki" = {
-          hostname = "maki.mkz.me";
-          port = 2022;
-        };
-        "maki4" = {
-          hostname = "maki.mkz.me";
-          port = 2022;
-          addressFamily = "inet";
-        };
-        "maki6" = {
-          hostname = "maki.mkz.me";
-          port = 2022;
-          addressFamily = "inet6";
-        };
-        "maki-backup" = {
-          hostname = "abused.minithins.net";
-          port = 2022;
-        };
-        "everyday" = {
-          user = "pi";
-          hostname = "10.0.0.254";
-        };
-        "raspberrypi" = {
-          user = "mycroft";
-          hostname = "10.0.0.129";
-        };
-      };
-    };
   };
 
   services.gpg-agent = {
@@ -185,4 +146,6 @@ in
     defaultCacheTtl = 31536000;
     maxCacheTtl = 31536000;
   };
+
+  xdg.userDirs.download = "${config.home.homeDirectory}/.downloads";
 }

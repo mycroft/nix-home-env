@@ -1,20 +1,22 @@
 { pkgs, specialArgs, ... }:
 let
-  extraAliases = if specialArgs.enableJobFeatures
-    then {
-      prod-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-prod";
-      quar-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-quarantine";
-      insp-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.inspectability";
-      siem-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.siem";
+  extraAliases =
+    if specialArgs.enableJobFeatures then
+      {
+        prod-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-prod";
+        quar-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-quarantine";
+        insp-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.inspectability";
+        siem-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.siem";
 
-      prod = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-prod";
-      quar = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-quarantine";
-      insp = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.inspectability";
-      siem = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.siem";
+        prod = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-prod";
+        quar = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-quarantine";
+        insp = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.inspectability";
+        siem = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.siem";
 
-      clear-k8s = "set -e KUBECONFIG";
-    }
-    else {};
+        clear-k8s = "set -e KUBECONFIG";
+      }
+    else
+      { };
 in
 {
   programs.fish = {
@@ -73,5 +75,4 @@ in
   xdg.configFile."fish/conf.d/nix.fish".source = "${pkgs.nix}/etc/profile.d/nix.fish";
   xdg.configFile."fish/conf.d/nix-daemon.fish".source = "${pkgs.nix}/etc/profile.d/nix-daemon.fish";
   xdg.configFile."fish/completions/nix.fish".source = "${pkgs.nix}/share/fish/vendor_completions.d/nix.fish";
-
 }

@@ -32,25 +32,5 @@
       key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";
       signByDefault = true;
     };
-    includes = [
-      {
-        condition = "gitdir:~/s3ns/";
-        contents = {
-          user = {
-            name = "Patrick Marie";
-            email = "patrick.marie@s3ns.io";
-            signingKey = "10ACC1CBF03F906A841A75111009AE4FC025F6F1";
-          };
-        };
-      }
-    ];
-  };
-
-  # May be move this away?
-  xdg.configFile."fish/conf.d/s3ns.conf" = {
-    enable = specialArgs.enableJobFeatures;
-    text = ''
-      # There is nothing in there.
-    '';
   };
 }
