@@ -60,3 +60,13 @@ With daemon:
 ```sh
 $ . /etc/profile.d/nix-daemon.fish
 ```
+
+### About ssh keys
+
+`.ssh/authorized_keys` can not be managed by nix. Just do the following and that'll do it:
+
+```sh
+$ rm -f ~/.ssh/authorized_keys
+$ cp ~/.ssh/authorized_keys.nix ~/.ssh/authorized_keys
+$ chmod 600 ~/.ssh/authorized_keys
+```

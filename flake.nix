@@ -10,6 +10,7 @@
 
     private-repository = {
       url = "git+ssh://git@git.mkz.me/mycroft/nix-home-private.git";
+      inputs.nixpkgs.follows = "nixpkgs";
       # url = "/home/mycroft/dev/nix-home-private";
     };
   };
