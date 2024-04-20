@@ -80,6 +80,7 @@ in
       nixfmt-rfc-style
       cloc
       awscli2
+      protoc-gen-go
       protoc-gen-go-grpc
 
       # container tools
@@ -92,6 +93,7 @@ in
       skopeo
       k9s
       kind
+      natscli
 
       # security tools
       nmap
