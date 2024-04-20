@@ -37,6 +37,11 @@ in
       LC_ALL = "en_US.UTF-8";
       PASSWORD_STORE_DIR = "${homeDirectory}/.sync/private/store";
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
+
+      # X11 related configuration goes here as i3wm/gdm does not read .xprofile or .xinitrc.
+      GTK_THEME = "Adwaita:dark";
+      GTK2_RC_FILES = "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc";
+      QT_STYLE_OVERRIDE = "adwaita-dark";
     };
 
     packages = with pkgs; [
@@ -149,6 +154,7 @@ in
 
   xdg.userDirs.download = "${config.home.homeDirectory}/.downloads";
 
+  # Not sure this is even used on arch-linux
   xsession = {
     enable = true;
     profilePath = ".xprofile";
