@@ -13,11 +13,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
       # url = "/home/mycroft/dev/nix-home-private";
     };
+
+    # for flux-cd 2.0.1
+    nixpkgs-fluxcd.url = "github:nixos/nixpkgs/976fa3369d722e76f37c77493d99829540d43845";
   };
 
   outputs =
     inputs@{
       nixpkgs,
+      nixpkgs-fluxcd,
       home-manager,
       private-repository,
       ...
@@ -29,12 +33,17 @@
       homeConfigurations = {
         "mycroft" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
           modules = [
             ./home.nix
             "${private-repository}/home.nix"
           ];
           extraSpecialArgs = {
             enableJobFeatures = true;
+
+            versions = {
+              pkgs-fluxcd = nixpkgs-fluxcd.legacyPackages.x86_64-linux;
+            };
           };
         };
       };

@@ -10,6 +10,7 @@ let
   homeDirectory = "/home/${username}";
 
   inherit specialArgs;
+  inherit (specialArgs) versions;
 in
 {
   imports = [
@@ -27,9 +28,9 @@ in
 
     sessionVariables = {
       EDITOR = "nvim";
+      VISUAL = "less";
       EXA_COLORS = "da=36";
       FFSEND_HOST = "https://send.services.mkz.me/";
-      GOPRIVATE = "git.mkz.me"; # to be replaced by programs.go.goPrivate
       KAPILOGIN_CONFIG = "${homeDirectory}/.kapilogin.yaml";
       KREW_ROOT = "${homeDirectory}/.krew";
       LANG = "en_US.UTF-8";
@@ -89,14 +90,16 @@ in
       krew
       kubernetes-helm
       helmfile
-      fluxcd
       skopeo
       k9s
       kind
       natscli
+      cmctl
 
       # security tools
       nmap
+    ] ++ [
+      versions.pkgs-fluxcd.fluxcd
     ];
 
     file."./.config/fontconfig/fonts.conf" = {

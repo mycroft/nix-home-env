@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713547570,
-        "narHash": "sha256-i8tNz47Lfsq5QWFLyE3rIm0gs2UUvXXAxfWTC24e370=",
+        "lastModified": 1713682182,
+        "narHash": "sha256-2RSqVmQMFmn6OjQ21SXnWC+HuSeqDLWLftRv/ZhEDZE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7c61e400a99f33cdff3118c1e4032bcb049e1a30",
+        "rev": "4cec20dbf5c0a716115745ae32531e34816ecbbe",
         "type": "github"
       },
       "original": {
@@ -22,17 +22,33 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1713297878,
-        "narHash": "sha256-hOkzkhLT59wR8VaMbh1ESjtZLbGi+XNaBN6h49SPqEc=",
+        "lastModified": 1713537308,
+        "narHash": "sha256-XtTSSIB2DA6tOv+l0FhvfDMiyCmhoRbNB+0SeInZkbk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "66adc1e47f8784803f2deb6cacd5e07264ec2d5c",
+        "rev": "5c24cf2f0a12ad855f444c30b2421d044120c66f",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-fluxcd": {
+      "locked": {
+        "lastModified": 1692477756,
+        "narHash": "sha256-zezuNTk1F2Sa3ChTF+wbTn8ujyptQ+E+N6SA2d47zOQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "976fa3369d722e76f37c77493d99829540d43845",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "976fa3369d722e76f37c77493d99829540d43845",
         "type": "github"
       }
     },
@@ -43,11 +59,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713448762,
-        "narHash": "sha256-ftg5nkYaW8mnjtLrP5pdPwN1/wWFRnFXzWkV1GML3tQ=",
+        "lastModified": 1713707011,
+        "narHash": "sha256-ohReoOXKsB8SmWvT9QADZEZ1OnyyEYEbpCrQlToE4/M=",
         "ref": "refs/heads/main",
-        "rev": "bcd0943a0ff0e8f1a7901a4a38f5e7a9907998e8",
-        "revCount": 4,
+        "rev": "d39ad7d1c2fe61935d555bd6519459d73b165894",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@git.mkz.me/mycroft/nix-home-private.git"
       },
@@ -60,6 +76,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-fluxcd": "nixpkgs-fluxcd",
         "private-repository": "private-repository"
       }
     }
