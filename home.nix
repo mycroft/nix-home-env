@@ -13,6 +13,10 @@ let
   inherit (specialArgs) versions;
 in
 {
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   imports = [
     ./tools/alacritty.nix
     ./tools/fish.nix
@@ -46,6 +50,8 @@ in
     };
 
     packages = with pkgs; [
+      nix-eval-jobs
+      unrar
       cowsay
       ponysay
       yq-go
