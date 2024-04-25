@@ -27,6 +27,9 @@
           insteadOf = "https://git.mkz.me";
         };
       };
+      pull = {
+        rebase = true;
+      };
     };
     signing = {
       key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";

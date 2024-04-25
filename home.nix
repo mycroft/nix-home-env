@@ -89,6 +89,7 @@ in
       awscli2
       protoc-gen-go
       protoc-gen-go-grpc
+      tldr
 
       # container tools
       dive
