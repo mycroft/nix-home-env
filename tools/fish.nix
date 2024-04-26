@@ -46,6 +46,7 @@ in
     '';
 
     shellAbbrs = {
+      btm = "btm --color nord";
       l = "eza --bytes --git --group --long -snew --group-directories-first";
       ls = "eza";
       ll = "eza --bytes --git --group --long -snew --group-directories-first";
