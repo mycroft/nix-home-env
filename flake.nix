@@ -8,12 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    private-repository = {
-      url = "git+ssh://git@git.mkz.me/mycroft/nix-home-private.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-      # url = "/home/mycroft/dev/nix-home-private";
-    };
-
     # for flux-cd 2.0.1
     nixpkgs-fluxcd.url = "github:nixos/nixpkgs/976fa3369d722e76f37c77493d99829540d43845";
   };
@@ -23,7 +17,6 @@
       nixpkgs,
       nixpkgs-fluxcd,
       home-manager,
-      private-repository,
       ...
     }:
     {
@@ -36,7 +29,6 @@
 
           modules = [
             ./home.nix
-            "${private-repository}/home.nix"
           ];
           extraSpecialArgs = {
             enableJobFeatures = true;

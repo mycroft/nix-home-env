@@ -1,0 +1,9 @@
+[
+  ./alacritty
+  ./fish
+  ./git
+  ./krewfile
+  ./neovim
+  ./ssh
+  ./tmux
+]

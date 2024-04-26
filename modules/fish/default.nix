@@ -1,22 +1,6 @@
 { pkgs, specialArgs, ... }:
 let
-  extraAliases =
-    if specialArgs.enableJobFeatures then
-      {
-        prod-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-prod";
-        quar-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.pe-quarantine";
-        insp-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.inspectability";
-        siem-legacy = "set -x KUBECONFIG $HOME/.kube/parts/config.siem";
-
-        prod = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-prod";
-        quar = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.pe-quarantine";
-        insp = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.inspectability";
-        siem = "set -x KUBECONFIG $HOME/.kube/parts/config.ela.dev.siem";
-
-        clear-k8s = "set -e KUBECONFIG";
-      }
-    else
-      { };
+  extraAliases = {};
 in
 {
   programs.fish = {

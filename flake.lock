@@ -52,32 +52,11 @@
         "type": "github"
       }
     },
-    "private-repository": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1713984328,
-        "narHash": "sha256-3vxrMEjlYEfGQk1NOdLht2gOOTW8scgTkW3nVu3ncTY=",
-        "ref": "refs/heads/main",
-        "rev": "6a10b6c939597cf3b7df5ecbac5b9350f1c881cf",
-        "revCount": 6,
-        "type": "git",
-        "url": "ssh://git@git.mkz.me/mycroft/nix-home-private.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@git.mkz.me/mycroft/nix-home-private.git"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-fluxcd": "nixpkgs-fluxcd",
-        "private-repository": "private-repository"
+        "nixpkgs-fluxcd": "nixpkgs-fluxcd"
       }
     }
   },

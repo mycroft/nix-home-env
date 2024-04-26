@@ -17,13 +17,8 @@ in
     allowUnfree = true;
   };
 
-  imports = [
-    ./tools/alacritty.nix
-    ./tools/fish.nix
-    ./tools/git.nix
-    ./tools/krewfile.nix
-    ./tools/neovim.nix
-    ./tools/tmux.nix
+  imports = lib.concatMap import [
+    ./modules
   ];
 
   home = {
