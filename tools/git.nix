@@ -14,6 +14,7 @@
       staged = "diff --cached";
     };
     extraConfig = {
+      core.editor = "nvim";
       github.user = "mycroft";
       help.autocorrect = 1;
       init.defaultBranch = "main";
