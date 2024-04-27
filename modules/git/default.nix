@@ -14,11 +14,11 @@
       staged = "diff --cached";
     };
     extraConfig = {
+      branch.autosetuprebase = "always";
       core.editor = "nvim";
       github.user = "mycroft";
       help.autocorrect = 1;
       init.defaultBranch = "main";
-      push.autoSetupRemote = true;
       color = {
         ui = true;
         pager = true;
@@ -28,9 +28,9 @@
           insteadOf = "https://git.mkz.me";
         };
       };
-      pull = {
-        rebase = true;
-      };
+      pull.rebase = true;
+      push.autoSetupRemote = true;
+      push.default = "tracking";
     };
     signing = {
       key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";
