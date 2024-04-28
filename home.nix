@@ -69,9 +69,10 @@ in
       duf
       silver-searcher
       procs
-      doggo
+      doggo # dig alternative; https://github.com/mr-karan/doggo
 
       glow
+      zstd
 
       # coding
       bazelisk
