@@ -22,6 +22,17 @@ vim.opt.softtabstop = 4
 
 vim.opt.expandtab = true
 
+vim.opt.list = true
+
+local space_char = '_'
+vim.opt.listchars:append {
+  multispace = space_char,
+  trail = space_char,
+  lead = space_char,
+  nbsp = space_char,
+  tab = '>~'
+}
+
 vim.opt.autoindent = true
 vim.opt.smarttab = true
 vim.api.nvim_command('filetype plugin indent on')
@@ -30,6 +41,26 @@ vim.opt.mouse = nil
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':tabnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-p>', ':tabprevious<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.go" },
+  callback = function()
+    vim.opt.expandtab = false
+  end
+})
+
+-- format on save
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("lsp", { clear = true }),
+  callback = function(args)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.format {async = false, id = args.data.client_id }
+      end,
+    })
+  end
+})
 
 vim.cmd.colorscheme "catppuccin"
 
@@ -70,6 +101,12 @@ lspconfig.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
     ['rust-analyzer'] = {},
+  },
+}
+
+lspconfig.gopls.setup {
+  capabilities = capabilities,
+  settings = {
   },
 }
 

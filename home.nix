@@ -86,6 +86,7 @@ in
       protoc-gen-go
       protoc-gen-go-grpc
       tldr
+      gopls
 
       # container tools
       dive
