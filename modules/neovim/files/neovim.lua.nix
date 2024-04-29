@@ -24,6 +24,13 @@ vim.opt.expandtab = true
 
 vim.opt.list = true
 
+-- always draw sign column. prevents buffer moving when adding/deleting sign
+vim.opt.signcolumn = 'yes'
+-- sweet sweet relative line numbers
+vim.opt.relativenumber = true
+-- and show the absolute line number for the current line
+vim.opt.number = true
+
 local space_char = '_'
 vim.opt.listchars:append {
   multispace = space_char,
@@ -100,16 +107,28 @@ cmp.setup({
 lspconfig.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
-    ['rust-analyzer'] = {},
+    ['rust-analyzer'] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
   },
 }
 
 lspconfig.gopls.setup {
   capabilities = capabilities,
-  settings = {
-  },
+  settings = {},
 }
 
-vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = false, silent = true })
 
+vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declarations()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ge', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
 ''
