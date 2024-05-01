@@ -100,11 +100,13 @@ in
       kind
       natscli
       cmctl
+      fluxcd
 
       # security tools
       nmap
     ] ++ [
-      versions.pkgs-fluxcd.fluxcd
+      # No longer used, as fluxcd was upgraded.
+      # versions.pkgs-fluxcd.fluxcd
     ];
 
     file."./.config/fontconfig/fonts.conf" = {
