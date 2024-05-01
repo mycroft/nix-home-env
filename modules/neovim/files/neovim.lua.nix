@@ -82,7 +82,7 @@ cmp.setup({
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body)
-      -- vim.snippet.expand(args.body) -- for neovin 0.10
+      -- vim.snippet.expand(args.body) -- for neovim 0.10
     end
   },
   window = {

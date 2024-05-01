@@ -53,6 +53,7 @@ in
       jq
       ffsend
       bottom
+      btop
       pass
 
       # shell

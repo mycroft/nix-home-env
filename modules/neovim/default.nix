@@ -23,6 +23,7 @@ in
       vimPlugins.cmp-nvim-lsp     # LSP completion
       vimPlugins.vim-vsnip        # Requirement for LSP completion
       vimPlugins.cmp-vsnip        # nvim-cmp source for vsnip
+      vimPlugins.vim-commentary   # commenting
     ] ++ (lib.optionals (enablePluginTelescope) [
       vimPlugins.telescope-nvim   # Telescope: Find, filter, preview, pick
     ]);
