@@ -88,6 +88,7 @@ in
       protoc-gen-go-grpc
       tldr
       gopls
+      pyright
 
       # container tools
       dive
