@@ -52,6 +52,11 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 vim.api.nvim_set_keymap('n', '<C-n>', ':tabnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-p>', ':tabprevious<CR>', { noremap = true, silent = true })
 
+-- vim-markdown
+-- do not fold automatically things.
+let g:vim_markdown_folding_disabled = 1
+
+
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { "*.go" },
   callback = function()
