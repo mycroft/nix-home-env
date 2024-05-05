@@ -3,6 +3,7 @@
   ./fish
   ./git
   ./krewfile
+  ./mmtc
   ./neovim
   ./ssh
   ./tmux
