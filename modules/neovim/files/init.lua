@@ -1,16 +1,3 @@
-{ enablePluginTelescope, ... }:
-let
-  telescopeConfig = if !enablePluginTelescope
-    then ""
-    else ''
-      local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-    '';
-in
-''
 -- Built from neovim.lua.nix
 --
 -- Read those docs:
@@ -78,7 +65,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.cmd.colorscheme "catppuccin"
 
-${telescopeConfig}
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -143,4 +134,4 @@ vim.api.nvim_set_keymap('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR
 vim.api.nvim_set_keymap('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declarations()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ge', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
-''
+

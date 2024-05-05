@@ -1,16 +1,11 @@
 { pkgs, ... }:
-let
-  enablePluginTelescope = true;
-in
 {
   programs.neovim = {
     enable = true;
 
     withPython3 = true;
 
-    extraLuaConfig = (import ./files/neovim.lua.nix) {
-      inherit enablePluginTelescope;
-    };
+    extraLuaConfig = builtins.readFile ./files/init.lua;
 
     plugins = with pkgs; [
       vimPlugins.catppuccin-nvim  # Pastel theme
@@ -24,8 +19,7 @@ in
       vimPlugins.vim-vsnip        # Requirement for LSP completion
       vimPlugins.cmp-vsnip        # nvim-cmp source for vsnip
       vimPlugins.vim-commentary   # commenting
-    ] ++ (lib.optionals (enablePluginTelescope) [
       vimPlugins.telescope-nvim   # Telescope: Find, filter, preview, pick
-    ]);
+    ];
   };
 }
