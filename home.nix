@@ -1,9 +1,8 @@
-{
-  pkgs,
-  lib,
-  config,
-  specialArgs,
-  ...
+{ pkgs
+, lib
+, config
+, specialArgs
+, ...
 }:
 let
   username = "mycroft";

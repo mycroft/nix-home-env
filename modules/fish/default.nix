@@ -1,6 +1,6 @@
 { pkgs, specialArgs, ... }:
 let
-  extraAliases = {};
+  extraAliases = { };
 in
 {
   programs.fish = {
