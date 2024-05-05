@@ -55,6 +55,7 @@ in
       bottom
       btop
       pass
+      mmtc
 
       # shell
       fish
