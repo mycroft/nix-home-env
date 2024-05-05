@@ -54,8 +54,7 @@ vim.api.nvim_set_keymap('n', '<C-p>', ':tabprevious<CR>', { noremap = true, sile
 
 -- vim-markdown
 -- do not fold automatically things.
-let g:vim_markdown_folding_disabled = 1
-
+vim.g.vim_markdown_folding_disabled = 1
 
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { "*.go" },
