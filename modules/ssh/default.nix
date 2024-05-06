@@ -40,6 +40,13 @@ in
         hostname = "abused.minithins.net";
         port = 2022;
       };
+      "glitter" = {
+        user = "mycroft";
+        hostname = "10.0.0.8";
+        port = 22;
+        forwardX11 = true;
+        forwardX11Trusted = true;
+      };
       "everyday" = {
         user = "pi";
         hostname = "10.0.0.254";
