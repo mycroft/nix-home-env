@@ -30,9 +30,6 @@
           modules = [
             ./home.nix
           ];
-          extraSpecialArgs = {
-            enableJobFeatures = true;
-          };
 
           inherit pkgs;
         };
