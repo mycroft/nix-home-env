@@ -6,8 +6,8 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "mycroft";
     repo = pname;
-    rev = "e8661564cc2beeaed0866e119f59e02399f14cf4";
-    hash = "sha256-qpQs+/i/TWC7EG68dOh0qHJJDFA47rUgF1nHFHusjb8=";
+    rev = "00b97ae13fd3c7e5a34008fd4b498c8275041367";
+    hash = "sha256-TbVQjd5bg1b9qcHSlPXUsarAfOqLGH8Zndhvc3k9L7s=";
   };
 
   cargoHash = "sha256-Q1uFrReg3GZoIHH34UwK42JNJzAUaP79yznj96mSPGA=";
