@@ -18,14 +18,19 @@
     , home-manager
     , ...
     }:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        config = { allowUnfree = true; };
+        inherit system;
+      };
+    in
     {
-      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      defaultPackage.${system} = home-manager.defaultPackage.${system};
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
 
       homeConfigurations = {
         "mycroft" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-
           modules = [
             ./home.nix
           ];
@@ -33,10 +38,21 @@
             enableJobFeatures = true;
 
             versions = {
-              pkgs-fluxcd = nixpkgs-fluxcd.legacyPackages.x86_64-linux;
+              pkgs-fluxcd = nixpkgs-fluxcd.legacyPackages.${system};
             };
           };
+
+          inherit pkgs;
         };
+      };
+
+      devShell.${system} = pkgs.mkShell {
+        nativeBuildInputs = with pkgs; [ wget s-tar ];
+        packages = with pkgs; [
+          alejandra
+          git
+          nix
+        ];
       };
     };
 }
