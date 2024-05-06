@@ -71,6 +71,7 @@ in
       silver-searcher
       procs
       doggo # dig alternative; https://github.com/mr-karan/doggo
+      skim
 
       glow
       zstd
