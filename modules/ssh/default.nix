@@ -5,6 +5,7 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIASLd/ou8xDr81AKt37sMTad2jKNyRqF614kdJG829zp mycroft@glitter.mkz.me"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAPskz9xwVWyXUThFepyY4FZ+E5yXm8S2/vWpjrMxYLh mycroft@saisei.mkz.me"
   ];
+  maki-ssh-port = 22222;
 in
 {
   home = {
@@ -24,21 +25,21 @@ in
     matchBlocks = {
       "maki" = {
         hostname = "maki.mkz.me";
-        port = 2022;
+        port = maki-ssh-port;
       };
       "maki4" = {
         hostname = "maki.mkz.me";
-        port = 2022;
+        port = maki-ssh-port;
         addressFamily = "inet";
       };
       "maki6" = {
         hostname = "maki.mkz.me";
-        port = 2022;
+        port = maki-ssh-port;
         addressFamily = "inet6";
       };
       "maki-backup" = {
         hostname = "abused.minithins.net";
-        port = 2022;
+        port = maki-ssh-port;
       };
       "glitter" = {
         user = "mycroft";
