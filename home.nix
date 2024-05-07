@@ -111,15 +111,6 @@ in
       # versions.pkgs-fluxcd.fluxcd
     ];
 
-    file."./.config/fontconfig/fonts.conf" = {
-      source = ./files/fontconfig/fonts.conf;
-    };
-
-    file.".config/nix/nix.conf".text = ''
-      # keep-derivations = true
-      # keep-outputs = true
-      experimental-features = nix-command flakes
-    '';
   };
 
   programs = {
@@ -164,6 +155,20 @@ in
     pinentryPackage = pkgs.pinentry-curses;
     defaultCacheTtl = 31536000;
     maxCacheTtl = 31536000;
+  };
+
+  xdg.configFile = {
+    "fontconfig/fonts.conf" = {
+      source = ./files/fontconfig/fonts.conf;
+    };
+
+    "nix/nix.conf" = {
+      text = ''
+        # keep-derivations = true
+        # keep-outputs = true
+        experimental-features = nix-command flakes
+      '';
+    };
   };
 
   xdg.userDirs.download = "${config.home.homeDirectory}/.downloads";
