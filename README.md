@@ -70,3 +70,12 @@ $ rm -f ~/.ssh/authorized_keys
 $ cp ~/.ssh/authorized_keys.nix ~/.ssh/authorized_keys
 $ chmod 600 ~/.ssh/authorized_keys
 ```
+
+### pre-commit
+
+You can use `nix flake check` to find out your files correctly formatted or not.
+
+```sh
+$ nix flake check
+...
+```
