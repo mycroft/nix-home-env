@@ -90,6 +90,8 @@ in
       tldr
       gopls
       pyright
+      rust-bin.stable.latest.minimal
+      rust-bin.nightly."2024-05-08".rustfmt
 
       # container tools
       dive

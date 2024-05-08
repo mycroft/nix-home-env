@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs =
@@ -25,13 +30,15 @@
     , flake-utils
     , home-manager
     , pre-commit-hooks
+    , rust-overlay
     , ...
     }:
     flake-utils.lib.eachSystem [ flake-utils.lib.system.x86_64-linux ] (system:
     let
+      overlays = [ (import rust-overlay) ];
       pkgs = import nixpkgs {
         config = { allowUnfree = true; };
-        inherit system;
+        inherit system overlays;
       };
     in
     {
