@@ -3,7 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/x86_64-linux";
     flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.inputs.systems.follows = "systems";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -24,7 +26,7 @@
     , pre-commit-hooks
     , ...
     }:
-    flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachSystem [ flake-utils.lib.system.x86_64-linux ] (system:
     let
       pkgs = import nixpkgs {
         config = { allowUnfree = true; };
@@ -32,6 +34,10 @@
       };
     in
     {
+      # home-manager is looking into either packages.<system>, legacyPackages.<system> or
+      # directly "homeConfigurations".<user>. As eachSystem is overwriting top level key part
+      # adding system, only packages & legacyPackages are possible. Using packages makes nix flake
+      # unhappy as this is not a derivation... Seems like legacyPackages will do it.
       legacyPackages = {
         homeConfigurations = {
           "mycroft" = inputs.home-manager.lib.homeManagerConfiguration {
@@ -43,7 +49,6 @@
           };
         };
       };
-      defaultPackage = home-manager.defaultPackage.${system};
       formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
 
       checks = {
@@ -58,7 +63,7 @@
         };
       };
 
-      devShell = pkgs.mkShell {
+      devShells.default = pkgs.mkShell {
         buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
 
         nativeBuildInputs = with pkgs; [ wget s-tar ];
