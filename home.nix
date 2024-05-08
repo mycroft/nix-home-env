@@ -85,6 +85,7 @@ in
         gopls
         pyright
         rust-bin.stable.latest.minimal
+        rust-bin.stable.latest.rust-analyzer
         rust-bin.nightly."2024-05-08".rustfmt
 
         # container tools
