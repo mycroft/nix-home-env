@@ -8,6 +8,15 @@ let
   username = "mycroft";
   homeDirectory = "/home/${username}";
 
+  rustToolChain = pkgs.rust-bin.stable.latest.minimal.override {
+    extensions = [
+      "clippy"
+      "rust-analyzer"
+      "rust-docs"
+      "rust-src"
+    ];
+  };
+
   pkgs-yamlfmt = with specialArgs.versions.pkgs-yamlfmt; [ yamlfmt ];
 in
 {
@@ -84,8 +93,7 @@ in
         tldr
         gopls
         pyright
-        rust-bin.stable.latest.minimal
-        rust-bin.stable.latest.rust-analyzer
+        rustToolChain
         rust-bin.nightly."2024-05-08".rustfmt
 
         # container tools
