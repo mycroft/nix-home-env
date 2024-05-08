@@ -7,11 +7,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs@{ nixpkgs
+    inputs@{ self
+    , nixpkgs
     , home-manager
+    , pre-commit-hooks
     , ...
     }:
     let
@@ -35,13 +41,29 @@
         };
       };
 
+      checks.${system} = {
+        pre-commit-check = pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+
+          hooks = {
+            nixpkgs-fmt = {
+              enable = true;
+            };
+          };
+        };
+      };
+
       devShell.${system} = pkgs.mkShell {
+        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+
         nativeBuildInputs = with pkgs; [ wget s-tar ];
         packages = with pkgs; [
           alejandra
           git
           nix
         ];
+
+        inherit (self.checks.${system}.pre-commit-check) shellHook;
       };
     };
 }
