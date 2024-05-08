@@ -8,17 +8,14 @@ let
   username = "mycroft";
   homeDirectory = "/home/${username}";
 
-  inherit specialArgs;
-  inherit (specialArgs) versions;
+  pkgs-yamlfmt = with specialArgs.versions.pkgs-yamlfmt; [ yamlfmt ];
 in
 {
   nixpkgs.config = {
     allowUnfree = true;
   };
 
-  imports = lib.concatMap import [
-    ./modules
-  ];
+  imports = lib.concatMap import [ ./modules ];
 
   home = {
     stateVersion = "23.11";
@@ -43,76 +40,70 @@ in
       QT_STYLE_OVERRIDE = "adwaita-dark";
     };
 
-    packages = with pkgs; [
-      nix-eval-jobs
-      unrar
-      cowsay
-      ponysay
-      yq-go
-      jq
-      ffsend
-      bottom
-      btop
-      pass
-      mmtc
+    packages =
+      with pkgs;
+      [
+        nix-eval-jobs
+        unrar
+        cowsay
+        ponysay
+        yq-go
+        jq
+        ffsend
+        bottom
+        btop
+        pass
+        mmtc
 
-      # shell
-      fish
-      fishPlugins.fzf
-      fishPlugins.bobthefish
+        bat
+        eza
+        fd
+        ripgrep
+        dust
+        lsd
+        duf
+        silver-searcher
+        procs
+        doggo # dig alternative; https://github.com/mr-karan/doggo
+        skim
 
-      bat
-      eza
-      fd
-      ripgrep
-      dust
-      lsd
-      duf
-      silver-searcher
-      procs
-      doggo # dig alternative; https://github.com/mr-karan/doggo
-      skim
+        glow
+        zstd
 
-      glow
-      zstd
+        # coding
+        bazelisk
+        pre-commit
+        tea
+        drone-cli
+        tig
+        nixfmt-rfc-style
+        cloc
+        awscli2
+        protoc-gen-go
+        protoc-gen-go-grpc
+        tldr
+        gopls
+        pyright
+        rust-bin.stable.latest.minimal
+        rust-bin.nightly."2024-05-08".rustfmt
 
-      # coding
-      bazelisk
-      pre-commit
-      tea
-      drone-cli
-      tig
-      nixfmt-rfc-style
-      cloc
-      awscli2
-      protoc-gen-go
-      protoc-gen-go-grpc
-      tldr
-      gopls
-      pyright
-      rust-bin.stable.latest.minimal
-      rust-bin.nightly."2024-05-08".rustfmt
+        # container tools
+        dive
+        kubectl
+        krew
+        kubernetes-helm
+        helmfile
+        skopeo
+        k9s
+        kind
+        natscli
+        cmctl
+        fluxcd
 
-      # container tools
-      dive
-      kubectl
-      krew
-      kubernetes-helm
-      helmfile
-      skopeo
-      k9s
-      kind
-      natscli
-      cmctl
-      fluxcd
-
-      # security tools
-      nmap
-    ] ++ [
-      # No longer used, as fluxcd was upgraded.
-      # versions.pkgs-fluxcd.fluxcd
-    ];
-
+        # security tools
+        nmap
+      ]
+      ++ pkgs-yamlfmt;
   };
 
   programs = {

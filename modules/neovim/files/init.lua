@@ -118,6 +118,11 @@ lspconfig.gopls.setup {
   settings = {},
 }
 
+lspconfig.nixd.setup {
+  capabilities = capabilities,
+  settings = {},
+}
+
 lspconfig.pyright.setup {
   capabilities = capabilities,
   settings = {},
@@ -134,4 +139,16 @@ vim.api.nvim_set_keymap('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR
 vim.api.nvim_set_keymap('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declarations()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ge', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+
+-- Formatter
+local util = require "formatter.util"
+require("formatter").setup {
+  logging = true,
+  log_level = vim.log.levels.WARN,
+  filetype = {
+    yaml = { require("formatter.filetypes.yaml").yamlfmt },
+    nix = { require("formatter.filetypes.nix").nixfmt },
+  }
+}
+vim.api.nvim_set_keymap('n', ',a', ':Format<CR>',{noremap = true})
 

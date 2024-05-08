@@ -93,6 +93,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-e89cf1c932": {
+      "locked": {
+        "lastModified": 1712473363,
+        "narHash": "sha256-TIScFAVdI2yuybMxxNjC4YZ/j++c64wwuKbpnZnGiyU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e89cf1c932006531f454de7d652163a9a5c86668",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e89cf1c932006531f454de7d652163a9a5c86668",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1710695816,
@@ -140,6 +156,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-e89cf1c932": "nixpkgs-e89cf1c932",
         "pre-commit-hooks": "pre-commit-hooks",
         "rust-overlay": "rust-overlay",
         "systems": "systems"

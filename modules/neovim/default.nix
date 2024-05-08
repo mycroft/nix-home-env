@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, versions, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -6,6 +6,12 @@
     withPython3 = true;
 
     extraLuaConfig = builtins.readFile ./files/init.lua;
+
+    extraPackages = with versions.pkgs-yamlfmt; [
+      yamlfmt
+    ] ++ [
+      pkgs.nixd
+    ];
 
     plugins = with pkgs; [
       vimPlugins.catppuccin-nvim # Pastel theme
@@ -20,6 +26,7 @@
       vimPlugins.cmp-vsnip # nvim-cmp source for vsnip
       vimPlugins.vim-commentary # commenting
       vimPlugins.telescope-nvim # Telescope: Find, filter, preview, pick
+      vimPlugins.formatter-nvim # Formatter
     ];
   };
 }
