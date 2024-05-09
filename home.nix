@@ -52,7 +52,7 @@ in
     };
 
     packages =
-      with pkgs;
+      (with pkgs;
       [
         nix-eval-jobs
         unrar
@@ -95,7 +95,6 @@ in
         tldr
         gopls
         pyright
-        rustToolChain
         rust-bin.nightly."2024-05-08".rustfmt
 
         # container tools
@@ -113,8 +112,11 @@ in
 
         # security tools
         nmap
-      ]
-      ++ pkgs-yamlfmt;
+      ])
+      ++ [
+        pkgs-yamlfmt
+        rustToolChain
+      ];
   };
 
   programs = {
