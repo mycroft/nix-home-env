@@ -7,6 +7,7 @@
 let
   username = "mycroft";
   homeDirectory = "/home/${username}";
+  locale = "en_US.UTF-8";
 
   rustToolChain = pkgs.rust-bin.stable.latest.minimal.override {
     extensions = [
@@ -33,14 +34,15 @@ in
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "less";
-      EXA_COLORS = "da=36";
+      EZA_COLORS = "da=36";
       FFSEND_HOST = "https://send.services.mkz.me/";
-      KAPILOGIN_CONFIG = "${homeDirectory}/.kapilogin.yaml";
       KREW_ROOT = "${homeDirectory}/.krew";
-      LANG = "en_US.UTF-8";
-      LC_CTYPE = "en_US.UTF-8";
-      LC_ALL = "en_US.UTF-8";
+      LANG = locale;
+      LC_CTYPE = locale;
+      LC_ALL = locale;
       PASSWORD_STORE_DIR = "${homeDirectory}/.sync/private/store";
+
+      # Could be removed by services.ssh-agent.enable?
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
 
       # X11 related configuration goes here as i3wm/gdm does not read .xprofile or .xinitrc.
