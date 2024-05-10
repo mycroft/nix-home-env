@@ -147,7 +147,7 @@ require("formatter").setup {
   log_level = vim.log.levels.WARN,
   filetype = {
     yaml = { require("formatter.filetypes.yaml").yamlfmt },
-    nix = { require("formatter.filetypes.nix").nixfmt },
+    nix = { require("formatter.filetypes.nix").nixpkgs_fmt },
   }
 }
 vim.api.nvim_set_keymap('n', ',a', ':Format<CR>',{noremap = true})

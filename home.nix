@@ -54,6 +54,7 @@ in
     packages =
       (with pkgs; [
         nix-eval-jobs
+        nixpkgs-fmt
         unrar
         cowsay
         ponysay
