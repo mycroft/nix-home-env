@@ -52,8 +52,7 @@ in
     };
 
     packages =
-      (with pkgs;
-      [
+      (with pkgs; [
         nix-eval-jobs
         unrar
         cowsay
@@ -109,14 +108,13 @@ in
         natscli
         cmctl
         fluxcd
+        kubeconform
 
         # security tools
         nmap
       ])
-      ++ [
-        pkgs-yamlfmt
-        rustToolChain
-      ];
+      ++ [ rustToolChain ]
+      ++ pkgs-yamlfmt;
   };
 
   programs = {
