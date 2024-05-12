@@ -17,8 +17,6 @@ let
       "rust-src"
     ];
   };
-
-  pkgs-yamlfmt = with specialArgs.versions.pkgs-yamlfmt; [ yamlfmt ];
 in
 {
   nixpkgs.config = {
@@ -96,6 +94,7 @@ in
         gopls
         pyright
         rust-bin.nightly."2024-05-08".rustfmt
+        yamlfmt
 
         # container tools
         dive
@@ -114,8 +113,7 @@ in
         # security tools
         nmap
       ])
-      ++ [ rustToolChain ]
-      ++ pkgs-yamlfmt;
+      ++ [ rustToolChain ];
   };
 
   programs = {

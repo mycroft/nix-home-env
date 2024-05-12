@@ -22,14 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-
-    nixpkgs-e89cf1c932.url = "github:nixos/nixpkgs/e89cf1c932006531f454de7d652163a9a5c86668";
   };
 
   outputs =
     inputs@{ self
     , nixpkgs
-    , nixpkgs-e89cf1c932
     , flake-utils
     , home-manager
     , pre-commit-hooks
@@ -51,14 +48,12 @@
       # unhappy as this is not a derivation... Seems like legacyPackages will do it.
       legacyPackages = {
         homeConfigurations = {
-          "mycroft" = inputs.home-manager.lib.homeManagerConfiguration {
+          "mycroft" = home-manager.lib.homeManagerConfiguration {
             modules = [
               ./home.nix
             ];
             extraSpecialArgs = {
-              versions = {
-                pkgs-yamlfmt = nixpkgs-e89cf1c932.legacyPackages.${system};
-              };
+              versions = { };
             };
 
             inherit pkgs;

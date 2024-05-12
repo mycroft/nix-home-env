@@ -7,10 +7,9 @@
 
     extraLuaConfig = builtins.readFile ./files/init.lua;
 
-    extraPackages = with versions.pkgs-yamlfmt; [
+    extraPackages = with pkgs; [
+      nixd
       yamlfmt
-    ] ++ [
-      pkgs.nixd
     ];
 
     plugins = with pkgs; [
