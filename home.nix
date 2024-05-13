@@ -112,6 +112,7 @@ in
 
         # security tools
         nmap
+        step-cli
       ])
       ++ [ rustToolChain ];
   };
