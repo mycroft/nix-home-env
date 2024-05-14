@@ -13,7 +13,7 @@ $ sh <(curl -L https://nixos.org/nix/install) --daemon
 Then, make sure to enable experimental features:
 
 ```sh
-$ mkdir -p ~/.config && echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+$ mkdir -p ~/.config/nix && echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 ```
 
 You need the repository to be inside ~/.config/home-manager:
@@ -26,8 +26,7 @@ $ ls -l ~/.config/home-manager/home.nix
 Then, build & switch the home:
 
 ```sh
-$ nix run .
-$ nix run . -- switch
+$ nix run home-manager/master -- switch -b backup
 ```
 
 On your first install, there might be a conflict for `~/.config/nix/nix.conf`. You can use the `-b backup` flag so the file is moved if in he way. Further reconcialiation will work.
