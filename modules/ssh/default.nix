@@ -5,7 +5,8 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIASLd/ou8xDr81AKt37sMTad2jKNyRqF614kdJG829zp mycroft@glitter.mkz.me"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAPskz9xwVWyXUThFepyY4FZ+E5yXm8S2/vWpjrMxYLh mycroft@saisei.mkz.me"
   ];
-  maki-ssh-port = 22222;
+
+  lan-suffix = "lan.mkz.me";
 in
 {
   home = {
@@ -25,32 +26,17 @@ in
     matchBlocks = {
       "maki" = {
         hostname = "maki.mkz.me";
-        port = maki-ssh-port;
-      };
-      "maki4" = {
-        hostname = "maki.mkz.me";
-        port = maki-ssh-port;
-        addressFamily = "inet";
-      };
-      "maki6" = {
-        hostname = "maki.mkz.me";
-        port = maki-ssh-port;
-        addressFamily = "inet6";
-      };
-      "maki-backup" = {
-        hostname = "abused.minithins.net";
-        port = maki-ssh-port;
+        port = 22222;
       };
       "glitter" = {
         user = "mycroft";
-        hostname = "10.0.0.8";
-        port = 22;
+        hostname = "glitter.${lan-suffix}";
         forwardX11 = true;
         forwardX11Trusted = true;
       };
       "everyday" = {
         user = "pi";
-        hostname = "10.0.0.254";
+        hostname = "everyday.${lan-suffix}";
       };
       "raspberrypi" = {
         user = "mycroft";
@@ -58,7 +44,13 @@ in
       };
       "saisei" = {
         user = "mycroft";
-        hostname = "10.0.0.12";
+        hostname = "saisei.${lan-suffix}";
+        forwardX11 = true;
+        forwardX11Trusted = true;
+      };
+      "nas0" = {
+        hostname = "nas0.${lan-suffix}";
+        user = "mycroft";
       };
     };
   };
