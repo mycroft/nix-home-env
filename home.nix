@@ -1,7 +1,6 @@
 { pkgs
 , lib
 , config
-, specialArgs
 , ...
 }:
 let
@@ -21,6 +20,14 @@ in
 {
   nixpkgs.config = {
     allowUnfree = true;
+  };
+
+  nix = {
+    package = pkgs.nixVersions.latest;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      warn-dirty = false;
+    };
   };
 
   imports = lib.concatMap import [ ./modules ];
@@ -166,14 +173,6 @@ in
   xdg.configFile = {
     "fontconfig/fonts.conf" = {
       source = ./files/fontconfig/fonts.conf;
-    };
-
-    "nix/nix.conf" = {
-      text = ''
-        # keep-derivations = true
-        # keep-outputs = true
-        experimental-features = nix-command flakes
-      '';
     };
   };
 
