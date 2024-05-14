@@ -109,6 +109,8 @@ in
         cmctl
         fluxcd
         kubeconform
+        nova
+        pluto
 
         # security tools
         nmap
