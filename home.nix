@@ -118,6 +118,7 @@ in
         kubeconform
         nova
         pluto
+        tektoncd-cli
 
         # security tools
         nmap
