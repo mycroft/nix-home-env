@@ -70,6 +70,7 @@ in
         btop
         pass
         mmtc
+        just
 
         bat
         eza
