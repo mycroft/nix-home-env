@@ -1,5 +1,4 @@
-{ lib
-, buildGoModule
+{ buildGoModule
 , fetchFromGitHub
 ,
 }:
@@ -11,11 +10,11 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "mycroft";
     repo = "asoai";
-    rev = "v0.0.1";
+    rev = "${version}";
     sha256 = "sha256-bh8blqIXPGQyoWv52CrP1W/xpSv2H7W9HmSYkwtMt0A=";
   };
 
-  meta = with lib; {
+  meta = {
     description = "Another stupid Open AI client";
     homepage = "https://github.com/mycroft/asoai";
     mainProgram = "asoai";
