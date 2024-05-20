@@ -1,5 +1,6 @@
 [
   ./alacritty
+  ./asoai
   ./fish
   ./git
   ./krewfile
