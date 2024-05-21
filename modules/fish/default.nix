@@ -33,6 +33,14 @@
       set -g theme_display_k8s_namespace no
     '';
 
+    # For some reason, the first instance of fish does not have the correct autocompletions for asoai or just.
+    # Starting a shell in the shell would fix it. I found out the next path would not be part of the fish_complete_path
+    # of the first instance, and if the path not set at the list beginning, just would not have its --nofiles auto completion
+    # in order to not list files. So for now on, let's keep this while I take a deeper look at how nix is doing all those.
+    shellInitLast = ''
+      set fish_complete_path ~/.nix-profile/share/fish/vendor_completions.d $fish_complete_path
+    '';
+
     shellAbbrs = {
       btm = "btm --color nord";
       l = "eza --bytes --git --group --long -snew --group-directories-first";
