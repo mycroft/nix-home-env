@@ -111,6 +111,7 @@ in
         # container tools
         dive
         kubectl
+        kubectx
         krew
         kubernetes-helm
         helmfile

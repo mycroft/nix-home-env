@@ -53,8 +53,8 @@
       vim = "nvim";
       cat = "bat -p";
       k = "kubectl";
-      kns = "kubectl-ns";
-      kctx = "kubectl-ctx";
+      kns = "kubens";
+      kctx = "kubectx";
       cd = "z";
       dc = "z";
     };
