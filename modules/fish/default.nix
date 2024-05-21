@@ -1,4 +1,4 @@
-{ pkgs, specialArgs, ... }:
+{ pkgs, config, ... }:
 {
   home = {
     packages = with pkgs; [
@@ -37,8 +37,10 @@
     # Starting a shell in the shell would fix it. I found out the next path would not be part of the fish_complete_path
     # of the first instance, and if the path not set at the list beginning, just would not have its --nofiles auto completion
     # in order to not list files. So for now on, let's keep this while I take a deeper look at how nix is doing all those.
+    #
+    # Note this PR seems to fix the issue: https://github.com/nix-community/home-manager/pull/5199
     shellInitLast = ''
-      set fish_complete_path ~/.nix-profile/share/fish/vendor_completions.d $fish_complete_path
+      set fish_complete_path ${config.home.path}/share/fish/vendor_completions.d $fish_complete_path
     '';
 
     shellAbbrs = {
