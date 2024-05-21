@@ -124,6 +124,7 @@ in
         nova
         pluto
         tektoncd-cli
+        kustomize
 
         # security tools
         nmap
