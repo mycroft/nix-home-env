@@ -18,8 +18,6 @@
       # Was \ct, but conflict with bash' transpose-chars
       bind \cf fzf-file-widget
       bind \cr fzf-history-widget
-
-      fish_add_path -p $KREW_ROOT/bin
     '';
 
     shellInit = ''
