@@ -107,6 +107,7 @@ in
         rust-bin.nightly."2024-05-08".rustfmt
         yamlfmt
         operator-sdk
+        nur.repos.dagger.dagger
 
         # container tools
         dive

@@ -12,6 +12,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+    };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,13 +31,14 @@
     , nixpkgs
     , flake-utils
     , home-manager
+    , nur
     , pre-commit-hooks
     , rust-overlay
     , ...
     }:
     flake-utils.lib.eachSystem [ flake-utils.lib.system.x86_64-linux ] (system:
     let
-      overlays = [ (import rust-overlay) ];
+      overlays = [ nur.overlay (import rust-overlay) ];
       pkgs = import nixpkgs {
         config = { allowUnfree = true; };
         inherit system overlays;
