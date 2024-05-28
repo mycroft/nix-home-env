@@ -24,6 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    dagger = {
+      url = "github:mycroft/dagger-nix?ref=fix_completions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,6 +36,7 @@
     , flake-utils
     , home-manager
     , nur
+    , dagger
     , pre-commit-hooks
     , rust-overlay
     , ...
@@ -43,6 +48,7 @@
         config = { allowUnfree = true; };
         inherit system overlays;
       };
+      daggerPkgs = dagger.packages.${system};
     in
     {
       # home-manager is looking into either packages.<system>, legacyPackages.<system> or
@@ -56,6 +62,7 @@
               ./home.nix
             ];
             extraSpecialArgs = {
+              inherit daggerPkgs;
               versions = { };
             };
 

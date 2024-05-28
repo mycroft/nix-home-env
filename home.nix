@@ -1,6 +1,7 @@
 { pkgs
 , lib
 , config
+, daggerPkgs
 , ...
 }:
 let
@@ -107,7 +108,6 @@ in
         rust-bin.nightly."2024-05-08".rustfmt
         yamlfmt
         operator-sdk
-        nur.repos.dagger.dagger
         gotools
 
         # container tools
@@ -133,7 +133,8 @@ in
         nmap
         step-cli
       ])
-      ++ [ rustToolChain ];
+      ++ [ rustToolChain ]
+      ++ [ daggerPkgs.dagger ];
   };
 
   programs = {
