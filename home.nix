@@ -108,6 +108,7 @@ in
         yamlfmt
         operator-sdk
         nur.repos.dagger.dagger
+        gotools
 
         # container tools
         dive
