@@ -47,6 +47,7 @@ in
       LC_CTYPE = locale;
       LC_ALL = locale;
       PASSWORD_STORE_DIR = "${homeDirectory}/.sync/private/store";
+      DRONE_SERVER = "https://ci.mkz.me";
 
       # Could be removed by services.ssh-agent.enable?
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
