@@ -57,6 +57,7 @@
       kctx = "kubectx";
       cd = "z";
       dc = "z";
+      init-drone-token = "set -x DRONE_TOKEN (pass Mkz/drone-ci-token)";
     };
   };
 
