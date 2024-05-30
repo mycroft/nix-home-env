@@ -110,6 +110,7 @@ in
         yamlfmt
         operator-sdk
         gotools
+        golangci-lint
 
         # container tools
         dive
