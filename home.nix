@@ -112,6 +112,7 @@ in
         gotools
         golangci-lint
         zig
+        exercism
 
         # container tools
         dive
