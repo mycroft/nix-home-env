@@ -111,6 +111,7 @@ in
         operator-sdk
         gotools
         golangci-lint
+        zig
 
         # container tools
         dive
