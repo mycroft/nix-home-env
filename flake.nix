@@ -25,7 +25,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     dagger = {
-      url = "github:mycroft/dagger-nix?ref=fix_completions";
+      url = "github:dagger/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
