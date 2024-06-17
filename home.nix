@@ -52,10 +52,6 @@ in
       # Could be removed by services.ssh-agent.enable?
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
 
-      # X11 related configuration goes here as i3wm/gdm does not read .xprofile or .xinitrc.
-      GTK_THEME = "Adwaita:dark";
-      GTK2_RC_FILES = "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc";
-      QT_STYLE_OVERRIDE = "adwaita-dark";
 
       # shut up, cdk8s
       JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION = "yes";
@@ -183,6 +179,15 @@ in
     pinentryPackage = pkgs.pinentry-curses;
     defaultCacheTtl = 31536000;
     maxCacheTtl = 31536000;
+  };
+
+  systemd.user.sessionVariables = {
+    # X11 related configuration goes here as i3wm/gdm does not read .xprofile or .xinitrc.
+    # It is required to set them here so they are used in xdg-desktop-portal-gtk which is started by
+    # systemd on login with nix session env. vars. are not loaded yet.
+    GTK_THEME = "Adwaita:dark";
+    GTK2_RC_FILES = "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc";
+    QT_STYLE_OVERRIDE = "adwaita-dark";
   };
 
   xdg.configFile = {
