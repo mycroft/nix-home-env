@@ -162,6 +162,7 @@ in
     go = {
       enable = true;
       goPrivate = [ "git.mkz.me" ];
+      goPath = ".local/go";
     };
 
     zoxide = {
