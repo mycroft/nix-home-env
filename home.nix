@@ -87,6 +87,7 @@ in
 
         glow
         zstd
+        rclone
 
         # coding
         bazelisk
