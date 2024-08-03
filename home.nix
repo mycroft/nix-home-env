@@ -109,6 +109,7 @@ in
         gotools
         golangci-lint
         zig
+        zls
         exercism
 
         # container tools
@@ -132,7 +133,7 @@ in
 
         # security tools
         nmap
-        # step-cli
+        step-cli
       ])
       ++ [ rustToolChain ]
       ++ [ daggerPkgs.dagger ];
