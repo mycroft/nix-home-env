@@ -128,6 +128,11 @@ lspconfig.pyright.setup {
   settings = {},
 }
 
+lspconfig.zls.setup {
+  capabilities = capabilities,
+  settings = {},
+}
+
 vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = false, silent = true })
