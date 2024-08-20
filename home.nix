@@ -15,6 +15,7 @@ let
       "rust-analyzer"
       "rust-docs"
       "rust-src"
+      "rustfmt"
     ];
   };
 in
@@ -26,7 +27,10 @@ in
   nix = {
     package = pkgs.nixVersions.latest;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
   };
@@ -51,7 +55,6 @@ in
 
       # Could be removed by services.ssh-agent.enable?
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
-
 
       # shut up, cdk8s
       JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION = "yes";
@@ -103,7 +106,6 @@ in
         tldr
         gopls
         pyright
-        rust-bin.nightly."2024-05-08".rustfmt
         yamlfmt
         operator-sdk
         gotools
@@ -111,6 +113,7 @@ in
         zig
         zls
         exercism
+        jujutsu
 
         # container tools
         dive
