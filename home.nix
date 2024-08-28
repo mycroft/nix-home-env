@@ -43,7 +43,7 @@ in
 
     sessionVariables = {
       EDITOR = "nvim";
-      VISUAL = "less";
+      VISUAL = "nvim";
       EZA_COLORS = "da=36";
       FFSEND_HOST = "https://send.services.mkz.me/";
       KREW_ROOT = "${homeDirectory}/.krew";
@@ -177,6 +177,16 @@ in
 
     direnv = {
       enable = true;
+    };
+
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          email = "pm@mkz.me";
+          name = "Patrick MARIE";
+        };
+      };
     };
   };
 
