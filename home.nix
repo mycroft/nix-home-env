@@ -22,6 +22,9 @@ in
 {
   nixpkgs.config = {
     allowUnfree = true;
+    permittedInsecurePackages = [
+      "nix-2.24.5"
+    ];
   };
 
   nix = {
