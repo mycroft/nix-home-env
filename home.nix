@@ -1,13 +1,15 @@
-{ pkgs
-, lib
-, config
-, daggerPkgs
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  daggerPkgs,
+  ...
 }:
 let
   username = "mycroft";
   homeDirectory = "/home/${username}";
   locale = "en_US.UTF-8";
+  editor = "nvim";
 
   rustToolChain = pkgs.rust-bin.stable.latest.minimal.override {
     extensions = [
@@ -17,6 +19,12 @@ let
       "rust-src"
       "rustfmt"
     ];
+  };
+
+  commonVars = {
+    GTK_THEME = "Adwaita:dark";
+    GTK2_RC_FILES = "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc";
+    QT_STYLE_OVERRIDE = "adwaita-dark";
   };
 in
 {
@@ -45,8 +53,8 @@ in
     inherit username homeDirectory;
 
     sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+      EDITOR = editor;
+      VISUAL = editor;
       EZA_COLORS = "da=36";
       FFSEND_HOST = "https://send.services.mkz.me/";
       KREW_ROOT = "${homeDirectory}/.krew";
@@ -61,7 +69,7 @@ in
 
       # shut up, cdk8s
       JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION = "yes";
-    };
+    } // commonVars;
 
     packages =
       (with pkgs; [
@@ -200,14 +208,10 @@ in
     maxCacheTtl = 31536000;
   };
 
-  systemd.user.sessionVariables = {
-    # X11 related configuration goes here as i3wm/gdm does not read .xprofile or .xinitrc.
-    # It is required to set them here so they are used in xdg-desktop-portal-gtk which is started by
-    # systemd on login with nix session env. vars. are not loaded yet.
-    GTK_THEME = "Adwaita:dark";
-    GTK2_RC_FILES = "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc";
-    QT_STYLE_OVERRIDE = "adwaita-dark";
-  };
+  # X11 related configuration goes here as i3wm/gdm does not read .xprofile or .xinitrc.
+  # It is required to set them here so they are used in xdg-desktop-portal-gtk which is started by
+  # systemd on login with nix session env. vars. are not loaded yet.
+  systemd.user.sessionVariables = commonVars;
 
   xdg.configFile = {
     "fontconfig/fonts.conf" = {
@@ -218,6 +222,7 @@ in
   xdg.userDirs.download = "${config.home.homeDirectory}/.downloads";
 
   # Not sure this is even used on arch-linux
+  # TODO: To re-use commonVars
   xsession = {
     enable = true;
     profilePath = ".xprofile";
