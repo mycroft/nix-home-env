@@ -12,20 +12,20 @@
       yamlfmt
     ];
 
-    plugins = with pkgs; [
-      vimPlugins.catppuccin-nvim # Pastel theme
-      vimPlugins.lightline-vim # Statusline/tabline
-      vimPlugins.vim-markdown # Markdown plugin
-      vimPlugins.vim-nix # Nix plugin
-      # vimPlugins.vim-go           # Go lang. plugin
-      vimPlugins.nvim-lspconfig # LSP
-      vimPlugins.nvim-cmp # LSP completion
-      vimPlugins.cmp-nvim-lsp # LSP completion
-      vimPlugins.vim-vsnip # Requirement for LSP completion
-      vimPlugins.cmp-vsnip # nvim-cmp source for vsnip
-      vimPlugins.vim-commentary # commenting
-      vimPlugins.telescope-nvim # Telescope: Find, filter, preview, pick
-      vimPlugins.formatter-nvim # Formatter
+    plugins = with pkgs.vimPlugins; [
+      catppuccin-nvim # Pastel theme
+      lightline-vim # Statusline/tabline
+      vim-markdown # Markdown plugin
+      vim-nix # Nix plugin
+      # vim-go           # Go lang. plugin
+      nvim-lspconfig # LSP
+      nvim-cmp # LSP completion
+      cmp-nvim-lsp # LSP completion
+      vim-vsnip # Requirement for LSP completion
+      cmp-vsnip # nvim-cmp source for vsnip
+      vim-commentary # commenting
+      telescope-nvim # Telescope: Find, filter, preview, pick
+      formatter-nvim # Formatter
     ];
   };
 }
