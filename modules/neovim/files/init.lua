@@ -120,7 +120,16 @@ lspconfig.gopls.setup {
 
 lspconfig.nixd.setup {
   capabilities = capabilities,
-  settings = {},
+  settings = {
+    nixd = {
+      nixpkgs = {
+        expr = "import <nixpkgs> { }",
+      },
+      formatting = {
+        command = { "nixpkgs-fmt" },
+      },
+    },
+  },
 }
 
 lspconfig.pyright.setup {
