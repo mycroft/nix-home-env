@@ -1,9 +1,8 @@
-{
-  pkgs,
-  lib,
-  config,
-  daggerPkgs,
-  ...
+{ pkgs
+, lib
+, config
+, daggerPkgs
+, ...
 }:
 let
   username = "mycroft";
@@ -98,6 +97,7 @@ in
         procs
         doggo # dig alternative; https://github.com/mr-karan/doggo
         skim
+        nushell
 
         glow
         zstd
