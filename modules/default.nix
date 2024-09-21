@@ -7,5 +7,6 @@
   ./mmtc
   ./neovim
   ./ssh
+  ./tlrc
   ./tmux
 ]
