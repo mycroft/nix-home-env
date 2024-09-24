@@ -12,6 +12,7 @@
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       st = "status";
       staged = "diff --cached";
+      last = "rev-parse HEAD";
     };
     extraConfig = {
       branch.autosetuprebase = "always";
