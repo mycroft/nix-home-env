@@ -95,6 +95,7 @@ in
         doggo # dig alternative; https://github.com/mr-karan/doggo
         skim
         nushell
+        htop
 
         glow
         zstd
