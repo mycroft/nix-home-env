@@ -143,6 +143,8 @@ in
         tektoncd-cli
         kustomize
 
+        deno
+
         # security tools
         nmap
         step-cli
