@@ -20,6 +20,7 @@
       bind \cr fzf-history-widget
 
       fish_add_path -p $KREW_ROOT/bin
+      fish_add_path -p /opt/ollama/bin
     '';
 
     shellInit = ''
