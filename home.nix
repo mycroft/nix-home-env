@@ -124,7 +124,9 @@ in
         exercism
         jujutsu
         lazygit
-        lsd
+        glances
+        httpie
+        curlie
 
         # container tools
         dive
