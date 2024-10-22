@@ -123,6 +123,8 @@ in
         zls
         exercism
         jujutsu
+        lazygit
+        lsd
 
         # container tools
         dive
