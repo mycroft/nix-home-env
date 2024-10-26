@@ -88,7 +88,6 @@ in
         fd
         ripgrep
         dust
-        lsd
         duf
         silver-searcher
         procs
@@ -122,7 +121,6 @@ in
         zig
         zls
         exercism
-        jujutsu
         lazygit
         glances
         httpie
@@ -201,6 +199,22 @@ in
           email = "pm@mkz.me";
           name = "Patrick MARIE";
         };
+      };
+    };
+
+    lsd = {
+      enable = true;
+      enableAliases = true;
+      settings = {
+        icons = {
+          when = "never";
+        };
+        sorting = {
+          dir-grouping = "first";
+        };
+        date = "+%y/%m/%d %H:%M";
+        literal = true;
+        size = "bytes";
       };
     };
   };
