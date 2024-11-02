@@ -250,4 +250,9 @@ in
       export QT_STYLE_OVERRIDE=adwaita-dark
     '';
   };
+
+  home.file.".local/bin/mount-obsidian.sh" = {
+    source = ./files/scripts/mount-obsidian.sh;
+    executable = true;
+  };
 }

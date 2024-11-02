@@ -19,6 +19,7 @@
       bind \cf fzf-file-widget
       bind \cr fzf-history-widget
 
+      fish_add_path -p $HOME/.local/bin
       fish_add_path -p $KREW_ROOT/bin
       fish_add_path -p /opt/ollama/bin
     '';
@@ -45,13 +46,19 @@
     '';
 
     shellAbbrs = {
-      btm = "btm --color nord";
-      l = "eza --bytes --git --group --long -snew --group-directories-first";
-      ls = "eza";
-      ll = "eza --bytes --git --group --long -snew --group-directories-first";
-      la = "eza --bytes --git --group --long -snew --group-directories-first -a";
-      lt = "eza --bytes --git --group --long -snew --group-directories-first --tree --level=2";
-      lta = "eza --bytes --git --group --long -snew --group-directories-first --tree --level=2 -a";
+      btm = "btm --theme nord";
+      l = "lsd -ltr";
+      ls = "lsd";
+      la = "lsd -ltra";
+      ll = "lsd -ltr";
+
+      el = "eza --bytes --git --group --long -snew --group-directories-first";
+      els = "eza";
+      ell = "eza --bytes --git --group --long -snew --group-directories-first";
+      ela = "eza --bytes --git --group --long -snew --group-directories-first -a";
+      elt = "eza --bytes --git --group --long -snew --group-directories-first --tree --level=2";
+      elta = "eza --bytes --git --group --long -snew --group-directories-first --tree --level=2 -a";
+
       vi = "nvim";
       vim = "nvim";
       cat = "bat -p";
