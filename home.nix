@@ -149,7 +149,7 @@ in
 
         # security tools
         nmap
-        step-cli
+        # step-cli
       ])
       ++ [ rustToolChain ]
       ++ [ daggerPkgs.dagger ];
