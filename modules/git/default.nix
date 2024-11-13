@@ -1,4 +1,4 @@
-{ pkgs, specialArgs, ... }:
+{ ... }:
 {
   programs.git = {
     enable = true;
@@ -33,6 +33,24 @@
       push.autoSetupRemote = true;
       push.default = "tracking";
     };
+    includes = [
+      {
+        condition = "gitdir:~/custocy/";
+        contents = {
+          core = {
+            sshCommand = "ssh -i ~/.ssh/custocy_id_ed25519 -F /dev/null";
+          };
+          user = {
+            email = "pmarie@custocy.com";
+            name = "Patrick MARIE";
+            signingKey = "D5A4B4A32C8FC68F92A4A83340224FD197FAAD5B";
+          };
+          commit = {
+            gpgSign = true;
+          };
+        };
+      }
+    ];
     signing = {
       key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";
       signByDefault = true;
