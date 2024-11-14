@@ -109,6 +109,8 @@ in
         nixfmt-rfc-style
         cloc
         awscli2
+        ssm-session-manager-plugin
+        granted
         protoc-gen-go
         protoc-gen-go-grpc
         tlrc
