@@ -42,7 +42,12 @@ in {
     '';
 
     programs.fish.shellInit = mkIf cfg.enableFishIntegration ''
-      alias assume='source ${package}/share/assume.fish'
+      function assume
+        set -x GRANTED_ALIAS_CONFIGURED true
+        alias assume='source ${package}/share/assume.fish'
+        set -e GRANTED_ALIAS_CONFIGURED
+      end
+      
     '';
   };
 }
