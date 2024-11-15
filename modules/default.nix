@@ -3,7 +3,7 @@
   ./asoai
   ./fish
   ./git
-  ./granted
+  ./granted2
   ./krewfile
   ./mmtc
   ./neovim

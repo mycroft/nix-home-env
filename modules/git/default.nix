@@ -48,6 +48,12 @@
           commit = {
             gpgSign = true;
           };
+          credential = {
+            "https://git-codecommit.eu-west-3.amazonaws.com" = {
+              helper = "!aws codecommit --profile root credential-helper $@";
+              useHttpPath = true;
+            };
+          };
         };
       }
     ];

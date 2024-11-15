@@ -1,4 +1,5 @@
 { pkgs
+, home-manager
 , lib
 , config
 , daggerPkgs
@@ -110,7 +111,6 @@ in
         cloc
         awscli2
         ssm-session-manager-plugin
-        granted
         protoc-gen-go
         protoc-gen-go-grpc
         tlrc
@@ -219,6 +219,7 @@ in
         size = "bytes";
       };
     };
+
   };
 
   services.gpg-agent = {

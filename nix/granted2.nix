@@ -2,7 +2,6 @@
 , buildGoModule
 , fetchFromGitHub
 , fish
-
 , lib
 , makeWrapper
 , xdg-utils
