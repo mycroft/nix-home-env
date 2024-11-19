@@ -3,11 +3,12 @@
 , lib
 , config
 , daggerPkgs
+, specialArgs
 , ...
 }:
 let
-  username = "mycroft";
-  homeDirectory = "/home/${username}";
+  username = specialArgs.username;
+  homeDirectory = specialArgs.homeDirectory;
   locale = "en_US.UTF-8";
   editor = "nvim";
 

@@ -60,8 +60,10 @@
             modules = [
               ./home.nix
             ];
-            extraSpecialArgs = {
+            extraSpecialArgs = rec {
               inherit daggerPkgs;
+              username = "mycroft";
+              homeDirectory = "/home/${username}";
               versions = { };
             };
 
