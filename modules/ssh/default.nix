@@ -24,7 +24,7 @@ in
     '';
 
     includes = [
-      "${specialArgs.homeDirectory}/.ssh/config-custocy"
+      "${specialArgs.homeDirectory}/.ssh/custocy/config"
     ];
 
     matchBlocks = {
