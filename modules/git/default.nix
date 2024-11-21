@@ -38,7 +38,7 @@
         condition = "gitdir:~/custocy/";
         contents = {
           core = {
-            sshCommand = "ssh -i ~/.ssh/custocy_id_ed25519 -F /dev/null";
+            sshCommand = "ssh -i ~/.ssh/custocy/id_ed25519 -F /dev/null";
           };
           user = {
             email = "pmarie@custocy.com";
