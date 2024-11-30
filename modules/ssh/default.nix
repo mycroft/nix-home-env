@@ -57,6 +57,10 @@ in
         hostname = "nas0.${lan-suffix}";
         user = "mycroft";
       };
+      "mugen-mirai" = {
+        hostname = "mugen-mirai.${lan-suffix}";
+        user = "mycroft";
+      };
     };
   };
 }
