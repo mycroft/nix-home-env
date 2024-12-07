@@ -42,7 +42,7 @@
     }:
     flake-utils.lib.eachSystem [ flake-utils.lib.system.x86_64-linux ] (system:
     let
-      overlays = [ nur.overlay (import rust-overlay) ];
+      overlays = [ nur.overlays.default (import rust-overlay) ];
       pkgs = import nixpkgs {
         config = { allowUnfree = true; };
         inherit system overlays;
