@@ -134,6 +134,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-24-11": {
+      "locked": {
+        "lastModified": 1733808091,
+        "narHash": "sha256-KWwINTQelKOoQgrXftxoqxmKFZb9pLVfnRvK270nkVk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a0f3e10d94359665dba45b71b4227b0aeb851f8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-24.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1730741070,
@@ -215,6 +231,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-24-11": "nixpkgs-24-11",
         "nur": "nur",
         "pre-commit-hooks": "pre-commit-hooks",
         "rust-overlay": "rust-overlay",

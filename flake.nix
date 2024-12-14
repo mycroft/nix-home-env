@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-24-11.url = "github:nixos/nixpkgs/nixos-24.11";
     systems.url = "github:nix-systems/x86_64-linux";
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -32,6 +33,7 @@
   outputs =
     inputs@{ self
     , nixpkgs
+    , nixpkgs-24-11
     , flake-utils
     , home-manager
     , nur
@@ -44,6 +46,10 @@
     let
       overlays = [ nur.overlays.default (import rust-overlay) ];
       pkgs = import nixpkgs {
+        config = { allowUnfree = true; };
+        inherit system overlays;
+      };
+      pkgs-24-11 = import nixpkgs-24-11 {
         config = { allowUnfree = true; };
         inherit system overlays;
       };
@@ -61,7 +67,7 @@
               ./home.nix
             ];
             extraSpecialArgs = rec {
-              inherit daggerPkgs;
+              inherit daggerPkgs pkgs-24-11;
               username = "mycroft";
               homeDirectory = "/home/${username}";
               versions = { };

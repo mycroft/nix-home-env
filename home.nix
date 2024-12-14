@@ -1,4 +1,5 @@
 { pkgs
+, pkgs-24-11
 , home-manager
 , lib
 , config
@@ -149,13 +150,15 @@ in
         kustomize
 
         deno
+        terragrunt
 
         # security tools
         nmap
         # step-cli
       ])
       ++ [ rustToolChain ]
-      ++ [ daggerPkgs.dagger ];
+      ++ [ daggerPkgs.dagger ]
+      ++ [ pkgs-24-11.terraform ];
   };
 
   programs = {
