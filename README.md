@@ -78,3 +78,19 @@ You can use `nix flake check` to find out your files correctly formatted or not.
 $ nix flake check
 ...
 ```
+
+### Doing clean up
+
+Listing & cleaning last generations
+
+```sh
+home-manager generations
+home-manager expire-generations '-7 days'
+```
+
+Cleaning the nix store
+
+```sh
+nix-store --gc
+```
+
