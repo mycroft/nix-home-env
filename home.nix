@@ -242,6 +242,9 @@ in
     "fontconfig/fonts.conf" = {
       source = ./files/fontconfig/fonts.conf;
     };
+    "ghostty/config" = {
+      source = ./files/ghostty/config;
+    };
   };
 
   xdg.userDirs.download = "${config.home.homeDirectory}/.downloads";

@@ -1,0 +1,17 @@
+font-family = "TerminalMono"
+font-size = 11
+font-style = "normal"
+
+background = "#000000"
+background-opacity = 0.8
+foreground = "#ffffff"
+
+window-decoration = false
+
+cursor-style-blink = false
+cursor-opacity = 0.5
+
+theme = MaterialDarker
+term = xterm
+
+shell-integration = fish
