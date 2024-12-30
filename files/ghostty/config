@@ -11,7 +11,9 @@ window-decoration = false
 cursor-style-blink = false
 cursor-opacity = 0.5
 
+resize-overlay = never
+
 theme = MaterialDarker
-term = xterm
+term = xterm-256color
 
 shell-integration = fish
