@@ -54,6 +54,18 @@
         inherit system overlays;
       };
       daggerPkgs = dagger.packages.${system};
+
+      modules = [
+        ./home.nix
+      ];
+
+      extraSpecialArgs = rec {
+        username = "mycroft";
+        homeDirectory = "/home/${username}";
+        commonVars = {};
+
+        inherit daggerPkgs pkgs-24-11;
+      };
     in
     {
       # home-manager is looking into either packages.<system>, legacyPackages.<system> or
@@ -62,18 +74,24 @@
       # unhappy as this is not a derivation... Seems like legacyPackages will do it.
       legacyPackages = {
         homeConfigurations = {
+          # default configuration
           "mycroft" = home-manager.lib.homeManagerConfiguration {
-            modules = [
-              ./home.nix
-            ];
-            extraSpecialArgs = rec {
-              inherit daggerPkgs pkgs-24-11;
-              username = "mycroft";
-              homeDirectory = "/home/${username}";
-              versions = { };
+            inherit extraSpecialArgs modules pkgs;
+          };
+          "glitter" = home-manager.lib.homeManagerConfiguration {
+            inherit extraSpecialArgs modules pkgs;
+          };
+          "nee" = home-manager.lib.homeManagerConfiguration {
+            extraSpecialArgs = extraSpecialArgs // {
+              commonVars = {
+                # Somehow required for electron apps to be happy with wayland
+                # without this, I'm getting borders for menus in VScode as it seems
+                # to be using xwayland.
+                # To be used only on my archlinux system; On fedora, x11 is required.
+                ELECTRON_OZONE_PLATFORM_HINT = "auto";
+              };
             };
-
-            inherit pkgs;
+            inherit modules pkgs;
           };
         };
       };

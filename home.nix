@@ -27,12 +27,7 @@ let
     GTK_THEME = "Adwaita:dark";
     GTK2_RC_FILES = "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc";
     QT_STYLE_OVERRIDE = "adwaita-dark";
-
-    # Somehow required for electron apps to be happy with wayland
-    # without this, I'm getting borders for menus in VScode as it seems
-    # to be using xwayland.
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-  };
+  } // specialArgs.commonVars;
 in
 {
   nixpkgs.config = {
@@ -264,9 +259,9 @@ in
     enable = true;
     profilePath = ".xprofile";
     profileExtra = ''
-      export GTK_THEME=Adwaita:dark
-      export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
-      export QT_STYLE_OVERRIDE=adwaita-dark
+      # export GTK_THEME=Adwaita:dark
+      # export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+      # export QT_STYLE_OVERRIDE=adwaita-dark
     '';
   };
 
