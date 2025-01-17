@@ -19,6 +19,7 @@
       bind \cf fzf-file-widget
       bind \cr fzf-history-widget
 
+      fish_add_path -p $HOME/.cargo/bin
       fish_add_path -p $HOME/.local/bin
       fish_add_path -p $KREW_ROOT/bin
       fish_add_path -p /opt/ollama/bin
