@@ -5,9 +5,11 @@
   ./git
   ./granted2
   ./krewfile
-  ./mmtc
+  # disabled as PR to upstream not merged, and I'm not using it
+  # ./mmtc
   ./neovim
   ./ssh
-  ./tlrc
+  # disabled as PR to upstream not merged, and I'm not using it
+  # ./tlrc
   ./tmux
 ]
