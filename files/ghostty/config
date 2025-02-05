@@ -17,3 +17,6 @@ theme = MaterialDarker
 term = xterm-256color
 
 shell-integration = fish
+
+clipboard-paste-protection = false
+confirm-close-surface = false
