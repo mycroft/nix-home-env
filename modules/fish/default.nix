@@ -25,6 +25,10 @@
       fish_add_path -p /opt/ollama/bin
 
       alias assume='source ${pkgs.granted2}/share/assume.fish'
+
+      function t
+        pushd (mktemp -d /tmp/$argv[1].XXXX)
+      end
     '';
 
     shellInit = ''
