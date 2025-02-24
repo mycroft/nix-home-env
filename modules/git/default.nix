@@ -12,6 +12,7 @@
       hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short";
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       st = "status";
+      sw = "switch";
       staged = "diff --cached";
       last = "rev-parse HEAD";
     };
