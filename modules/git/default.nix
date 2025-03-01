@@ -69,6 +69,8 @@
       "*~"
       "*.swp"
       "/target"
+      "dist/"
+      "__pycache__/"
     ];
     includes = [
       {
