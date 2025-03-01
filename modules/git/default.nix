@@ -68,7 +68,7 @@
     ignores = [
       "*~"
       "*.swp"
-      "/target"
+      "target/"
       "dist/"
       "__pycache__/"
     ];
