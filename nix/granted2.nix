@@ -4,21 +4,23 @@
 , fish
 , lib
 , makeWrapper
+, nix-update-script
+, versionCheckHook
 , xdg-utils
 }:
 
 buildGoModule rec {
   pname = "granted";
-  version = "0.36.3";
+  version = "0.38.0";
 
   src = fetchFromGitHub {
     owner = "common-fate";
     repo = pname;
     rev = "v${version}";
-    sha256 = "sha256-fLnrc+Aek2bFrJfCCwI9HRAocokb3IlGZbjYzur7LHk=";
+    sha256 = "sha256-xHpYtHG0fJ/VvJ/4lJ90ept3yGzJRnmtFQFbYxJtxwY=";
   };
 
-  vendorHash = "sha256-imArhe/TjrXv68ZF7moOcKjvxAvQzm7XfBkyWfwNJJs=";
+  vendorHash = "sha256-Y8g5495IYgQ2lvq5qbnQmoxwEYfzzx12KfMS6wF2QXE=";
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -35,22 +37,70 @@ buildGoModule rec {
     "cmd/granted"
   ];
 
-  postInstall = ''
-    ln -s $out/bin/granted $out/bin/assumego
+  #   postInstall = ''
+  #     ln -s $out/bin/granted $out/bin/assumego
+  #
+  #     # Install shell script
+  #     install -Dm755 $src/scripts/assume $out/bin/assume
+  #     substituteInPlace $out/bin/assume \
+  #       --replace /bin/bash ${bash}/bin/bash
+  #
+  #     wrapProgram $out/bin/assume \
+  #       --suffix PATH : ${lib.makeBinPath [ xdg-utils ]}
+  #
+  #     # Install fish script
+  #     install -Dm755 $src/scripts/assume.fish $out/share/assume.fish
+  #     substituteInPlace $out/share/assume.fish \
+  #       --replace /bin/fish ${fish}/bin/fish
+  #   '';
 
-    # Install shell script
-    install -Dm755 $src/scripts/assume $out/bin/assume
-    substituteInPlace $out/bin/assume \
-      --replace /bin/bash ${bash}/bin/bash
+  postInstall =
+    let
+      # assume depends on assumego, so we add (placeholder "out") to its path
+      addToAssumePath = lib.makeBinPath [
+        xdg-utils
+        (placeholder "out")
+      ];
+    in
+    ''
+      ln -s $out/bin/granted $out/bin/assumego
 
-    wrapProgram $out/bin/assume \
-      --suffix PATH : ${lib.makeBinPath [ xdg-utils ]}
+      # Create script with correct permissions
+      install -Dm755 /dev/null $out/bin/assume
 
-    # Install fish script
-    install -Dm755 $src/scripts/assume.fish $out/share/assume.fish
-    substituteInPlace $out/share/assume.fish \
-      --replace /bin/fish ${fish}/bin/fish
-  '';
+      # assume is a script that must be sourced
+      # We can't wrap it because it inspects $0 and calls return, which can only
+      # be done in sourced scripts.
+      # So instead we insert the following snippet into the beginning of the
+      # script to add to PATH.
+      # This is borrowed from wrapProgram --suffix PATH :
+      addToPath="$(cat << 'EOF'
+
+      PATH=''${PATH:+':'$PATH':'}
+      if [[ $PATH != *':'''${addToAssumePath}''':'* ]]; then
+          PATH=$PATH'${addToAssumePath}'
+      fi
+      PATH=''${PATH#':'}
+      PATH=''${PATH%':'}
+      export PATH
+
+      EOF
+      )"
+
+      # Insert below the #!/bin/sh shebang
+      echo "$addToPath" | sed "/#!\/bin\/sh/r /dev/stdin" $src/scripts/assume >> $out/bin/assume
+    ''
+    + ''
+      # Install fish script
+      mkdir $out/share
+      install -Dm755 $src/scripts/assume.fish $out/share/assume.fish
+      substituteInPlace $out/share/assume.fish --replace /bin/fish ${fish}/bin/fish
+    '';
+
+  nativeInstallCheckInputs = [ versionCheckHook ];
+  doInstallCheck = true;
+
+  passthru.updateScript = nix-update-script { };
 
   meta = with lib; {
     description = "The easiest way to access your cloud";
@@ -60,3 +110,4 @@ buildGoModule rec {
     maintainers = [ maintainers.ivankovnatsky ];
   };
 }
+
