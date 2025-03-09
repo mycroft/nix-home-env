@@ -66,6 +66,10 @@
       elt = "eza --bytes --git --group --long -snew --group-directories-first --tree --level=2";
       elta = "eza --bytes --git --group --long -snew --group-directories-first --tree --level=2 -a";
 
+      gs = "git status";
+      ga = "git add";
+      gc = "git commit";
+
       vi = "nvim";
       vim = "nvim";
       cat = "bat -p";
