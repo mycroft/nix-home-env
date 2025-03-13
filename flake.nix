@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-24-11.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-terragrunt-0-73-12 = {
+      url = "github:nixos/nixpkgs/39d921ecb8fc4028eb43d9a87bdeef55ff86fa9b";
+    };
     systems.url = "github:nix-systems/x86_64-linux";
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -34,6 +37,7 @@
     inputs@{ self
     , nixpkgs
     , nixpkgs-24-11
+    , nixpkgs-terragrunt-0-73-12
     , flake-utils
     , home-manager
     , nur
@@ -53,6 +57,10 @@
         config = { allowUnfree = true; };
         inherit system overlays;
       };
+      pkgs-terragrunt-0-73-12 = import nixpkgs-terragrunt-0-73-12 {
+        config = { allowUnfree = true; };
+        inherit system overlays;
+      };
       daggerPkgs = dagger.packages.${system};
 
       modules = [
@@ -62,9 +70,9 @@
       extraSpecialArgs = rec {
         username = "mycroft";
         homeDirectory = "/home/${username}";
-        commonVars = {};
+        commonVars = { };
 
-        inherit daggerPkgs pkgs-24-11;
+        inherit daggerPkgs pkgs-24-11 pkgs-terragrunt-0-73-12;
       };
     in
     {
