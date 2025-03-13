@@ -232,6 +232,9 @@ in
     pinentryPackage = pkgs.pinentry-curses;
     defaultCacheTtl = 31536000;
     maxCacheTtl = 31536000;
+    extraConfig = ''
+      auto-expand-secmem
+    '';
   };
 
   # X11 related configuration goes here as i3wm/gdm does not read .xprofile or .xinitrc.
