@@ -36,10 +36,26 @@
         # Remove bobthefish default greetings
       end
 
+      function __bobthefish_prompt_aws_vault_profile -S -d 'Show AWS Vault profile'
+        [ "$theme_display_aws_profile" = 'yes' ]
+        or return
+        [ -n "$AWS_PROFILE" ]
+        or return
+
+        set -l profile $AWS_PROFILE
+
+        set -l segment $profile
+        set -l status_color $color_aws_vault
+
+        __bobthefish_start_segment $status_color
+        echo -ns $segment ' '
+      end
+
       set -g theme_display_date no
       set -g theme_display_cmd_duration no
       set -g theme_display_k8s_context no
-      set -g theme_display_k8s_namespace no
+      set -g theme_display_k8s_namespace on
+      set -g theme_display_aws_profile yes
     '';
 
     # For some reason, the first instance of fish does not have the correct autocompletions for asoai or just.
