@@ -74,10 +74,10 @@
     ];
     includes = [
       {
-        condition = "gitdir:~/custocy/";
+        condition = "gitdir:~/work/";
         contents = {
           core = {
-            sshCommand = "ssh -i ~/.ssh/custocy/id_ed25519 -F /dev/null";
+            sshCommand = "ssh -i ~/.ssh/work/id_ed25519 -F /dev/null";
           };
           user = {
             email = "pmarie@custocy.com";
