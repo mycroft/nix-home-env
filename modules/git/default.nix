@@ -29,6 +29,14 @@
       core = {
         editor = "nvim";
         excludesfiles = "~/.gitignore";
+        pager = "delta";
+      };
+      delta = {
+        navigate = true;
+        dark = true;
+        theme = "DarkNeon";
+        line-numbers = false;
+        side-by-side = false;
       };
       diff = {
         algorithm = "histogram";
@@ -40,6 +48,9 @@
         prune = true;
         pruneTags = true;
         all = true;
+      };
+      interactive = {
+        diffFilter = "delta --color-only";
       };
       github.user = "mycroft";
       help.autocorrect = 1;
