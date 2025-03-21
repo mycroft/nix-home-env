@@ -16,6 +16,9 @@
       staged = "diff --cached";
       last = "rev-parse HEAD";
     };
+    lfs = {
+      enable = true;
+    };
     extraConfig = {
       branch.autosetuprebase = "always";
       color = {
@@ -75,6 +78,7 @@
           insteadOf = "https://git.mkz.me";
         };
       };
+
     };
     ignores = [
       "*~"

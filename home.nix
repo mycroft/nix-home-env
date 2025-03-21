@@ -159,7 +159,8 @@ in
       ++ [ rustToolChain ]
       ++ [ daggerPkgs.dagger ]
       ++ [ pkgs-terragrunt-0-73-12.terraform ]
-      ++ [ pkgs-terragrunt-0-73-12.terragrunt ];
+      ++ [ pkgs-terragrunt-0-73-12.terragrunt ]
+      ++ [ daggerPkgs.dagger ];
   };
 
   programs = {
