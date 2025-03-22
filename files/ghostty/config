@@ -20,3 +20,6 @@ shell-integration = fish
 
 clipboard-paste-protection = false
 confirm-close-surface = false
+
+# Fix start up time on some systems, see https://ghostty.org/docs/help/gtk-single-instance
+gtk-single-instance = true
