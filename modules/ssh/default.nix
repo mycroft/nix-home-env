@@ -61,6 +61,11 @@ in
         hostname = "mugen-mirai.${lan-suffix}";
         user = "mycroft";
       };
+      "moonstone" = {
+        hostname = "moonstone.${lan-suffix}";
+        user = "mycroft";
+        addressFamily = "inet";
+      };
     };
   };
 }
