@@ -14,6 +14,7 @@ cursor-opacity = 0.5
 resize-overlay = never
 
 theme = MaterialDarker
+# theme = Builtin Tango Dark
 term = xterm-256color
 
 shell-integration = fish
@@ -23,3 +24,4 @@ confirm-close-surface = false
 
 # Fix start up time on some systems, see https://ghostty.org/docs/help/gtk-single-instance
 gtk-single-instance = true
+
