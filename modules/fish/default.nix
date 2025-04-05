@@ -114,5 +114,6 @@
     "fish/conf.d/nix.fish".source = "${pkgs.nix}/etc/profile.d/nix.fish";
     "fish/conf.d/nix-daemon.fish".source = "${pkgs.nix}/etc/profile.d/nix-daemon.fish";
     "fish/completions/nix.fish".source = "${pkgs.nix}/share/fish/vendor_completions.d/nix.fish";
+    "fish/completions/task.fish".source = "${pkgs.taskwarrior3}/share/fish/vendor_completions.d/task.fish";
   };
 }

@@ -226,6 +226,12 @@ in
       };
     };
 
+    taskwarrior = {
+      enable = true;
+      package = pkgs.taskwarrior3;
+      dataLocation = "${config.home.homeDirectory}/.sync/task";
+    };
+
   };
 
   services.gpg-agent = {
