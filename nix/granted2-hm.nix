@@ -7,7 +7,8 @@ with lib;
 let
   cfg = config.programs.granted2;
   package = pkgs.granted2;
-in {
+in
+{
   meta.maintainers = [ hm.maintainers.wcarlsen ];
 
   options.programs.granted2 = {

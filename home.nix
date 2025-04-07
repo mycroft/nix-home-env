@@ -155,6 +155,8 @@ in
         # security tools
         nmap
         # step-cli
+        nixd
+        nil
       ])
       ++ [ rustToolChain ]
       ++ [ daggerPkgs.dagger ]
