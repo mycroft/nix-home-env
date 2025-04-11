@@ -149,6 +149,7 @@ in
         pluto
         tektoncd-cli
         kustomize
+        hadolint
 
         deno
 
