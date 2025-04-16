@@ -44,6 +44,11 @@ in
       ];
       warn-dirty = false;
     };
+    gc = {
+      automatic = true;
+      frequency = "weekly";
+      options = "--delete-older-than 30d";
+    };
   };
 
   imports = lib.concatMap import [ ./modules ];
