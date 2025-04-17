@@ -155,6 +155,8 @@ in
         tektoncd-cli
         kustomize
         hadolint
+        notation
+        cosign
 
         deno
 
