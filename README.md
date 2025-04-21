@@ -79,6 +79,12 @@ $ nix flake check
 ...
 ```
 
+If the pre-commit is no longer there, just recreate it with a dev shell:
+
+```sh
+$ nix develop
+```
+
 ### Doing clean up
 
 Listing & cleaning last generations
