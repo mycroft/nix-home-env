@@ -254,6 +254,18 @@ in
     '';
   };
 
+  services.home-manager = {
+    autoExpire = {
+      enable = true;
+      frequency = "weekly";
+      store = {
+        cleanup = true;
+        options = "--delete-older-than 30d";
+      };
+      timestamp = "-15 days";
+    };
+  };
+
   # X11 related configuration goes here as i3wm/gdm does not read .xprofile or .xinitrc.
   # It is required to set them here so they are used in xdg-desktop-portal-gtk which is started by
   # systemd on login with nix session env. vars. are not loaded yet.
