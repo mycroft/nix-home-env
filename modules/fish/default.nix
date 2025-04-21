@@ -87,6 +87,7 @@
       gc = "git commit";
       gb = "git switch";
       gl = "git lg";
+      gw = "git switch";
 
       vi = "nvim";
       vim = "nvim";
