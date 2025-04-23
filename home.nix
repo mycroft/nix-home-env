@@ -135,6 +135,7 @@ in
         glances
         httpie
         curlie
+        git-filter-repo
 
         # container tools
         dive
