@@ -120,7 +120,7 @@
       devShells.default = pkgs.mkShell {
         buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
 
-        nativeBuildInputs = with pkgs; [ wget s-tar ];
+        nativeBuildInputs = with pkgs; [ wget ];
         packages = with pkgs; [
           alejandra
           git
