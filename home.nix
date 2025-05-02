@@ -98,6 +98,7 @@ in
         httpie
         curlie
         btop
+        htop
 
         # code: git, gitea, etc.
         tea
@@ -112,8 +113,31 @@ in
         protoc-gen-go
         protoc-gen-go-grpc
 
+        # code: zig
+        zig
+        zls
+
         # code: misc
         pre-commit
+
+        # containers tools
+        dive
+        hadolint
+        notation
+        cosign
+
+        # kubernetes related tools
+        kubectl
+        kubectx
+        krew
+        kubernetes-helm
+        helmfile
+        k9s
+        kind
+        fluxcd
+        kustomize
+        operator-sdk
+        kubeconform
 
         # all other stuff
         unrar
@@ -129,7 +153,6 @@ in
 
         skim
         nushell
-        htop
 
         glow
         zstd
@@ -143,39 +166,21 @@ in
         ssm-session-manager-plugin
         pyright
         yamlfmt
-        operator-sdk
-        zig
-        zls
         exercism
         glances
 
         # container tools
-        dive
-        kubectl
-        kubectx
-        krew
-        kubernetes-helm
-        helmfile
         skopeo
-        k9s
-        kind
         natscli
         cmctl
-        fluxcd
-        kubeconform
         nova
         pluto
         tektoncd-cli
-        kustomize
-        hadolint
-        notation
-        cosign
 
         deno
-
         # security tools
         nmap
-        # step-cli
+        step-cli
       ])
       ++ [ rustToolChain ]
       ++ [ pkgs-terragrunt-0-73-12.terraform ]
