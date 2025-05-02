@@ -65,7 +65,6 @@ in
       LANG = locale;
       LC_CTYPE = locale;
       LC_ALL = locale;
-      PASSWORD_STORE_DIR = "${homeDirectory}/.sync/private/store";
       DRONE_SERVER = "https://ci.mkz.me";
 
       # Could be removed by services.ssh-agent.enable?
@@ -135,7 +134,6 @@ in
         glow
         zstd
         rclone
-        pass
 
         # coding
         bazelisk
@@ -245,6 +243,13 @@ in
         date = "+%y/%m/%d %H:%M";
         literal = true;
         size = "bytes";
+      };
+    };
+
+    password-store = {
+      enable = true;
+      settings = {
+        PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.sync/private/store";
       };
     };
 
