@@ -1,5 +1,4 @@
 { pkgs
-, pkgs-24-11
 , pkgs-terragrunt-0-73-12
 , home-manager
 , lib

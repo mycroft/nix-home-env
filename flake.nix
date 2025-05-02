@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-24-11.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-terragrunt-0-73-12 = {
       url = "github:nixos/nixpkgs/39d921ecb8fc4028eb43d9a87bdeef55ff86fa9b";
     };
@@ -36,7 +35,6 @@
   outputs =
     inputs@{ self
     , nixpkgs
-    , nixpkgs-24-11
     , nixpkgs-terragrunt-0-73-12
     , flake-utils
     , home-manager
@@ -50,10 +48,6 @@
     let
       overlays = [ nur.overlays.default (import rust-overlay) ];
       pkgs = import nixpkgs {
-        config = { allowUnfree = true; };
-        inherit system overlays;
-      };
-      pkgs-24-11 = import nixpkgs-24-11 {
         config = { allowUnfree = true; };
         inherit system overlays;
       };
@@ -72,7 +66,7 @@
         homeDirectory = "/home/${username}";
         commonVars = { };
 
-        inherit daggerPkgs pkgs-24-11 pkgs-terragrunt-0-73-12;
+        inherit daggerPkgs pkgs-terragrunt-0-73-12;
       };
     in
     {
