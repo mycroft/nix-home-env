@@ -24,8 +24,6 @@
       fish_add_path -p $KREW_ROOT/bin
       fish_add_path -p /opt/ollama/bin
 
-      alias assume='source ${pkgs.granted}/share/assume.fish'
-
       function t
         pushd (mktemp -d /tmp/$argv[1].XXXX)
       end

@@ -1,0 +1,9 @@
+DefaultBrowser = "FIREFOX"
+CustomBrowserPath = "${HOME}/.local/bin/firefox-custocy.sh"
+CustomSSOBrowserPath = "${HOME}/.local/bin/firefox-custocy.sh"
+Ordering = ""
+ExportCredentialSuffix = ""
+DisableUsageTips = true
+
+[Keyring]
+  Backend = "pass"

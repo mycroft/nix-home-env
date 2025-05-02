@@ -149,7 +149,6 @@ in
 
         mmtc
         just
-        granted
 
         skim
         nushell
@@ -233,6 +232,12 @@ in
           name = "Patrick MARIE";
         };
       };
+    };
+
+    granted = {
+      enable = true;
+      enableFishIntegration = true;
+      package = pkgs.granted;
     };
 
     lsd = {
@@ -325,5 +330,14 @@ in
   home.file.".local/bin/mount-obsidian.sh" = {
     source = ./files/scripts/mount-obsidian.sh;
     executable = true;
+  };
+
+  home.file.".granted/config.template" = {
+    source = ./files/granted/config;
+    onChange = ''
+      rm -f ${config.home.homeDirectory}/.granted/config
+      cp ${config.home.homeDirectory}/.granted/config.template ${config.home.homeDirectory}/.granted/config
+      chmod u+w ${config.home.homeDirectory}/.granted/config
+    '';
   };
 }
