@@ -3,7 +3,7 @@
   ./asoai
   ./fish
   ./git
-  ./granted2
+  # ./granted2
   ./krewfile
   # disabled as PR to upstream not merged, and I'm not using it
   # ./mmtc
