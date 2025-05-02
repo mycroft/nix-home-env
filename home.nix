@@ -77,22 +77,16 @@ in
 
     packages =
       (with pkgs; [
+        # nix related stuff
         nix-eval-jobs
         nixpkgs-fmt
-        unrar
-        cowsay
-        ponysay
-        yq-go
-        jq
-        ffsend
-        bottom
-        btop
-        pass
-        mmtc
-        just
-        granted
+        nixd
+        nil
+        nixfmt-rfc-style
 
+        # modern unix tools
         bat
+        bottom
         eza
         fd
         ripgrep
@@ -101,6 +95,39 @@ in
         silver-searcher
         procs
         doggo # dig alternative; https://github.com/mr-karan/doggo
+        htop
+        httpie
+        curlie
+        btop
+
+        # code: git, gitea, etc.
+        tea
+        tig
+        git-filter-repo
+        lazygit
+
+        # code: golang
+        gopls
+        gotools
+        golangci-lint
+        protoc-gen-go
+        protoc-gen-go-grpc
+
+        # code: misc
+        pre-commit
+
+        # all other stuff
+        unrar
+        cowsay
+        ponysay
+        yq-go
+        jq
+        ffsend
+
+        mmtc
+        just
+        granted
+
         skim
         nushell
         htop
@@ -108,34 +135,21 @@ in
         glow
         zstd
         rclone
+        pass
 
         # coding
         bazelisk
-        pre-commit
-        tea
         drone-cli
-        tig
-        nixfmt-rfc-style
         cloc
         awscli2
         ssm-session-manager-plugin
-        protoc-gen-go
-        protoc-gen-go-grpc
-        tlrc
-        gopls
         pyright
         yamlfmt
         operator-sdk
-        gotools
-        golangci-lint
         zig
         zls
         exercism
-        lazygit
         glances
-        httpie
-        curlie
-        git-filter-repo
 
         # container tools
         dive
@@ -164,8 +178,6 @@ in
         # security tools
         nmap
         # step-cli
-        nixd
-        nil
       ])
       ++ [ rustToolChain ]
       ++ [ pkgs-terragrunt-0-73-12.terraform ]
