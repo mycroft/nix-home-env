@@ -117,7 +117,12 @@ in
         zig
         zls
 
+        # code: other languages
+        deno
+        pyright
+
         # code: misc
+        cloc
         pre-commit
 
         # containers tools
@@ -139,11 +144,23 @@ in
         kustomize
         operator-sdk
         kubeconform
+        nova
+        pluto
+
+        # kubernetes components tools
+        natscli
+        cmctl
+        tektoncd-cli
 
         # security tools
         nmap
         step-cli
         skim # fuzzy finder written in Rust
+
+        # cloud related tools
+        rclone
+        awscli2
+        ssm-session-manager-plugin
 
         # all other stuff
         unrar
@@ -157,27 +174,12 @@ in
         nushell
         glow
         zstd
-        rclone
-
-        # coding
         bazelisk
         drone-cli
-        cloc
-        awscli2
-        ssm-session-manager-plugin
-        pyright
         yamlfmt
         exercism
         glances
-
-        # container tools
-        natscli
-        cmctl
-        nova
-        pluto
-        tektoncd-cli
-
-        deno
+        tealdeer
       ])
       ++ [ rustToolChain ]
       ++ [ pkgs-terragrunt-0-73-12.terraform ]
