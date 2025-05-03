@@ -121,10 +121,11 @@ in
         pre-commit
 
         # containers tools
+        cosign
         dive
         hadolint
         notation
-        cosign
+        skopeo
 
         # kubernetes related tools
         kubectl
@@ -139,6 +140,11 @@ in
         operator-sdk
         kubeconform
 
+        # security tools
+        nmap
+        step-cli
+        skim # fuzzy finder written in Rust
+
         # all other stuff
         unrar
         cowsay
@@ -146,13 +152,9 @@ in
         yq-go
         jq
         ffsend
-
         mmtc
         just
-
-        skim
         nushell
-
         glow
         zstd
         rclone
@@ -169,7 +171,6 @@ in
         glances
 
         # container tools
-        skopeo
         natscli
         cmctl
         nova
@@ -177,9 +178,6 @@ in
         tektoncd-cli
 
         deno
-        # security tools
-        nmap
-        step-cli
       ])
       ++ [ rustToolChain ]
       ++ [ pkgs-terragrunt-0-73-12.terraform ]
