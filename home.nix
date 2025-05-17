@@ -1,6 +1,5 @@
 { pkgs
 , pkgs-terragrunt-0-73-12
-, home-manager
 , lib
 , config
 , daggerPkgs
