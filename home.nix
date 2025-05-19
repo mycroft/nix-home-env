@@ -182,6 +182,7 @@ in
         exercism
         glances
         tealdeer
+        silicon
       ])
       ++ [ rustToolChain ]
       ++ [ daggerPkgs.dagger ];
