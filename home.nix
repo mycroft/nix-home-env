@@ -1,5 +1,4 @@
 { pkgs
-, pkgs-terragrunt-0-73-12
 , lib
 , config
 , daggerPkgs
@@ -161,6 +160,10 @@ in
         awscli2
         ssm-session-manager-plugin
 
+        # infra
+        terraform
+        terragrunt
+
         # all other stuff
         unrar
         cowsay
@@ -181,8 +184,6 @@ in
         tealdeer
       ])
       ++ [ rustToolChain ]
-      ++ [ pkgs-terragrunt-0-73-12.terraform ]
-      ++ [ pkgs-terragrunt-0-73-12.terragrunt ]
       ++ [ daggerPkgs.dagger ];
   };
 
