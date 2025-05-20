@@ -87,9 +87,10 @@
       "dist/"
       "__pycache__/"
     ];
-    includes = [
+    includes = builtins.map
+    (dir:
       {
-        condition = "gitdir:~/work/";
+        condition = "gitdir:${dir}";
         contents = {
           core = {
             sshCommand = "ssh -i ~/.ssh/work/id_ed25519 -F /dev/null";
@@ -109,7 +110,8 @@
           };
         };
       }
-    ];
+    )  [ "~/work/" "/opt/custocy/" ];
+
     signing = {
       key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";
       signByDefault = true;
