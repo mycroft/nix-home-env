@@ -261,6 +261,7 @@ in
       enable = true;
       settings = {
         PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.sync/private/store";
+        PASSWORD_STORE_GENERATED_LENGTH = "32";
       };
     };
 
