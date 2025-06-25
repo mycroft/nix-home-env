@@ -170,7 +170,7 @@ in
         ponysay
         yq-go
         jq
-        ffsend
+        # ffsend
         mmtc
         just
         nushell
