@@ -20,6 +20,8 @@
       bind \cr fzf-history-widget
 
       fish_add_path -p $HOME/.cargo/bin
+      fish_add_path -p $GOPATH/bin
+
       fish_add_path -p $HOME/.local/bin
       fish_add_path -p $KREW_ROOT/bin
       fish_add_path -p /opt/ollama/bin
@@ -113,6 +115,7 @@
     "fish/conf.d/nix.fish".source = "${pkgs.nix}/etc/profile.d/nix.fish";
     "fish/conf.d/nix-daemon.fish".source = "${pkgs.nix}/etc/profile.d/nix-daemon.fish";
     "fish/completions/nix.fish".source = "${pkgs.nix}/share/fish/vendor_completions.d/nix.fish";
-    "fish/completions/task.fish".source = "${pkgs.taskwarrior3}/share/fish/vendor_completions.d/task.fish";
+    "fish/completions/task.fish".source =
+      "${pkgs.taskwarrior3}/share/fish/vendor_completions.d/task.fish";
   };
 }
