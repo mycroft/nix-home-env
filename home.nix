@@ -183,7 +183,6 @@ in
         glances
         tealdeer
         silicon
-        aider-chat
       ])
       ++ [ rustToolChain ]
       ++ [ daggerPkgs.dagger ];
