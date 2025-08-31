@@ -17,8 +17,6 @@ in
   programs.ssh = {
     enable = true;
 
-    serverAliveInterval = 30;
-    serverAliveCountMax = 2;
     extraConfig = ''
       HostKeyAlgorithms=+ssh-rsa
       # PreferredAuthentications publickey
@@ -28,7 +26,13 @@ in
       "${specialArgs.homeDirectory}/.ssh/work/config-*"
     ];
 
+    enableDefaultConfig = false;
+
     matchBlocks = {
+      "*" = {
+        serverAliveInterval = 30;
+        serverAliveCountMax = 2;
+      };
       "maki" = {
         hostname = "maki.mkz.me";
         port = 22222;
