@@ -64,6 +64,7 @@ in
       LC_CTYPE = locale;
       LC_ALL = locale;
       DRONE_SERVER = "https://ci.mkz.me";
+      PAGER = "less";
 
       # Could be removed by services.ssh-agent.enable?
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket";
