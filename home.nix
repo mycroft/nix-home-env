@@ -213,8 +213,13 @@ in
 
     go = {
       enable = true;
-      goPrivate = [ "git.mkz.me" ];
-      goPath = ".local/go";
+      env = {
+        GOPRIVATE = [
+          "git.mkz.me"
+        ];
+        GOPATH = "${config.home.homeDirectory}/.local/go";
+        GOBIN = "${config.home.homeDirectory}/.local/go/bin";
+      };
     };
 
     zoxide = {
