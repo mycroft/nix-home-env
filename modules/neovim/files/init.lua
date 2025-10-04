@@ -71,7 +71,6 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
-local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local cmp = require'cmp'
@@ -102,45 +101,45 @@ cmp.setup({
   })
 })
 
-lspconfig.rust_analyzer.setup {
-  capabilities = capabilities,
-  settings = {
-    ['rust-analyzer'] = {
-      cargo = {
-        allFeatures = true,
-      },
+vim.lsp.config("rust_analyzer", {
+    capabilities = capabilities,
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                allFeatures = true,
+            },
+        },
     },
-  },
-}
+})
 
-lspconfig.gopls.setup {
-  capabilities = capabilities,
-  settings = {},
-}
+vim.lsp.config("gopls", {
+    capabilities = capabilities,
+    settings = {},
+})
 
-lspconfig.nixd.setup {
-  capabilities = capabilities,
-  settings = {
-    nixd = {
-      nixpkgs = {
-        expr = "import <nixpkgs> { }",
-      },
-      formatting = {
-        command = { "nixpkgs-fmt" },
-      },
+vim.lsp.config("nixd", {
+    capabilities = capabilities,
+    settings = {
+        nixd = {
+            nixpkgs = {
+                expr = "import <nixpkgs> { }",
+            },
+            formatting = {
+                command = { "nixpkgs-fmt" },
+            },
+        },
     },
-  },
-}
+})
 
-lspconfig.pyright.setup {
-  capabilities = capabilities,
-  settings = {},
-}
+vim.lsp.config("pyright", {
+    capabilities = capabilities,
+    settings = {},
+})
 
-lspconfig.zls.setup {
-  capabilities = capabilities,
-  settings = {},
-}
+vim.lsp.config("zls", {
+    capabilities = capabilities,
+    settings = {},
+})
 
 vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
