@@ -126,7 +126,6 @@ in
         pre-commit
 
         # containers tools
-        cosign
         dive
         hadolint
         notation
