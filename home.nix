@@ -2,6 +2,7 @@
 , lib
 , config
 , daggerPkgs
+, floxPkgs
 , specialArgs
 , ...
 }:
@@ -186,7 +187,8 @@ in
         silicon
       ])
       ++ [ rustToolChain ]
-      ++ [ daggerPkgs.dagger ];
+      ++ [ daggerPkgs.dagger ]
+      ++ [ floxPkgs.flox ];
   };
 
   programs = {

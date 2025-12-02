@@ -27,6 +27,9 @@
       url = "github:dagger/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flox = {
+      url = "github:flox/flox/latest";
+    };
   };
 
   outputs =
@@ -38,6 +41,7 @@
     , dagger
     , pre-commit-hooks
     , rust-overlay
+    , flox
     , ...
     }:
     flake-utils.lib.eachSystem [ flake-utils.lib.system.x86_64-linux ] (system:
@@ -48,6 +52,7 @@
         inherit system overlays;
       };
       daggerPkgs = dagger.packages.${system};
+      floxPkgs = flox.packages.${system};
 
       modules = [
         ./home.nix
@@ -58,7 +63,7 @@
         homeDirectory = "/home/${username}";
         commonVars = { };
 
-        inherit daggerPkgs;
+        inherit daggerPkgs floxPkgs;
       };
     in
     {
