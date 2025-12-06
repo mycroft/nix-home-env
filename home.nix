@@ -165,6 +165,7 @@ in
         # infra
         terraform
         terragrunt
+        opentofu
 
         # all other stuff
         unrar
