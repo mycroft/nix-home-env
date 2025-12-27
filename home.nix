@@ -163,9 +163,8 @@ in
         ssm-session-manager-plugin
 
         # infra
-        terraform
-        terragrunt
         opentofu
+        terraform
 
         # all other stuff
         unrar
@@ -189,7 +188,8 @@ in
       ])
       ++ [ rustToolChain ]
       ++ [ daggerPkgs.dagger ]
-      ++ [ floxPkgs.flox ];
+      ++ [ floxPkgs.flox ]
+    ;
   };
 
   programs = {

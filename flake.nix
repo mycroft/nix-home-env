@@ -29,6 +29,7 @@
     };
     flox = {
       url = "github:flox/flox/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -38,9 +39,9 @@
     , flake-utils
     , home-manager
     , nur
-    , dagger
     , pre-commit-hooks
     , rust-overlay
+    , dagger
     , flox
     , ...
     }:
