@@ -82,7 +82,7 @@ in
         nixpkgs-fmt
         nixd
         nil
-        nixfmt-rfc-style
+        nixfmt
 
         # modern unix tools
         bat
