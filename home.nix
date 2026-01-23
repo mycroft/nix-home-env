@@ -1,8 +1,6 @@
 { pkgs
 , lib
 , config
-, daggerPkgs
-, floxPkgs
 , specialArgs
 , ...
 }:
@@ -27,7 +25,8 @@ let
     GTK_THEME = "Adwaita:dark";
     GTK2_RC_FILES = "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc";
     QT_STYLE_OVERRIDE = "adwaita-dark";
-  } // specialArgs.commonVars;
+  }
+  // specialArgs.commonVars;
 in
 {
   nixpkgs.config = {
@@ -73,7 +72,8 @@ in
 
       # shut up, cdk8s
       JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION = "yes";
-    } // commonVars;
+    }
+    // commonVars;
 
     packages =
       (with pkgs; [
@@ -155,7 +155,7 @@ in
         # security tools
         nmap
         step-cli
-        skim # fuzzy finder written in Rust
+        # skim # Command-line fuzzy finder written in Rust
 
         # cloud related tools
         rclone
@@ -173,7 +173,6 @@ in
         yq-go
         jq
         # ffsend
-        mmtc
         just
         nushell
         glow
@@ -181,15 +180,11 @@ in
         bazelisk
         drone-cli
         yamlfmt
-        exercism
-        glances
+        # glances # Cross-platform curses-based monitoring tool
         tealdeer
-        silicon
+        # silicon # Create beautiful image of your source code
       ])
-      ++ [ rustToolChain ]
-      ++ [ daggerPkgs.dagger ]
-      ++ [ floxPkgs.flox ]
-    ;
+      ++ [ rustToolChain ];
   };
 
   programs = {
