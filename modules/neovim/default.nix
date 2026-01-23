@@ -5,7 +5,7 @@
 
     withPython3 = true;
 
-    extraLuaConfig = builtins.readFile ./files/init.lua;
+    initLua = builtins.readFile ./files/init.lua;
 
     extraPackages = with pkgs; [
       nixd
