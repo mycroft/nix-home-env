@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # https://lazamar.co.uk/nix-versions/?channel=nixpkgs-unstable&package=helmfile
+    nixpkgs-helmfile.url = "github:nixos/nixpkgs/3e2cf88148e732abc1d259286123e06a9d8c964a";
     systems.url = "github:nix-systems/x86_64-linux";
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -32,6 +34,7 @@
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-helmfile
     , flake-utils
     , home-manager
     , nur
@@ -54,6 +57,8 @@
           inherit system overlays;
         };
 
+        pkgs-helmfile = import nixpkgs-helmfile { inherit system; };
+
         modules = [
           ./home.nix
         ];
@@ -62,6 +67,7 @@
           username = "mycroft";
           homeDirectory = "/home/${username}";
           commonVars = { };
+          helmfile = pkgs-helmfile.helmfile;
         };
       in
       {

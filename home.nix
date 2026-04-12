@@ -7,6 +7,7 @@
 let
   username = specialArgs.username;
   homeDirectory = specialArgs.homeDirectory;
+  helmfile = specialArgs.helmfile;
   locale = "en_US.UTF-8";
   editor = "nvim";
 
@@ -185,7 +186,7 @@ in
         tealdeer
         # silicon # Create beautiful image of your source code
       ])
-      ++ [ rustToolChain ];
+      ++ [ rustToolChain helmfile ];
   };
 
   programs = {
