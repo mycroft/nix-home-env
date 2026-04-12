@@ -4,6 +4,7 @@
     enable = true;
 
     withPython3 = true;
+    withRuby = false;
 
     initLua = builtins.readFile ./files/init.lua;
 
