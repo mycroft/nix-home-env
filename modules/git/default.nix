@@ -75,6 +75,9 @@
         "ssh://git@git.mkz.me" = {
           insteadOf = "https://git.mkz.me";
         };
+        "ssh://git@gitlab.com" = {
+          insteadOf = "https://gitlab.com";
+        };
       };
       user = {
         name = "Patrick MARIE";
@@ -88,30 +91,12 @@
       "dist/"
       "__pycache__/"
     ];
-    includes = builtins.map
-      (dir:
-        {
-          condition = "gitdir:${dir}";
-          contents = {
-            core = {
-              sshCommand = "ssh -i ~/.ssh/work/id_ed25519 -F /dev/null";
-            };
-            user = {
-              email = "pmarie@custocy.com";
-              signingKey = "D5A4B4A32C8FC68F92A4A83340224FD197FAAD5B";
-            };
-            commit = {
-              gpgSign = true;
-            };
-            credential = {
-              "https://git-codecommit.eu-west-3.amazonaws.com" = {
-                helper = "!aws codecommit --profile root credential-helper $@";
-                useHttpPath = true;
-              };
-            };
-          };
-        }
-      ) [ "~/work/" "/opt/custocy/" ];
+    includes = [
+      {
+        condition = "gitdir:~/work/";
+        path = "~/work/.gitconfig";
+      }
+    ];
 
     signing = {
       key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";

@@ -106,6 +106,7 @@ in
         tig
         git-filter-repo
         lazygit
+        mise
 
         # code: golang
         gopls
@@ -137,7 +138,6 @@ in
         kubectx
         krew
         kubernetes-helm
-        helmfile
         k9s
         kind
         fluxcd
@@ -165,6 +165,7 @@ in
         # infra
         opentofu
         terraform
+        copier
 
         # all other stuff
         unrar
