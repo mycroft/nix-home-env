@@ -185,6 +185,7 @@ in
         # glances # Cross-platform curses-based monitoring tool
         tealdeer
         # silicon # Create beautiful image of your source code
+        dyff
       ])
       ++ [ rustToolChain helmfile ];
   };
