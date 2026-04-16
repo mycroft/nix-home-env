@@ -111,7 +111,6 @@ in
 
         # code: golang
         gopls
-        gotools
         golangci-lint
         protoc-gen-go
         protoc-gen-go-grpc
