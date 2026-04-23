@@ -11,6 +11,9 @@
     enable = true;
 
     interactiveShellInit = ''
+      # Change ctrl+c behavior
+      bind \cc cancel-commandline
+
       # Change fzf behavior
       bind \ct transpose-chars
       bind \cg transpose-words
