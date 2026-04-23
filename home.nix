@@ -319,6 +319,9 @@ in
       source = ./files/hypr;
       recursive = true;
     };
+    "opencode/opencode.json" = {
+      source = ./files/opencode/opencode.json;
+    };
   };
 
   xdg.userDirs.download = "${config.home.homeDirectory}/.downloads";
