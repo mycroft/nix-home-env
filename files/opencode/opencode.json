@@ -36,6 +36,9 @@
         },
         "edit": "ask",
         "lsp": "allow",
-        "skill": "allow"
+        "skill": "allow",
+        "todowrite": "allow",
+        "webfetch": "allow",
+        "websearch": "allow"
     }
 }
