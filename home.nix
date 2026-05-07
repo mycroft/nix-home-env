@@ -156,6 +156,7 @@ in
         nmap
         step-cli
         # skim # Command-line fuzzy finder written in Rust
+        semgrep
 
         # cloud related tools
         rclone
@@ -185,6 +186,7 @@ in
         tealdeer
         # silicon # Create beautiful image of your source code
         dyff
+        zola
       ])
       ++ [ rustToolChain helmfile ];
   };
