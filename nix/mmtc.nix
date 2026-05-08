@@ -1,4 +1,9 @@
-{ fetchFromGitHub, installShellFiles, lib, rustPlatform }:
+{
+  fetchFromGitHub,
+  installShellFiles,
+  lib,
+  rustPlatform,
+}:
 rustPlatform.buildRustPackage rec {
   pname = "mmtc";
   version = "0.2.13-fork";

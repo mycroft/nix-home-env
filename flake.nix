@@ -32,16 +32,17 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-helmfile
-    , flake-utils
-    , home-manager
-    , nur
-    , pre-commit-hooks
-    , rust-overlay
-    , dagger
-    , ...
+    {
+      self,
+      nixpkgs,
+      nixpkgs-helmfile,
+      flake-utils,
+      home-manager,
+      nur,
+      pre-commit-hooks,
+      rust-overlay,
+      dagger,
+      ...
     }:
     flake-utils.lib.eachSystem [ flake-utils.lib.system.x86_64-linux ] (
       system:
@@ -98,14 +99,14 @@
             };
           };
         };
-        formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+        formatter = nixpkgs.legacyPackages.${system}.nixfmt;
 
         checks = {
           pre-commit-check = pre-commit-hooks.lib.${system}.run {
             src = ./.;
 
             hooks = {
-              nixpkgs-fmt = {
+              nixfmt = {
                 enable = true;
               };
             };

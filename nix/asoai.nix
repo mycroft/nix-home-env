@@ -1,7 +1,7 @@
-{ buildGoModule
-, fetchFromGitHub
-, installShellFiles
-,
+{
+  buildGoModule,
+  fetchFromGitHub,
+  installShellFiles,
 }:
 buildGoModule rec {
   pname = "asoai";

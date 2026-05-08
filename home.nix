@@ -1,8 +1,9 @@
-{ pkgs
-, lib
-, config
-, specialArgs
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  specialArgs,
+  ...
 }:
 let
   username = specialArgs.username;
@@ -80,7 +81,6 @@ in
       (with pkgs; [
         # nix related stuff
         nix-eval-jobs
-        nixpkgs-fmt
         nixd
         nil
         nixfmt
@@ -108,6 +108,7 @@ in
         git-filter-repo
         lazygit
         mise
+        prek
 
         # code: golang
         gopls
@@ -188,7 +189,10 @@ in
         dyff
         zola
       ])
-      ++ [ rustToolChain helmfile ];
+      ++ [
+        rustToolChain
+        helmfile
+      ];
   };
 
   programs = {

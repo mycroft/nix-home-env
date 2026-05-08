@@ -125,7 +125,7 @@ vim.lsp.config("nixd", {
                 expr = "import <nixpkgs> { }",
             },
             formatting = {
-                command = { "nixpkgs-fmt" },
+                command = { "nixfmt" },
             },
         },
     },
@@ -164,4 +164,3 @@ require("formatter").setup {
   }
 }
 vim.api.nvim_set_keymap('n', ',a', ':Format<CR>',{noremap = true})
-
