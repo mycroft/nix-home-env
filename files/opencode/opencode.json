@@ -11,7 +11,7 @@
                 "llama-server (moosntone)": {
                     "name": "Qwen",
                     "limit": {
-                        "context": 262144,
+                        "context": 131072,
                         "output": 65536
                     },
                     "reasoning": true,
