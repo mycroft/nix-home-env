@@ -147,6 +147,7 @@ in
         kubeconform
         nova
         pluto
+        conftest
 
         # kubernetes components tools
         natscli
