@@ -8,7 +8,7 @@
                 "baseURL": "https://llm-api.iop.cx/llama.cpp/v1"
             },
             "models": {
-                "llama-server (moosntone)": {
+                "llama-server": {
                     "name": "Qwen",
                     "limit": {
                         "context": 131072,
