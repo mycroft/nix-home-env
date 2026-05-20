@@ -33,7 +33,7 @@ in
 
     enableDefaultConfig = false;
 
-    matchBlocks = {
+    settings = {
       "*" = {
         serverAliveInterval = 30;
         serverAliveCountMax = 2;
