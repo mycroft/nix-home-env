@@ -75,6 +75,12 @@ in
         user = "mycroft";
         addressFamily = "inet";
       };
+      "kali" = {
+        hostname = "10.0.0.99";
+        user = "kali";
+        forwardX11 = true;
+        forwardX11Trusted = true;
+      };
     };
   };
 }
