@@ -159,6 +159,8 @@ in
         step-cli
         # skim # Command-line fuzzy finder written in Rust
         semgrep
+        syft
+        grype
 
         # cloud related tools
         rclone
