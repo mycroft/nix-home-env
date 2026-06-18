@@ -93,7 +93,6 @@ in
         ripgrep
         dust
         duf
-        silver-searcher
         procs
         doggo # dig alternative; https://github.com/mr-karan/doggo
         htop
