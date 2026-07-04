@@ -1,0 +1,30 @@
+name: update-flake-lock
+
+on:
+  schedule:
+    # Runs daily at 04:00 UTC
+    - cron: "0 4 * * *"
+  workflow_dispatch: # allow manual triggering
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-flake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@main
+        with:
+          commit-msg: "chore: nix flake update"
+          pr-title: "chore: nix flake update"
+          pr-labels: |
+            dependencies
+            automated
