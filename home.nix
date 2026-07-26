@@ -351,6 +351,11 @@ in
     executable = true;
   };
 
+  home.file.".local/bin/send-torrent.sh" = {
+    source = ./files/scripts/send-torrent.sh;
+    executable = true;
+  };
+
   home.file.".granted/config.template" = {
     source = ./files/granted/config;
     onChange = ''
