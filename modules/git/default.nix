@@ -93,8 +93,8 @@
     ];
     includes = [
       {
-        condition = "gitdir:~/work/";
-        path = "~/work/.gitconfig";
+        condition = "gitdir:/work/";
+        path = "/work/.gitconfig";
       }
     ];
 
