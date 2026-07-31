@@ -1,0 +1,329 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "height": 5, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "sway/scratchpad",
+        "sway/workspaces",
+        "custom/separator",
+//        "custom/separator",
+        "sway/window"
+        // "sway/mode",
+        // "sway/scratchpad",
+        // "custom/media"
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        // "mpd",
+        "custom/bitcoin",
+        "custom/separator",
+        "custom/clipboard-regular",
+        "custom/separator",
+        "custom/clipboard-primary",
+        "custom/separator",
+        "network#wifi",
+        "custom/separator",
+        "network#eth",
+        "custom/separator",
+        "cpu",
+        "custom/separator",
+        "memory",
+        "custom/separator",
+        "custom/disk-root",
+        "custom/separator",
+        "custom/disk-home",
+        "custom/separator",
+        "temperature",
+        "custom/separator",
+        "backlight",
+        "custom/separator",
+        // "keyboard-state",
+        // "sway/language",
+        "battery",
+        "custom/separator",
+        // "battery#bat2",
+        "idle_inhibitor",
+        "custom/separator",
+        "pulseaudio",
+        "custom/separator",
+        // "power-profiles-daemon",
+        // "custom/separator",
+        "clock",
+        "tray"
+        // "custom/separator",
+        // "custom/power"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "disable-scroll-wraparound": true,
+        "smooth-scrolling-threshold": 4,
+        "enable-bar-scroll": true,
+    },
+    // Modules configuration
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        // "format": "{icon} {count} <span style=\"color: #666666;padding: 0 3px;\"> | <span>",
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon} ",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "interval": 1,
+        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+        "format": "cpu:{usage}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "mem:{}%",
+        "tooltip-format": "used:{used} avail:{avail} total:{total}\nswap:{swapUsed} avail:{swapAvail} total:{swapTotal}"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        // "format": "{temperatureC}°C {icon}",
+        "format": "t:{temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-click": "/usr/bin/brightnessctl -- s +5%",
+        "on-click-right": "/usr/bin/brightnessctl -- s -5%",
+        "scroll-step": 0.0
+    },
+    "battery": {
+        "interval": 1,
+        "states": {
+            "full": 100,
+            "good": 90,
+            "warning": 30,
+            "critical": 15
+        },
+        // "full-at": 98,
+        "format": "bat:{capacity}% {icon} ",
+        "format-discharging": "bat:{capacity}% {time} {icon} ",
+        "format-charging-good": "bat:{capacity}% {time} {icon} ",
+        "format-charging-full": "bat:full 🔌 {icon} ",
+        "format-plugged": "bat:{capacity}% 🔌 {icon} ",
+        "format-plugged-full": "bat:full 🔌 {icon} ",
+        // "format-plugged-full": "bat:full {icon} ",
+        // "format-plugged-good": "bat:full {icon} ",
+        /*
+        "format-plugged": "bat:plugged",
+        "format-good": "good",
+        "format-full": "full",
+        "format-charging": "charging",
+        "format-plugged": "plugged",
+        "format-plugged-good": "plugged + good",
+        "format-plugged-warning": "plugged + warn",
+        "format-plugged-critical": "plugged + crit",
+        "format-full-plugged": "fp",
+        "format-not-charging": "not charging",
+        "format-discharging": "discharging",
+        "format-discharging-good": "discharging good",
+        "format-discharging-full": "discharging full",
+        "format-discharging-warning": "discharging warning",
+        "format-plugged-good": "plugged good",
+        "format-plugged-full": "plugged full",
+        */
+        // "format-good": "bat:{icon}", // An empty format will hide the module
+        // "format-full": "bat:{icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network#wifi": {
+        // "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{ifname}: {essid} ({ipaddr}/{cidr} ~ {signalStrength}%)  ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠  "
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "network#wifi-ipv6": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        // "format-wifi": "{essid} ({signalStrength}%) ",
+        "family": "ipv6",
+        "format-wifi": "{ipaddr}/{cidr}",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠"
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "network#eth": {
+        "interface": "enp0s*",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "format-disconnected": "Disconnected ⚠"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "vol:{volume}% {icon} ",
+        "format-bluetooth": "vol:{volume}%  {icon} ",
+        "format-bluetooth-muted": "vol:muted 🔇  {icon} ",
+        "format-muted": "vol:muted 🔇",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""],
+            "muted": "🔇"
+        },
+        "on-click-middle": "pavucontrol",
+        "on-click": "amixer set Master toggle"
+    },
+    "custom/separator": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/disk-root": {
+        "format": "/:{}",
+        "inverval": 120,
+        "exec": "df -h --output=used,pcent /|sed 's/  */ /g' | tail -n1"
+    },
+    "custom/disk-home": {
+        "format": "/home:{}",
+        "inverval": 120,
+        "exec": "df -h --output=used,pcent /home|sed 's/  */ /g' | tail -n1"
+    },
+    "custom/clipboard-regular": {
+        "format": "clip:{}",
+        "interval": 5,
+        "exec": "/home/mycroft/.local/bin/clipboard-info clipboard",
+        "on-click": "wl-paste --no-newline | wl-copy -p && notify-send 'clipboard -> primary copied!'",
+        "on-click-right": "wl-paste -p --no-newline | wl-copy && notify-send 'primary -> clipboard copied!'"
+    },
+    "custom/clipboard-primary": {
+        "format": "pri:{}",
+        "interval": 5,
+        "exec": "/home/mycroft/.local/bin/clipboard-info primary",
+        "on-click": "wl-paste -p --no-newline | wl-copy && notify-send 'primary -> clipboard copied!'",
+        "on-click-right": "wl-paste --no-newline | wl-copy -p && notify-send 'clipboard -> primary copied!'",
+    },
+    "custom/bitcoin": {
+        "format": "BTC: {}",
+        "interval": 360,
+        "exec": "/usr/bin/curl -sq https://api.coinbase.com/v2/exchange-rates?currency=BTC | jq -r .data.rates.EUR | cut -d. -f1"
+    },
+    "custom/power": {
+        "format" : "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    }
+}

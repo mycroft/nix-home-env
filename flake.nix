@@ -64,6 +64,10 @@
           ./home.nix
         ];
 
+        swayWaybarModules = modules ++ [
+          ./modules/sway-waybar
+        ];
+
         extraSpecialArgs = rec {
           username = "mycroft";
           homeDirectory = "/home/${username}";
@@ -85,6 +89,10 @@
             "glitter" = home-manager.lib.homeManagerConfiguration {
               inherit extraSpecialArgs modules pkgs;
             };
+            "quantum" = home-manager.lib.homeManagerConfiguration {
+              modules = swayWaybarModules;
+              inherit extraSpecialArgs pkgs;
+            };
             "nee" = home-manager.lib.homeManagerConfiguration {
               extraSpecialArgs = extraSpecialArgs // {
                 commonVars = {
@@ -95,7 +103,8 @@
                   ELECTRON_OZONE_PLATFORM_HINT = "auto";
                 };
               };
-              inherit modules pkgs;
+              modules = swayWaybarModules;
+              inherit pkgs;
             };
           };
         };
