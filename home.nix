@@ -99,7 +99,6 @@ in
         httpie
         curlie
         btop
-        htop
 
         # code: git, gitea, etc.
         tea
@@ -147,6 +146,7 @@ in
         nova
         pluto
         conftest
+        velero
 
         # kubernetes components tools
         natscli
