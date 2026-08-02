@@ -165,8 +165,8 @@
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "on-click": "/usr/bin/brightnessctl -- s +5%",
-        "on-click-right": "/usr/bin/brightnessctl -- s -5%",
+        "on-click": "/usr/bin/brightnessctl set +5%",
+        "on-click-right": "/usr/bin/brightnessctl set 5%- --min-value 1",
         "scroll-step": 0.0
     },
     "battery": {
