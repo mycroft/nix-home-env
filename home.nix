@@ -107,6 +107,7 @@ in
         lazygit
         mise
         prek
+        devbox
 
         # code: golang
         gopls
