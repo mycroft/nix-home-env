@@ -9,6 +9,7 @@ let
   username = specialArgs.username;
   homeDirectory = specialArgs.homeDirectory;
   helmfile = specialArgs.helmfile;
+  herdrPackage = specialArgs.herdrPackage;
   locale = "en_US.UTF-8";
   editor = "nvim";
 
@@ -199,6 +200,7 @@ in
       ++ [
         rustToolChain
         helmfile
+        herdrPackage
       ];
   };
 

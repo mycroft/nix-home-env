@@ -29,6 +29,10 @@
       url = "github:dagger/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    herdr = {
+      url = "github:herdrdev/herdr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -42,6 +46,7 @@
       pre-commit-hooks,
       rust-overlay,
       dagger,
+      herdr,
       ...
     }:
     flake-utils.lib.eachSystem [ flake-utils.lib.system.x86_64-linux ] (
@@ -73,6 +78,7 @@
           homeDirectory = "/home/${username}";
           commonVars = { };
           helmfile = pkgs-helmfile.helmfile;
+          herdrPackage = herdr.packages.${system}.default;
         };
       in
       {
