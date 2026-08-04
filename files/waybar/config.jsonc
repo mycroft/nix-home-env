@@ -20,12 +20,6 @@
     ],
     "modules-right": [
         // "mpd",
-        "custom/bitcoin",
-        "custom/separator",
-        "custom/clipboard-regular",
-        "custom/separator",
-        "custom/clipboard-primary",
-        "custom/separator",
         "network#wifi",
         "custom/separator",
         "network#eth",
@@ -294,25 +288,6 @@
         "format": "/home:{}",
         "inverval": 120,
         "exec": "df -h --output=used,pcent /home|sed 's/  */ /g' | tail -n1"
-    },
-    "custom/clipboard-regular": {
-        "format": "clip:{}",
-        "interval": 5,
-        "exec": "/home/mycroft/.local/bin/clipboard-info clipboard",
-        "on-click": "wl-paste --no-newline | wl-copy -p && notify-send 'clipboard -> primary copied!'",
-        "on-click-right": "wl-paste -p --no-newline | wl-copy && notify-send 'primary -> clipboard copied!'"
-    },
-    "custom/clipboard-primary": {
-        "format": "pri:{}",
-        "interval": 5,
-        "exec": "/home/mycroft/.local/bin/clipboard-info primary",
-        "on-click": "wl-paste -p --no-newline | wl-copy && notify-send 'primary -> clipboard copied!'",
-        "on-click-right": "wl-paste --no-newline | wl-copy -p && notify-send 'clipboard -> primary copied!'",
-    },
-    "custom/bitcoin": {
-        "format": "BTC: {}",
-        "interval": 360,
-        "exec": "/usr/bin/curl -sq https://api.coinbase.com/v2/exchange-rates?currency=BTC | jq -r .data.rates.EUR | cut -d. -f1"
     },
     "custom/power": {
         "format" : "⏻ ",
