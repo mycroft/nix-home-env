@@ -84,17 +84,34 @@
           homeConfigurations = {
             # default configuration
             "mycroft" = home-manager.lib.homeManagerConfiguration {
-              inherit extraSpecialArgs modules pkgs;
+              extraSpecialArgs = extraSpecialArgs // {
+                hostname = "mycroft";
+              };
+              inherit modules pkgs;
             };
             "glitter" = home-manager.lib.homeManagerConfiguration {
-              inherit extraSpecialArgs modules pkgs;
+              extraSpecialArgs = extraSpecialArgs // {
+                hostname = "glitter";
+              };
+              inherit modules pkgs;
             };
             "quantum" = home-manager.lib.homeManagerConfiguration {
+              extraSpecialArgs = extraSpecialArgs // {
+                hostname = "quantum";
+              };
               modules = swayWaybarModules;
-              inherit extraSpecialArgs pkgs;
+              inherit pkgs;
+            };
+            "relax" = home-manager.lib.homeManagerConfiguration {
+              extraSpecialArgs = extraSpecialArgs // {
+                hostname = "relax";
+              };
+              modules = swayWaybarModules;
+              inherit pkgs;
             };
             "nee" = home-manager.lib.homeManagerConfiguration {
               extraSpecialArgs = extraSpecialArgs // {
+                hostname = "nee";
                 commonVars = {
                   # Somehow required for electron apps to be happy with wayland
                   # without this, I'm getting borders for menus in VScode as it seems
