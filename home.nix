@@ -148,6 +148,8 @@ in
         pluto
         conftest
         velero
+        kubeseal
+        vault-bin
 
         # kubernetes components tools
         natscli
