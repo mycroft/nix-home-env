@@ -93,7 +93,8 @@
               extraSpecialArgs = extraSpecialArgs // {
                 hostname = "glitter";
               };
-              inherit modules pkgs;
+              modules = swayWaybarModules;
+              inherit pkgs;
             };
             "quantum" = home-manager.lib.homeManagerConfiguration {
               extraSpecialArgs = extraSpecialArgs // {
