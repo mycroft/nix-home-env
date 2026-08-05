@@ -1,102 +1,133 @@
 # nix-home-env
 
-## Initial installation
+Personal [Home Manager](https://github.com/nix-community/home-manager) configuration for a Nix-based development environment. The flake provides a shared configuration plus optional Sway and Waybar settings for several hosts.
 
-Prior installing nix, you might want to disable selinux if you're on Fedora like me.
+## Features
 
-Install nix with the recommended way:
+- Reproducible command-line and development tools from a pinned `flake.lock`
+- Modular configuration for Fish, Git, Neovim, SSH, tmux, and other tools
+- Host-specific Sway configuration with a shared fallback
+- Formatting checks through `nix flake check`
 
-```sh
-$ sh <(curl -L https://nixos.org/nix/install) --daemon
-```
+## Getting started
 
-Then, make sure to enable experimental features:
+### Prerequisites
 
-```sh
-$ mkdir -p ~/.config/nix && echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
-```
+- A 64-bit Linux system (`x86_64-linux`)
+- Nix with the `nix-command` and `flakes` experimental features enabled
+- Git
 
-You need the repository to be inside ~/.config/home-manager:
+Install Nix by following the [official installation instructions](https://nixos.org/download/). For a multi-user installation, ensure the Nix daemon is running before continuing.
 
-```sh
-$ ln -s /path/to/nix-home-env ~/.config/home-manager
-$ ls -l ~/.config/home-manager/home.nix
-```
-
-Then, build & switch the home:
+Enable flakes if they are not already enabled:
 
 ```sh
-$ nix run home-manager/master -- switch -b backup
+mkdir -p ~/.config/nix
+grep -qxF 'extra-experimental-features = nix-command flakes' ~/.config/nix/nix.conf 2>/dev/null || \
+  printf '%s\n' 'extra-experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 ```
 
-On your first install, there might be a conflict for `~/.config/nix/nix.conf`. You can use the `-b backup` flag so the file is moved if in he way. Further reconcialiation will work.
+### Installation
+
+Clone the repository:
+
+```sh
+git clone https://github.com/mycroft/nix-home-env.git ~/.config/home-manager
+cd ~/.config/home-manager
+```
+
+Choose the configuration matching the machine:
+
+| Host | Desktop configuration |
+|------|-----------------------|
+| `mycroft` | Base configuration only |
+| `glitter` | Sway and Waybar, with host-specific Sway settings |
+| `quantum` | Sway and Waybar, using the default Sway host settings |
+| `relax` | Sway and Waybar, with host-specific Sway settings |
+| `nee` | Sway and Waybar, with host-specific Sway and Electron settings |
+
+Apply it by replacing `<host>` with one of the names above:
+
+```sh
+nix run github:nix-community/home-manager -- switch --flake ".#<host>" -b backup
+```
+
+The `-b backup` option moves files that would otherwise conflict with Home Manager. After the first successful installation, use the installed command for subsequent updates:
+
+```sh
+home-manager switch --flake ".#<host>"
+```
+
+## Development
+
+Enter the development shell to install the formatter and Git pre-commit hook:
+
+```sh
+nix develop
+```
+
+Format Nix files:
+
+```sh
+nix fmt
+```
+
+Run the flake checks:
+
+```sh
+nix flake check
+```
 
 ## Login shell
 
-If you want home-manager to control the login shell, you'll need to:
+To let Home Manager control the login shell, add the generated Fish executable to `/etc/shells` and select it with `chsh`. Login shells should load these generated environment scripts automatically:
 
-* add the shell in `/etc/shells`
-* make sure the following scripts are sourced:
-  * $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-  * /etc/profile.d/nix-daemon.fish
+- `$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh`
+- `/etc/profile.d/nix-daemon.fish` for a multi-user Nix installation
 
-Both script should be loaded by login shell already. However, they're listed here in case something is going wrong. Check help section to reload nix from scratch if your shell is failing.
+## Troubleshooting
 
-## Help!
+### Reload Nix in Fish
 
-### Load nix
+For a single-user installation:
 
-Lost nix in your shell? Reload it!
-
-Without daemon:
-
-```sh
-$ . $HOME/.nix-profile/etc/profile.d/nix.fish
+```fish
+source "$HOME/.nix-profile/etc/profile.d/nix.fish"
 ```
 
-With daemon:
+For a multi-user installation:
 
-```sh
-$ . /etc/profile.d/nix-daemon.fish
+```fish
+source /etc/profile.d/nix-daemon.fish
 ```
 
-### About ssh keys
+### Install authorized SSH keys
 
-`.ssh/authorized_keys` can not be managed by nix. Just do the following and that'll do it:
-
-```sh
-$ rm -f ~/.ssh/authorized_keys
-$ cp ~/.ssh/authorized_keys.nix ~/.ssh/authorized_keys
-$ chmod 600 ~/.ssh/authorized_keys
-```
-
-### pre-commit
-
-You can use `nix flake check` to find out your files correctly formatted or not.
+Home Manager writes the configured public keys to `~/.ssh/authorized_keys.nix`. Install them with the required permissions:
 
 ```sh
-$ nix flake check
-...
+cp ~/.ssh/authorized_keys.nix ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
 ```
 
-If the pre-commit is no longer there, just recreate it with a dev shell:
+Review the generated file before replacing an existing `authorized_keys` file.
 
-```sh
-$ nix develop
-```
+### Clean old generations
 
-### Doing clean up
-
-Listing & cleaning last generations
+List and expire old Home Manager generations:
 
 ```sh
 home-manager generations
 home-manager expire-generations '-7 days'
 ```
 
-Cleaning the nix store
+Collect unused Nix store paths:
 
 ```sh
 nix-store --gc
 ```
 
+## References
+
+- [Nix manual](https://nix.dev/manual/nix/latest/) — Nix commands and configuration
+- [Home Manager manual](https://nix-community.github.io/home-manager/) — Home Manager options and usage
