@@ -334,6 +334,9 @@ in
       source = ./files/hypr;
       recursive = true;
     };
+    "herdr/config.toml" = {
+      source = ./files/herdr/config.toml;
+    };
     "opencode/opencode.json" = {
       source = ./files/opencode/opencode.json;
     };
