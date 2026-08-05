@@ -163,6 +163,7 @@ in
         semgrep
         syft
         grype
+        trivy
 
         # cloud related tools
         rclone
@@ -173,6 +174,7 @@ in
         opentofu
         terraform
         copier
+        tflint
 
         # all other stuff
         unrar
