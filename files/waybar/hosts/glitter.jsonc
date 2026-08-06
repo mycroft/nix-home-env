@@ -3,6 +3,12 @@
 {
     "include": "~/.config/waybar/common.jsonc",
     "output": "DP-3",
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "disable-scroll-wraparound": true,
+        "smooth-scrolling-threshold": 1.0,
+        "enable-bar-scroll": true
+    },
     "modules-right": [
         "network#wifi",
         "custom/separator",
