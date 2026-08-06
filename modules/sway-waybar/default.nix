@@ -1,4 +1,8 @@
-{ specialArgs, ... }:
+{
+  lib,
+  specialArgs,
+  ...
+}:
 let
   hostname = specialArgs.hostname or "default";
 
@@ -12,6 +16,8 @@ let
   waybarHostFile = ../../files/waybar/hosts + "/${hostname}.jsonc";
   waybarConfig =
     if builtins.pathExists waybarHostFile then waybarHostFile else ../../files/waybar/config.jsonc;
+
+  dunstHostFile = ../../files/dunst/hosts + "/${hostname}.conf";
 in
 {
   xdg.configFile = {
@@ -25,5 +31,8 @@ in
     "waybar/config".source = waybarConfig;
     "waybar/common.jsonc".source = ../../files/waybar/config.jsonc;
     "waybar/style.css".source = ../../files/waybar/style.css;
+  }
+  // lib.optionalAttrs (builtins.pathExists dunstHostFile) {
+    "dunst/dunstrc".source = dunstHostFile;
   };
 }
