@@ -324,6 +324,9 @@ in
   systemd.user.sessionVariables = commonVars;
 
   xdg.configFile = {
+    "dunst/dunstrc" = {
+      source = ./files/dunst/dunstrc;
+    };
     "fontconfig/fonts.conf" = {
       source = ./files/fontconfig/fonts.conf;
     };
