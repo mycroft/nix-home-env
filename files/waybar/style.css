@@ -7,7 +7,11 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     /* font-family: monospace; */ /* FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-    font-family: "Noto Sans Mono", "Font Awesome 7 Free", "Noto Color Emoji";
+    /* Both Font Awesome majors are listed on purpose: Arch ships 7, Fedora 6.
+       Naming only the absent one leaves the glyphs to fontconfig fallback,
+       which picks unrelated fonts (Jomolhari, Symbola) for the shared
+       codepoints. */
+    font-family: "Noto Sans Mono", "Font Awesome 7 Free", "Font Awesome 6 Free", "Noto Color Emoji";
     font-size: 12px;
 }
 

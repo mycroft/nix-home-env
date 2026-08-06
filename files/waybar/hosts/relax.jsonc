@@ -1,0 +1,10 @@
+// relax runs Fedora, which packages no Nerd Font. The shared backlight
+// format-icons are Nerd Fonts Weather glyphs (U+E38D-U+E3D3) and render as
+// tofu here, so fall back to a plain text label like cpu/memory/temperature.
+// Everything else is inherited from the shared configuration.
+{
+    "include": "~/.config/waybar/common.jsonc",
+    "backlight": {
+        "format": "bl:{percent}%"
+    }
+}
