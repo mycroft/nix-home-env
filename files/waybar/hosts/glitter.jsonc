@@ -1,0 +1,45 @@
+// glitter is a desktop, so it has neither a battery nor a controllable laptop
+// backlight. All module formatting is inherited from the shared configuration.
+{
+    "include": "~/.config/waybar/common.jsonc",
+    "output": "DP-3",
+    "modules-right": [
+        "network#wifi",
+        "custom/separator",
+        "network#eth",
+        "custom/separator",
+        "cpu",
+        "custom/separator",
+        "memory",
+        "custom/separator",
+        "custom/disk-root",
+        "custom/separator",
+        "custom/disk-home",
+        "custom/separator",
+        "custom/disk-data",
+        "custom/separator",
+        "temperature",
+        "custom/separator",
+        "idle_inhibitor",
+        "custom/separator",
+        "pulseaudio",
+        "custom/separator",
+        "pulseaudio#microphone",
+        "custom/separator",
+        "clock",
+        "tray"
+    ],
+    "custom/disk-data": {
+        "format": "/data:{}",
+        "interval": 120,
+        "exec": "df -h --output=used,pcent /data | sed 's/  */ /g' | tail -n1"
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "mic:{volume}% ",
+        "format-source-muted": "mic:muted ",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%"
+    }
+}
