@@ -323,6 +323,17 @@ in
   # systemd on login with nix session env. vars. are not loaded yet.
   systemd.user.sessionVariables = commonVars;
 
+  # org.gnome.desktop.interface defaults gtk-enable-primary-paste to false in
+  # the upstream schema. Where xdg-desktop-portal-gtk runs, it serves that value
+  # to every GTK4 app, which disables middle-click paste in Ghostty. Hosts
+  # without that portal fall back to GTK's own default and are unaffected, which
+  # is why this only bites on some machines.
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-enable-primary-paste = true;
+    };
+  };
+
   xdg.configFile = {
     "dunst/dunstrc" = {
       source = ./files/dunst/dunstrc;
