@@ -336,7 +336,7 @@ in
 
   xdg.configFile = {
     "dunst/dunstrc" = {
-      source = ./files/dunst/dunstrc;
+      source = lib.mkDefault ./files/dunst/dunstrc;
     };
     "fontconfig/fonts.conf" = {
       source = ./files/fontconfig/fonts.conf;
