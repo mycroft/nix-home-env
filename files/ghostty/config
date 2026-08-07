@@ -23,6 +23,14 @@ shell-integration = fish
 clipboard-paste-protection = false
 confirm-close-surface = false
 
+# Paste from clipboard on ctrl+v. Ghostty does not bind ctrl+v by default, so it
+# is otherwise forwarded as ^V (0x16) and only works where the app can reach the
+# clipboard itself -- never over ssh. Binding it here makes ghostty do the paste
+# locally, so it works in remote shells and herdr panes too.
+# Trade-off: remote apps no longer see ^V (vim visual-block, fish/readline
+# quoted-insert, tmux literal-next). ctrl+shift+v and shift+insert still work.
+keybind = ctrl+v=paste_from_clipboard
+
 # Fix start up time on some systems, see https://ghostty.org/docs/help/gtk-single-instance
 gtk-single-instance = true
 
