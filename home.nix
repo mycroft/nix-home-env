@@ -380,6 +380,10 @@ in
     executable = true;
   };
 
+  home.file.".pi/agent/models.json" = {
+    source = ./files/pi/models.json;
+  };
+
   home.file.".granted/config.template" = {
     source = ./files/granted/config;
     onChange = ''

@@ -1,0 +1,17 @@
+{
+  "providers": {
+    "llama-local": {
+      "baseUrl": "https://llm-api.iop.cx/llama.cpp/v1",
+      "api": "openai-completions",
+      "apiKey": "!pass Mkz/llama-server-api-keys | head -1",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false,
+        "maxTokensField": "max_tokens"
+      },
+      "models": [
+        { "id": "Qwen", "contextWindow": 131072, "maxTokens": 8192 }
+      ]
+    }
+  }
+}
