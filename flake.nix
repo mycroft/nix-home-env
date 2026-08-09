@@ -70,6 +70,7 @@
         ];
 
         swayWaybarModules = modules ++ [
+          ./modules/clipboard-applet
           ./modules/sway-waybar
         ];
 
