@@ -8,6 +8,8 @@
 
   home.packages = [ pkgs.clipboard-applet ];
 
+  xdg.configFile."clipboard-applet/config.toml".source = ../../files/clipboard-applet/config.toml;
+
   xdg.dataFile."applications/clipboard-applet.desktop".source =
     "${pkgs.clipboard-applet}/share/applications/clipboard-applet.desktop";
 
