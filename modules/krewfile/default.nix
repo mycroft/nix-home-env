@@ -15,6 +15,8 @@
       "ctx"
       "ns"
       "oidc-login"
+      "whoami"
+      "neat"
     ];
   };
 }

@@ -147,6 +147,7 @@ in
         kubeconform
         nova
         pluto
+        argo-rollouts
         conftest
         velero
         kubeseal
