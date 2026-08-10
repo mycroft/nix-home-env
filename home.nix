@@ -174,6 +174,7 @@ in
         # infra
         opentofu
         terraform
+        terragrunt
         copier
         tflint
 
