@@ -10,8 +10,8 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "mycroft";
     repo = "clipboard-applet";
-    rev = "e771994d4f0035d35d4397822ffcfd45ed70145a";
-    hash = "sha256-1qD1B3hkNG0xP3Vu3uVNZZ5eJX7epEG47iCQYgWHsb4=";
+    rev = "fd8fe7337f3dc664ff2d2187ffa054f7802d1e84";
+    hash = "sha256-dKznyiDUCTJw+pSNIij44PBCiLTnI0z7xAZnjhbz7mk=";
   };
 
   cargoHash = "sha256-4fTfx6SPUqBfHJ84XF6tP8vryDyE3VKSi6GI4sG3ve0=";
