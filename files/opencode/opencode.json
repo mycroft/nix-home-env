@@ -11,8 +11,8 @@
                 "llama-server": {
                     "name": "Qwen",
                     "limit": {
-                        "context": 131072,
-                        "output": 65536
+                        "context": 196608,
+                        "output": 16384
                     },
                     "reasoning": true,
                     "options": {

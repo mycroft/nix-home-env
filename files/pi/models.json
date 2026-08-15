@@ -10,7 +10,7 @@
         "maxTokensField": "max_tokens"
       },
       "models": [
-        { "id": "Qwen", "contextWindow": 131072, "maxTokens": 8192 }
+        { "id": "Qwen", "contextWindow": 196608, "maxTokens": 16384 }
       ]
     }
   }
