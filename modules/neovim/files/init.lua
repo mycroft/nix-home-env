@@ -32,9 +32,9 @@ vim.opt.smarttab = true
 vim.api.nvim_command('filetype plugin indent on')
 
 -- enables mouse in normal, visual, insert modes
-vim.opt.mouse = "nvi"
+vim.opt.mouse = ""
 -- use both "*" and "+" registers for yank/paste operations
-vim.opt.clipboard = "unnamed,unnamedplus"
+-- vim.opt.clipboard = "unnamed,unnamedplus"
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':tabnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-p>', ':tabprevious<CR>', { noremap = true, silent = true })
