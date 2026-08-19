@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.git = {
     enable = true;
@@ -102,6 +102,22 @@
       key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";
       signByDefault = true;
       format = "openpgp";
+
+      # git runs gpg without a tty on any fd, even from an interactive shell,
+      # so the only usable signal is whether a controlling terminal exists at
+      # all. Inside claude, codex or pi there is none, and GPG_TTY is inherited
+      # from whichever pane launched the tool - pinentry then prompts on a
+      # terminal nobody is watching and the commit hangs. Fail there instead.
+      signer = toString (pkgs.writeShellScript "gpg-sign-or-fail" ''
+        if ( exec 3< /dev/tty ) 2>/dev/null; then
+          exec ${pkgs.gnupg}/bin/gpg "$@"
+        fi
+
+        ${pkgs.gnupg}/bin/gpg --pinentry-mode error "$@" && exit 0
+        rc=$?
+        echo "gpg: cannot prompt for the passphrase here (no terminal); unlock the key in a shell with gpg-warm" >&2
+        exit $rc
+      '');
     };
   };
 }

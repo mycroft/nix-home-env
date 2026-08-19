@@ -35,7 +35,11 @@
 
     shellInit = ''
       function fish_greeting
-        # Remove bobthefish default greetings
+        # Remove bobthefish default greetings, but warn when the GPG signing
+        # key is locked: agent tools (claude, codex, pi) cannot answer a
+        # pinentry prompt, so a commit there just hangs.
+        gpg-warm --check
+        or true
       end
 
       function __bobthefish_prompt_aws_vault_profile -S -d 'Show AWS Vault profile'
@@ -69,6 +73,69 @@
     shellInitLast = ''
       set fish_complete_path ${config.home.path}/share/fish/vendor_completions.d $fish_complete_path
     '';
+
+    functions = {
+      gpg-warm = {
+        description = "Cache the GPG signing passphrase for the running gpg-agent";
+        body = ''
+          argparse check -- $argv
+          or return 2
+
+          pgrep -x gpg-agent >/dev/null
+          or return 0
+
+          # The cache cannot be tracked by agent PID: a home-manager switch
+          # rewrites gpg-agent.conf and reloads the agent, and SIGHUP flushes
+          # the passphrase cache while the process keeps running. So the stamp
+          # is only a short burst guard, to keep opening several panes at once
+          # from paying the ~100ms probe every time. A manual run never takes
+          # the shortcut, so it always reports what it found.
+          set -l stamp $HOME/.cache/gpg-warm-stamp
+          if set -q _flag_check
+            set -l last (cat $stamp 2>/dev/null)
+            if test -n "$last"; and test (math (date +%s) - $last) -lt 60
+              return 0
+            end
+          end
+
+          # --pinentry-mode error fails instead of prompting, so this is a
+          # safe "is the key cached?" probe.
+          if echo | gpg --pinentry-mode error --clearsign >/dev/null 2>&1
+            mkdir -p (dirname $stamp)
+            date +%s >$stamp
+            set -q _flag_check
+            or echo "gpg: signing key is already cached"
+            return 0
+          end
+
+          if set -q _flag_check
+            set_color yellow
+            echo "gpg: signing key is locked - run gpg-warm"
+            set_color normal
+            return 1
+          end
+
+          if not isatty stdin
+            echo "gpg-warm: needs a terminal to prompt for the passphrase" >&2
+            return 1
+          end
+
+          # An inherited GPG_TTY can name a pane that is gone, which is how
+          # prompts end up invisible. Point pinentry at this terminal.
+          set -lx GPG_TTY (tty)
+          gpg-connect-agent updatestartuptty /bye >/dev/null
+
+          if echo | gpg --clearsign >/dev/null
+            mkdir -p (dirname $stamp)
+            date +%s >$stamp
+            echo "gpg: signing key cached"
+          else
+            echo "gpg-warm: could not cache the signing key" >&2
+            return 1
+          end
+        '';
+      };
+    };
 
     shellAbbrs = {
       btm = "btm --theme nord";
