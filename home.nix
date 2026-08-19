@@ -246,6 +246,19 @@ in
 
     direnv = {
       enable = true;
+      stdlib = ''
+        # Make every .envrc under /work inherit /work/.envrc, so entering a
+        # project does not drop the work environment. Kept here (machine-local)
+        # instead of committing source_up in each project repository.
+        #
+        # direnv sources this file but does not watch it, so edits would not
+        # invalidate already-loaded environments. Watch it explicitly.
+        watch_file "''${DIRENV_CONFIG:-''${XDG_CONFIG_HOME:-$HOME/.config}/direnv}/direnvrc"
+
+        case "$PWD" in
+          /work/*) source_up_if_exists ;;
+        esac
+      '';
     };
 
     jujutsu = {
