@@ -100,6 +100,7 @@ in
         httpie
         curlie
         btop
+        delta
 
         # code: git, gitea, etc.
         tea
