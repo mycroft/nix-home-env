@@ -36,17 +36,18 @@
         "custom/separator",
         "backlight",
         "custom/separator",
+        "idle_inhibitor",
+        "custom/separator",
         // "keyboard-state",
         // "sway/language",
         "battery",
         "custom/separator",
+        // "custom/separator",
         // "battery#bat2",
-        "idle_inhibitor",
+        "power-profiles-daemon",
         "custom/separator",
         "pulseaudio",
         "custom/separator",
-        // "power-profiles-daemon",
-        // "custom/separator",
         "clock",
         "tray"
         // "custom/separator",
@@ -164,20 +165,20 @@
         "scroll-step": 0.0
     },
     "battery": {
-        "interval": 1,
+        "interval": 5,
         "states": {
-            "full": 100,
-            "good": 90,
+            "full": 98,
+            "good": 80,
             "warning": 30,
             "critical": 15
         },
-        // "full-at": 98,
+        "full-at": 98,
         "format": "bat:{capacity}% {icon} ",
         "format-discharging": "bat:{capacity}% {time} {icon} ",
         "format-charging-good": "bat:{capacity}% {time} {icon} ",
-        "format-charging-full": "bat:full 🔌 {icon} ",
+        "format-charging-full": "🔌 {icon} ",
         "format-plugged": "bat:{capacity}% 🔌 {icon} ",
-        "format-plugged-full": "bat:full 🔌 {icon} ",
+        "format-plugged-full": "🔌 {icon} ",
         // "format-plugged-full": "bat:full {icon} ",
         // "format-plugged-good": "bat:full {icon} ",
         /*
@@ -210,10 +211,10 @@
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
       "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
+        "default": "perf ",
+        "performance": "perf ",
+        "balanced": "balanced ",
+        "power-saver": "saving "
       }
     },
     "network#wifi": {

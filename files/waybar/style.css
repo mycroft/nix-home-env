@@ -209,23 +209,16 @@ button:hover {
     animation-direction: alternate;
 }
 
-#power-profiles-daemon {
-    padding-right: 15px;
-}
-
 #power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
+    color: #90ee90; /* light green */
 }
 
 #power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
+    color: #ffa500; /* orange */
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
+    color: #ffff00; /* yellow */
 }
 
 label:focus {
