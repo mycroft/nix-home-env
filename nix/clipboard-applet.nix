@@ -10,11 +10,11 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "mycroft";
     repo = "clipboard-applet";
-    rev = "fd8fe7337f3dc664ff2d2187ffa054f7802d1e84";
-    hash = "sha256-dKznyiDUCTJw+pSNIij44PBCiLTnI0z7xAZnjhbz7mk=";
+    rev = "017dd6ec0c95f276da9e5aef824598fa4218c95e";
+    hash = "sha256-Knl/8gTWBJsyi05+j4v0Ut8fZFtP2qUN2/kjyY/QFv4=";
   };
 
-  cargoHash = "sha256-4fTfx6SPUqBfHJ84XF6tP8vryDyE3VKSi6GI4sG3ve0=";
+  cargoHash = "sha256-mJ8RnOTahzjuP5QEhcIjg0t58mH2ba4a6AsBhZneS84=";
 
   postInstall = ''
     install -Dm644 contrib/clipboard-applet.desktop \
