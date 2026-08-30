@@ -397,3 +397,26 @@ label:focus {
 #privacy-item.audio-out {
     background-color: #0069d4;
 }
+
+#custom-ac.plugged   { color: #66ff00; }
+#custom-ac.unplugged { color: yellow; }
+#custom-ac.unknown   { color: #f53c3c; }
+
+#custom-battery.charging,
+#custom-battery.full         { color: #66ff00; }
+#custom-battery.discharging,
+#custom-battery.not-charging { color: #ffffff; }
+#custom-battery.warning      { color: yellow; }
+#custom-battery.unknown      { color: #f53c3c; }
+
+#custom-battery.charging.critical { color: yellow; }
+
+#custom-battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

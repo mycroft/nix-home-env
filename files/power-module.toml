@@ -1,0 +1,25 @@
+# power-module — every setting is optional; anything left out keeps the
+# built-in default. Command-line flags always win over this file.
+
+[general]
+# What to report when neither --ac nor --battery is given: ac, battery, or all.
+scope = "all"
+# Terminal colour: auto, always, or never. auto colours only on a terminal.
+color = "auto"
+
+[levels]
+# Charge bands, in percent: they decide the terminal colour and the CSS class
+# waybar receives.
+full = 98
+warning = 30
+critical = 15
+
+[formats]
+# The lines printed on the terminal.
+ac = "{name}: {state}"
+battery = "{name}: {status}[ {percent}%][ ({time} {caption})]"
+summary = "Battery: {status}[ {percent}%][ ({time} {caption})]"
+
+# The waybar `text` field, i.e. what `{}` renders as in a module's format.
+bar = "[{percent}%][ {time}]"
+bar_ac = "{state}"

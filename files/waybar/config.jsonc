@@ -40,7 +40,9 @@
         "custom/separator",
         // "keyboard-state",
         // "sway/language",
-        "battery",
+        "custom/ac",
+        "custom/separator",
+        "custom/battery",
         "custom/separator",
         // "custom/separator",
         // "battery#bat2",
@@ -164,47 +166,27 @@
         "on-click-right": "/usr/bin/brightnessctl set 5%- --min-value 1",
         "scroll-step": 0.0
     },
-    "battery": {
+    "custom/ac": {
+        "exec": "/home/mycroft/.nix-profile/bin/power-module --waybar --ac",
+        "return-type": "json",
         "interval": 5,
-        "states": {
-            "full": 98,
-            "good": 80,
-            "warning": 30,
-            "critical": 15
-        },
-        "full-at": 98,
-        "format": "bat:{capacity}% {icon} ",
-        "format-discharging": "bat:{capacity}% {time} {icon} ",
-        "format-charging-good": "bat:{capacity}% {time} {icon} ",
-        "format-charging-full": "🔌 {icon} ",
-        "format-plugged": "bat:{capacity}% 🔌 {icon} ",
-        "format-plugged-full": "🔌 {icon} ",
-        // "format-plugged-full": "bat:full {icon} ",
-        // "format-plugged-good": "bat:full {icon} ",
-        /*
-        "format-plugged": "bat:plugged",
-        "format-good": "good",
-        "format-full": "full",
-        "format-charging": "charging",
-        "format-plugged": "plugged",
-        "format-plugged-good": "plugged + good",
-        "format-plugged-warning": "plugged + warn",
-        "format-plugged-critical": "plugged + crit",
-        "format-full-plugged": "fp",
-        "format-not-charging": "not charging",
-        "format-discharging": "discharging",
-        "format-discharging-good": "discharging good",
-        "format-discharging-full": "discharging full",
-        "format-discharging-warning": "discharging warning",
-        "format-plugged-good": "plugged good",
-        "format-plugged-full": "plugged full",
-        */
-        // "format-good": "bat:{icon}", // An empty format will hide the module
-        // "format-full": "bat:{icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format": "ac: {text} {icon}",
+        "format-icons": { "plugged": "󰚥", "unplugged": "󰚦", "unknown": "󰠠" },
+        "tooltip": true
     },
-    "battery#bat2": {
-        "bat": "BAT2"
+    "custom/battery": {
+        "exec": "/home/mycroft/.nix-profile/bin/power-module --waybar --battery",
+        "return-type": "json",
+        "interval": 5,
+        "format": "bat: {text} {icon}",
+        "format-icons": {
+            "charging":     ["󰢜", "󰂆", "󰂈", "󰂉", "󰂊", "󰂋", "󰂅"],
+            "discharging":  ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+            "not-charging": "󰂃",
+            "full":         "󰁹",
+            "unknown":      "󰂑"
+        },
+        "tooltip": true
     },
     "power-profiles-daemon": {
       "format": "{icon}",
