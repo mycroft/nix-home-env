@@ -403,9 +403,9 @@ label:focus {
 #custom-ac.unknown   { color: #f53c3c; }
 
 #custom-battery.charging,
-#custom-battery.full         { color: #66ff00; }
-#custom-battery.discharging,
-#custom-battery.not-charging { color: #ffffff; }
+#custom-battery.full,
+#custom-battery.not-charging { color: #66ff00; }
+#custom-battery.discharging  { color: #ffffff; }
 #custom-battery.warning      { color: yellow; }
 #custom-battery.unknown      { color: #f53c3c; }
 

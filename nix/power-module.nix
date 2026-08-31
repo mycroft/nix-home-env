@@ -10,8 +10,8 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "mycroft";
     repo = "power-module";
-    rev = "42433dcef54ef741f5e00170fee64efbe8ed6aec";
-    hash = "sha256-M/+NAcP96NEBGthVl0OeJE4kNmTJWOeKOxli3ZL/SPY=";
+    rev = "311dd9053b1e31c390bfc87503f4512fbe390857";
+    hash = "sha256-uGNRuHmNSsc3gEmrPAAvp9YO+/zd5/UABet0zAPkwPQ=";
   };
 
   cargoHash = "sha256-6jFXu7BMti+EatiikUoYzeQPbRXRpdjnfxx83yQqwIo=";
