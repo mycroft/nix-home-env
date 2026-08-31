@@ -1,0 +1,29 @@
+min_version = "2024.1.0"
+
+[env]
+# Configuration to apply: defaults to the short hostname of the current machine.
+HM_HOST = "{{ exec(command='hostname -s') }}"
+
+[tasks.install]
+description = "Apply the home-manager configuration for this host"
+run = 'home-manager switch --flake ".#$HM_HOST"'
+
+[tasks.bootstrap]
+description = "First-time install, backing up conflicting files"
+run = 'nix run github:nix-community/home-manager -- switch --flake ".#$HM_HOST" -b backup'
+
+[tasks.update]
+description = "Update flake inputs"
+run = "nix flake update"
+
+[tasks.fmt]
+description = "Format nix files"
+run = "nix fmt"
+
+[tasks.check]
+description = "Run the flake checks"
+run = "nix flake check"
+
+[tasks.generations]
+description = "List home-manager generations"
+run = "home-manager generations"
