@@ -114,6 +114,9 @@ input "1267:12693:ELAN0676:00_04F3:3195_Touchpad" {
     # Lock sway
     bindsym $mod+Shift+l exec swaylock -f -c 000000
 
+    # Copy the primary selection into the regular clipboard, via clipboard-applet
+    bindsym Ctrl+Shift+c exec busctl --user call io.github.mycroft.ClipboardApplet /io/github/mycroft/ClipboardApplet io.github.mycroft.ClipboardApplet CopyPrimary
+
 #
 # Screenshots:
 #
