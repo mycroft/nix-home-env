@@ -226,7 +226,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "vol:{volume}% {icon} ",
+        "format": "vol:{volume}% {icon}",
         "format-bluetooth": "vol:{volume}%  {icon} ",
         "format-bluetooth-muted": "vol:muted 🔇  {icon} ",
         "format-muted": "vol:muted 🔇",
