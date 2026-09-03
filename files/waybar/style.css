@@ -237,7 +237,16 @@ label:focus {
 }
 
 #disk {
-    background-color: #964b00;
+    /*    background-color: #964b00; */
+}
+
+#disk.warning {
+    color: yellow;
+}
+
+#disk.critical {
+    background-color: #f53c3c;
+    color: #ffffff;
 }
 
 #backlight:hover {

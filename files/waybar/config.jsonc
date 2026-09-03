@@ -28,9 +28,9 @@
         "custom/separator",
         "memory",
         "custom/separator",
-        "custom/disk-root",
+        "disk#root",
         "custom/separator",
-        "custom/disk-home",
+        "disk#home",
         "custom/separator",
         "temperature",
         "custom/separator",
@@ -262,15 +262,25 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/disk-root": {
-        "format": "/:{}",
-        "inverval": 120,
-        "exec": "df -h --output=used,pcent /|sed 's/  */ /g' | tail -n1"
+    "disk#root": {
+        "path": "/",
+        "interval": 120,
+        "format": "/:{free} {percentage_free}%",
+        "states": {
+            "warning": 80,
+            "critical": 90
+        },
+        "tooltip-format": "{used} used of {total} ({percentage_used}%), {free} free"
     },
-    "custom/disk-home": {
-        "format": "/home:{}",
-        "inverval": 120,
-        "exec": "df -h --output=used,pcent /home|sed 's/  */ /g' | tail -n1"
+    "disk#home": {
+        "path": "/home",
+        "interval": 120,
+        "format": "/home:{free} {percentage_free}%",
+        "states": {
+            "warning": 80,
+            "critical": 90
+        },
+        "tooltip-format": "{used} used of {total} ({percentage_used}%), {free} free"
     },
     "custom/power": {
         "format" : "⏻ ",
