@@ -265,7 +265,8 @@
     "disk#root": {
         "path": "/",
         "interval": 120,
-        "format": "/:{free} {percentage_free}%",
+        "unit": "GiB",
+        "format": "/:{specific_free:.0f}G {percentage_free}%",
         "states": {
             "warning": 80,
             "critical": 90
@@ -275,7 +276,8 @@
     "disk#home": {
         "path": "/home",
         "interval": 120,
-        "format": "/home:{free} {percentage_free}%",
+        "unit": "GiB",
+        "format": "/home:{specific_free:.0f}G {percentage_free}%",
         "states": {
             "warning": 80,
             "critical": 90
