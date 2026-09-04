@@ -10,8 +10,11 @@
     /* Both Font Awesome majors are listed on purpose: Arch ships 7, Fedora 6.
        Naming only the absent one leaves the glyphs to fontconfig fallback,
        which picks unrelated fonts (Jomolhari, Symbola) for the shared
-       codepoints. */
-    font-family: "Noto Sans Mono", "Font Awesome 7 Free", "Font Awesome 6 Free", "Noto Color Emoji";
+       codepoints. Symbols Nerd Font covers the Material Design glyphs the
+       ac/battery modules use (U+F0000+) and the Weather glyphs used by
+       backlight (U+E38D-U+E3D3); it sits after Font Awesome so FA keeps
+       priority on the codepoints both fonts carry. */
+    font-family: "Noto Sans Mono", "Font Awesome 7 Free", "Font Awesome 6 Free", "Symbols Nerd Font", "Noto Color Emoji";
     font-size: 12px;
 }
 

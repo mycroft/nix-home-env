@@ -16,6 +16,7 @@ Personal [Home Manager](https://github.com/nix-community/home-manager) configura
 - A 64-bit Linux system (`x86_64-linux`)
 - Nix with the `nix-command` and `flakes` experimental features enabled
 - Git
+- A Nerd Font providing the `Symbols Nerd Font` family, for the Waybar hosts — the ac, battery and backlight modules use Nerd Fonts glyphs that render as tofu without it (Fedora needs the `che/nerd-fonts` Copr; it is not in the official repositories)
 
 Install Nix by following the [official installation instructions](https://nixos.org/download/). For a multi-user installation, ensure the Nix daemon is running before continuing.
 
