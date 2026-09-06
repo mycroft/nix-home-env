@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ lib, ... }:
+let
+  ssh-keys = import ../../nix/ssh-keys.nix;
+in
 {
   programs.git = {
     enable = true;
@@ -50,6 +53,7 @@
         pruneTags = true;
         all = true;
       };
+      gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
       github.user = "mycroft";
       help.autocorrect = 1;
       init.defaultBranch = "main";
@@ -98,26 +102,26 @@
       }
     ];
 
+    # SSH signing: ssh-keygen reads the key file directly, so there is no
+    # agent to restart and no passphrase cache to flush. Unlike gpg, this
+    # works from agent tools (claude, codex, pi) that have no usable tty.
     signing = {
-      key = "A438EE8E0F1C6BAA21EB8EB4BB519E5CD8E7BFA7";
+      key = "~/.ssh/id_ed25519";
       signByDefault = true;
-      format = "openpgp";
-
-      # git runs gpg without a tty on any fd, even from an interactive shell,
-      # so the only usable signal is whether a controlling terminal exists at
-      # all. Inside claude, codex or pi there is none, and GPG_TTY is inherited
-      # from whichever pane launched the tool - pinentry then prompts on a
-      # terminal nobody is watching and the commit hangs. Fail there instead.
-      signer = toString (pkgs.writeShellScript "gpg-sign-or-fail" ''
-        if ( exec 3< /dev/tty ) 2>/dev/null; then
-          exec ${pkgs.gnupg}/bin/gpg "$@"
-        fi
-
-        ${pkgs.gnupg}/bin/gpg --pinentry-mode error "$@" && exit 0
-        rc=$?
-        echo "gpg: cannot prompt for the passphrase here (no terminal); unlock the key in a shell with gpg-warm" >&2
-        exit $rc
-      '');
+      format = "ssh";
     };
   };
+
+  # Lets `git log --show-signature` verify locally; the forges keep their own
+  # copy of the keys. This is the trust list rather than the signing key, so it
+  # holds every host's key and is identical everywhere - a commit signed on one
+  # host has to verify on all the others.
+  #
+  # The principal is the "*" pattern rather than an address: some hosts sign
+  # under a work identity that has no business being in a public repository.
+  # Every key listed here is mine, so the only thing given up is catching one
+  # of my own keys signing as one of my own other identities.
+  home.file.".config/git/allowed_signers".text = lib.strings.concatMapStrings (
+    key: "* ${key}\n"
+  ) ssh-keys;
 }
