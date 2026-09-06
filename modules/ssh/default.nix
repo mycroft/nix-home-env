@@ -51,18 +51,8 @@ in
         user = "mycroft";
         hostname = "10.0.0.129";
       };
-      "saisei" = {
-        user = "mycroft";
-        hostname = "saisei.${lan-suffix}";
-        forwardX11 = true;
-        forwardX11Trusted = true;
-      };
       "nas0" = {
         hostname = "nas0.${lan-suffix}";
-        user = "mycroft";
-      };
-      "mugen-mirai" = {
-        hostname = "mugen-mirai.${lan-suffix}";
         user = "mycroft";
       };
       "moonstone" = {
