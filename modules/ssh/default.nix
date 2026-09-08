@@ -47,10 +47,6 @@ in
         user = "pi";
         hostname = "everyday.${lan-suffix}";
       };
-      "raspberrypi" = {
-        user = "mycroft";
-        hostname = "10.0.0.129";
-      };
       "nas0" = {
         hostname = "nas0.${lan-suffix}";
         user = "mycroft";
@@ -63,6 +59,12 @@ in
       "kali" = {
         hostname = "10.0.0.99";
         user = "kali";
+        forwardX11 = true;
+        forwardX11Trusted = true;
+      };
+      "relax" = {
+        hostname = "10.0.0.18";
+        user = "mycroft";
         forwardX11 = true;
         forwardX11Trusted = true;
       };

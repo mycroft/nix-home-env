@@ -167,6 +167,7 @@ in
         syft
         grype
         trivy
+        zizmor
 
         # cloud related tools
         rclone
