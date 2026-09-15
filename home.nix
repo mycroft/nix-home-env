@@ -75,6 +75,9 @@ in
 
       # shut up, cdk8s
       JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION = "yes";
+
+      # shut up, claude code
+      CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1";
     }
     // commonVars;
 
