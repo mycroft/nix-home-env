@@ -132,6 +132,9 @@ in
         cloc
         pre-commit
 
+        # code: ai assistants
+        nur.repos.charmbracelet.crush
+
         # containers tools
         dive
         hadolint
@@ -374,6 +377,9 @@ in
     };
     "opencode/opencode.json" = {
       source = ./files/opencode/opencode.json;
+    };
+    "crush/crushrc" = {
+      source = ./files/crush/crushrc;
     };
   };
 

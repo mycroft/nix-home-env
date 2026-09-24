@@ -1,0 +1,19 @@
+# Self-hosted llama.cpp server, shared with opencode & pi.
+provider add llama-local \
+  --name "llama-server (iop.cx)" \
+  --type openai-compat \
+  --base-url "https://llm-api.iop.cx/llama.cpp/v1" \
+  --api-key "$(pass Mkz/llama-server-api-keys | head -1)" \
+  --extra-body '{"chat_template_kwargs": {"enable_thinking": true}}'
+
+model add llama-local/Qwen \
+  --name "Qwen" \
+  --context-window 196608 \
+  --default-max-tokens 16384 \
+  --can-reason true
+
+model large llama-local/Qwen
+model small llama-local/Qwen
+
+# Read-only tools run without prompting; everything else asks.
+permissions allow view ls grep glob
