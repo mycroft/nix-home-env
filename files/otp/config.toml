@@ -23,8 +23,9 @@ capture_command = ["grimshot", "save", "area", "{file}"]
 #capture_command = ["scrot", "--select", "{file}"]
 #capture_command = ["spectacle", "--region", "--background", "--nonotify", "--output", "{file}"]
 
-# Command receiving the code on stdin for `otp --clip`.
-clipboard_command = ["wl-copy"]
+# Command receiving the code on stdin for `otp --clip`. --sensitive asks clipboard
+# managers such as cliphist not to keep it in their history.
+clipboard_command = ["wl-copy", "--sensitive"]
 #clipboard_command = ["xclip", "-selection", "clipboard"]
 
 # pass(1) store directory. Default: $PASSWORD_STORE_DIR or ~/.password-store.
