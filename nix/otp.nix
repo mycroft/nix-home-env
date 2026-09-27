@@ -6,16 +6,16 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "otp";
-  version = "0.4.0";
+  version = "0.5.0";
 
   src = fetchFromGitHub {
     owner = "mycroft";
     repo = "otp";
     rev = "v${version}";
-    hash = "sha256-RDVNeNi3aZBZz9zVcrY/aLxAHCwCIYsdfCXgRNsPkM8=";
+    hash = "sha256-d8J23vkDS6l22PVXNyHJZ35EhYDABfY18teFAqUVDNs=";
   };
 
-  cargoHash = "sha256-x9V/IybSi5CQftG4L3JtdbZRROfpn29bVqV6Gv6MkkA=";
+  cargoHash = "sha256-eMbe+90qLVv8Q/G/wBuUTWrZWYaLaUio2wEn5VeN8cA=";
 
   buildFeatures = [ "tui" ];
 
