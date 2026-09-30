@@ -13,18 +13,10 @@
   xdg.dataFile."applications/clipboard-applet.desktop".source =
     "${pkgs.clipboard-applet}/share/applications/clipboard-applet.desktop";
 
-  systemd.user.services.clipboard-applet = {
-    Unit = {
-      Description = "Wayland clipboard tray applet";
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
-    };
-
-    Service = {
-      ExecStart = "${pkgs.clipboard-applet}/bin/clipboard-applet";
-      Restart = "on-abnormal";
-    };
-
-    Install.WantedBy = [ "graphical-session.target" ];
-  };
+  # Started by sway at login rather than as a systemd user service: home-manager
+  # (re)starts services on switch, which fails when the switch does not run from
+  # the graphical session. Sway only runs `exec` lines at startup, not on reload.
+  xdg.configFile."sway/config.d/clipboard-applet.conf".text = ''
+    exec ${pkgs.clipboard-applet}/bin/clipboard-applet
+  '';
 }
