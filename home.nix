@@ -169,7 +169,7 @@ in
         nmap
         step-cli
         # skim # Command-line fuzzy finder written in Rust
-        semgrep
+        # semgrep
         syft
         grype
         trivy
