@@ -35,6 +35,16 @@
         "clock",
         "tray"
     ],
+    "custom/disk-root": {
+        "format": "/:{}",
+        "interval": 120,
+        "exec": "df -h --output=used,pcent / | sed 's/  */ /g' | tail -n1"
+    },
+    "custom/disk-home": {
+        "format": "/home:{}",
+        "interval": 120,
+        "exec": "df -h --output=used,pcent /home | sed 's/  */ /g' | tail -n1"
+    },
     "custom/disk-data": {
         "format": "/data:{}",
         "interval": 120,
