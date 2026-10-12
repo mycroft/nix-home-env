@@ -383,6 +383,12 @@ in
     "opencode/opencode.json" = {
       source = ./files/opencode/opencode.json;
     };
+    "maki/providers.toml" = {
+      source = ./files/maki/providers.toml;
+    };
+    "maki/init.lua" = {
+      source = ./files/maki/init.lua;
+    };
   };
 
   xdg.userDirs.download = "${config.home.homeDirectory}/.downloads";

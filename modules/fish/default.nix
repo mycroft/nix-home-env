@@ -70,6 +70,16 @@
       set fish_complete_path ${config.home.path}/share/fish/vendor_completions.d $fish_complete_path
     '';
 
+    functions = {
+      # Fetch the llama-server key from pass on first use (see files/maki/providers.toml).
+      maki = ''
+        if not set -q LLAMA_LOCAL_API_KEY
+          set -gx LLAMA_LOCAL_API_KEY (pass Mkz/llama-server-api-keys | head -1)
+        end
+        command maki $argv
+      '';
+    };
+
     shellAbbrs = {
       btm = "btm --theme nord";
       l = "lsd -ltr";

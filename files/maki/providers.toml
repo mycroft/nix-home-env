@@ -1,0 +1,20 @@
+# Self-hosted llama.cpp server, shared with opencode & pi.
+# The key is read from $LLAMA_LOCAL_API_KEY (the fish `maki` wrapper fills it from pass).
+[llama-local]
+display_name = "llama-server (iop.cx)"
+protocol = "openai"
+base_url = "https://llm-api.iop.cx/llama.cpp/v1"
+api_key_env = "LLAMA_LOCAL_API_KEY"
+default_model = "llama-local/Qwen"
+
+[[llama-local.models]]
+id = "Qwen"
+tier = "strong"
+context_window = 196608
+max_output_tokens = 16384
+
+# Qwen's chat template toggles reasoning via chat_template_kwargs.
+[llama-local.models.thinking_fields]
+off = { chat_template_kwargs = { enable_thinking = false } }
+adaptive = { chat_template_kwargs = { enable_thinking = true } }
+low = { chat_template_kwargs = { enable_thinking = true } }
