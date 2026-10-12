@@ -33,6 +33,10 @@
       url = "github:herdrdev/herdr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    maki = {
+      url = "github:tontinton/maki";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -47,6 +51,7 @@
       rust-overlay,
       dagger,
       herdr,
+      maki,
       ...
     }:
     flake-utils.lib.eachSystem [ flake-utils.lib.system.x86_64-linux ] (
@@ -81,6 +86,7 @@
           commonVars = { };
           helmfile = pkgs-helmfile.helmfile;
           herdrPackage = herdr.packages.${system}.default;
+          makiPackage = maki.packages.${system}.default;
         };
       in
       {

@@ -10,6 +10,7 @@ let
   homeDirectory = specialArgs.homeDirectory;
   helmfile = specialArgs.helmfile;
   herdrPackage = specialArgs.herdrPackage;
+  makiPackage = specialArgs.makiPackage;
   locale = "en_US.UTF-8";
   editor = "nvim";
 
@@ -138,9 +139,6 @@ in
         cloc
         pre-commit
 
-        # code: ai assistants
-        nur.repos.charmbracelet.crush
-
         # containers tools
         dive
         hadolint
@@ -218,6 +216,7 @@ in
         rustToolChain
         helmfile
         herdrPackage
+        makiPackage
       ];
   };
 
@@ -383,9 +382,6 @@ in
     };
     "opencode/opencode.json" = {
       source = ./files/opencode/opencode.json;
-    };
-    "crush/crushrc" = {
-      source = ./files/crush/crushrc;
     };
   };
 
