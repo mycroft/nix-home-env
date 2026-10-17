@@ -186,10 +186,7 @@ in
 
         # infra
         opentofu
-        terraform
         terramate
-        terragrunt
-        copier
         tflint
 
         # all other stuff
