@@ -120,6 +120,7 @@ in
         mise
         prek
         devbox
+        worktrunk
 
         # code: golang
         gopls
