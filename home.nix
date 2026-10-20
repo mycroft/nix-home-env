@@ -120,7 +120,6 @@ in
         mise
         prek
         devbox
-        worktrunk
 
         # code: golang
         gopls
@@ -317,6 +316,11 @@ in
       enable = true;
       package = pkgs.taskwarrior3;
       dataLocation = "${config.home.homeDirectory}/.sync/task";
+    };
+
+    worktrunk = {
+      enable = true;
+      enableFishIntegration = true;
     };
 
   };
