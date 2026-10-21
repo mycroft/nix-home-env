@@ -1,10 +1,49 @@
 // relax runs Fedora, which packages no Nerd Font. The shared backlight
 // format-icons are Nerd Fonts Weather glyphs (U+E38D-U+E3D3) and render as
 // tofu here, so fall back to a plain text label like cpu/memory/temperature.
+// / and /home are the same filesystem, so only / is shown. lock-indicator reads
+// its checks from ~/.config/lock-indicator/config.toml, which is kept out of
+// this repository.
 // Everything else is inherited from the shared configuration.
 {
     "include": "~/.config/waybar/common.jsonc",
+    "modules-right": [
+        "network#wifi",
+        "custom/separator",
+        "network#eth",
+        "custom/separator",
+        "cpu",
+        "custom/separator",
+        "memory",
+        "custom/separator",
+        "disk#root",
+        "custom/separator",
+        "temperature",
+        "custom/separator",
+        "custom/locks",
+        "custom/separator",
+        "backlight",
+        "custom/separator",
+        "idle_inhibitor",
+        "custom/separator",
+        "custom/ac",
+        "custom/separator",
+        "custom/battery",
+        "custom/separator",
+        "power-profiles-daemon",
+        "custom/separator",
+        "pulseaudio",
+        "custom/separator",
+        "clock",
+        "tray"
+    ],
     "backlight": {
         "format": "bl:{percent}%"
+    },
+    "custom/locks": {
+        "exec": "/home/mycroft/.nix-profile/bin/lock-indicator --format waybar",
+        "return-type": "json",
+        "interval": 60,
+        "tooltip": true
     }
 }

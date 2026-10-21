@@ -414,6 +414,11 @@ label:focus {
 #custom-ac.unplugged { color: yellow; }
 #custom-ac.unknown   { color: #f53c3c; }
 
+#custom-locks.unlocked { color: #66ff00; }
+#custom-locks.partial  { color: yellow; }
+#custom-locks.locked   { color: #f53c3c; }
+#custom-locks.unknown  { color: #666666; }
+
 #custom-battery.charging,
 #custom-battery.full,
 #custom-battery.not-charging { color: #66ff00; }
