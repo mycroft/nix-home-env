@@ -42,6 +42,7 @@ Choose the configuration matching the machine:
 | Host | Desktop configuration |
 |------|-----------------------|
 | `mycroft` | Base configuration only |
+| `moonstone` | Base configuration only (headless AI node) |
 | `glitter` | Sway and Waybar, with host-specific Sway settings |
 | `quantum` | Sway and Waybar, using the default Sway host settings |
 | `relax` | Sway and Waybar, with host-specific Sway settings |

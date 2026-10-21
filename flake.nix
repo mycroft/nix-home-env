@@ -104,6 +104,13 @@
               };
               inherit modules pkgs;
             };
+            # headless node dedicated to AI workloads: no sway/waybar
+            "moonstone" = home-manager.lib.homeManagerConfiguration {
+              extraSpecialArgs = extraSpecialArgs // {
+                hostname = "moonstone";
+              };
+              inherit modules pkgs;
+            };
             "glitter" = home-manager.lib.homeManagerConfiguration {
               extraSpecialArgs = extraSpecialArgs // {
                 hostname = "glitter";
