@@ -24,12 +24,6 @@ let
     ];
   };
 
-  # semgrep 1.172.0 pins pyjwt~=2.13.0 while nixpkgs ships 2.14.0, failing the
-  # runtime deps check. Drop once nixpkgs relaxes or bumps it.
-  semgrep = pkgs.semgrep.overridePythonAttrs (old: {
-    pythonRelaxDeps = (old.pythonRelaxDeps or [ ]) ++ [ "pyjwt" ];
-  });
-
   commonVars = {
     GTK_IM_MODULE = "simple";
     GTK_THEME = "Adwaita:dark";
@@ -173,7 +167,7 @@ in
         nmap
         step-cli
         # skim # Command-line fuzzy finder written in Rust
-        semgrep
+        # semgrep # semgrep-core crashes patchelf 0.19.2 in fixupPhase
         syft
         grype
         trivy
