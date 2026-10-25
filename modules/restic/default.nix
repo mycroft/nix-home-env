@@ -7,8 +7,8 @@ in
     enable = true;
 
     backups.claude-at-work = {
-      # Garage S3 API, reached over Tailscale; the bucket holds one repository per prefix.
-      repository = "s3:http://moonstone:3900/backup-relax/claude";
+      # Garage S3 API behind the LAN reverse proxy; the bucket holds one repository per prefix.
+      repository = "s3:https://s3.lan.mkz.me/backup-relax/claude";
       # Both files are created by hand and kept out of the Nix store.
       passwordFile = "/etc/restic-claude-backup";
       environmentFile = "${config.xdg.configHome}/restic/claude-at-work.env";
