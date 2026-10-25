@@ -129,7 +129,7 @@
               extraSpecialArgs = extraSpecialArgs // {
                 hostname = "relax";
               };
-              modules = swayWaybarModules;
+              modules = swayWaybarModules ++ [ ./modules/restic ];
               inherit pkgs;
             };
             "nee" = home-manager.lib.homeManagerConfiguration {
