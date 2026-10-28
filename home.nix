@@ -111,6 +111,7 @@ in
         tig
         git-filter-repo
         lazygit
+        hunk # terminal diff viewer for agent changesets; https://github.com/modem-dev/hunk
         mise
         prek
         devbox
