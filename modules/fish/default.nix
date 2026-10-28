@@ -20,7 +20,7 @@
 
       # Was \ct, but conflict with bash' transpose-chars
       bind \cf fzf-file-widget
-      bind \cr fzf-history-widget
+      # \cr is bound by atuin (see programs.atuin in home.nix)
 
       fish_add_path -p $GOPATH/bin
 

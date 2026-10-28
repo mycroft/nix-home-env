@@ -231,7 +231,44 @@ in
     fzf = {
       enable = true;
       enableFishIntegration = true;
+      # ctrl+r belongs to atuin; keep fzf for the file widget and completion.
+      historyWidget.command = "";
     };
+
+    # Owns ctrl+r; the up arrow stays fish's prefix history search.
+    atuin = {
+      enable = true;
+      enableFishIntegration = true;
+      flags = [ "--disable-up-arrow" ];
+      settings = {
+        # Self-hosted server on the tailnet; log in with `atuin login`.
+        sync_address = "https://atuin.merino-tiaki.ts.net";
+        theme.name = "marine";
+        # Enter runs the selected command, tab edits it (atuin's default for new installs).
+        enter_accept = true;
+        # Set explicitly: when unset, the first `?` asks and writes the answer into the
+        # read-only config.toml. The api_token comes from pass, see below.
+        ai = {
+          enabled = true;
+          endpoint = "https://atuin-ai.services.mkz.me";
+        };
+      };
+    };
+
+    # atuin's `?` key (on an empty prompt) runs `atuin ai inline`. Wrap that handler to hand it
+    # the atuin-ai-server token from pass, without exporting it to the whole shell. Wrapping
+    # `atuin` itself would break its hooks: fish cannot background a function, which the
+    # `atuin history end ... &; disown` hook relies on. Sourced after atuin's own init.
+    fish.interactiveShellInit = lib.mkAfter ''
+      function _atuin_ai_question_mark_with_token
+          set -l buf (commandline -b)
+          if test -z "$buf" -o "$buf" = "?"
+              set -fx ATUIN_AI__API_TOKEN (pass Mkz/atuin-ai-token | head -1)
+          end
+          _atuin_ai_question_mark
+      end
+      bind "?" _atuin_ai_question_mark_with_token
+    '';
 
     go = {
       enable = true;
