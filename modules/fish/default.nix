@@ -58,6 +58,9 @@
       set -g theme_display_k8s_context no
       set -g theme_display_k8s_namespace on
       set -g theme_display_aws_profile yes
+
+      # Vault on the tailnet (k8s-home charts/security/vault.go)
+      set -gx VAULT_ADDR https://vault.merino-tiaki.ts.net
     '';
 
     # For some reason, the first instance of fish does not have the correct autocompletions for asoai or just.
