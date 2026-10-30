@@ -54,6 +54,7 @@ exec swayidle -w \
 
 exec blueman-applet
 exec nm-applet
+exec handy --start-hidden
 
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -116,6 +117,17 @@ input "1267:12693:ELAN0676:00_04F3:3195_Touchpad" {
 
     # Copy the primary selection into the regular clipboard, via clipboard-applet
     bindsym Ctrl+Shift+c exec busctl --user call io.github.mycroft.ClipboardApplet /io/github/mycroft/ClipboardApplet io.github.mycroft.ClipboardApplet CopyPrimary
+
+    # Toggle Handy speech-to-text recording (Wayland apps can't grab global keys)
+    # bindsym $mod+o exec pkill -USR2 -n handy
+
+    # Handy push-to-talk: hold to record, release to transcribe
+    # bindsym --no-repeat $mod+o exec pkill -USR2 -n handy
+    # bindsym --release   $mod+o exec pkill -USR2 -n handy
+    bindsym --no-repeat Print exec pkill -USR2 -n handy
+    bindsym --release   Print exec pkill -USR2 -n handy
+    # Recover if pressing another key while holding Print left recording on
+    bindsym $mod+Shift+o exec handy --cancel
 
 #
 # Screenshots:
