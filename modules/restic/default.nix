@@ -1,6 +1,8 @@
 { config, ... }:
 let
-  source = "${config.home.homeDirectory}/.claude-at-work";
+  # The real directory: restic stores a symlink as-is, so ~/.claude-at-work (a link to it) would
+  # back up nothing.
+  source = "${config.home.homeDirectory}/.claude";
 in
 {
   services.restic = {
