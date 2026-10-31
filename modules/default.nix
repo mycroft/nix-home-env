@@ -1,4 +1,5 @@
 [
+  ./agent-skills
   ./alacritty
   ./asoai
   ./fish

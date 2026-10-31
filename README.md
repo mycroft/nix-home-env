@@ -80,6 +80,28 @@ Run the flake checks:
 nix flake check
 ```
 
+## Agent skills
+
+`modules/agent-skills` links each skill directory into `~/.agents/skills` (read by Codex, opencode,
+pi and maki) and `~/.claude/skills` (Claude Code), replacing `npx skills`. Skills come from
+repositories pinned as flake inputs (`mycroft-skills`, `gh-stack`, `superpowers`,
+`mattpocock-skills`), or from the package they document (`hunk-review` from `pkgs.hunk`). Claude Code plugins, which add hooks to
+skills, are linked into `~/.claude/skills` only, where Claude Code loads them as personal plugins
+(worktrunk, from the source of the installed `wt`).
+
+- Add a skill: add its name to the module's list, or a new flake input with `flake = false`
+  for another repository, then switch.
+- Update skills: `nix flake update mycroft-skills gh-stack superpowers mattpocock-skills` (or a
+  full `nix flake update`), then switch.
+- Try an unpushed skill change from a local checkout:
+
+  ```sh
+  home-manager switch --flake ".#<host>" --override-input mycroft-skills ~/dev/skills
+  ```
+
+The build fails if a listed skill has no `SKILL.md` (or a plugin no `.claude-plugin/plugin.json`),
+for example after it was renamed upstream.
+
 ## Login shell
 
 To let Home Manager control the login shell, add the generated Fish executable to `/etc/shells` and select it with `chsh`. Login shells should load these generated environment scripts automatically:

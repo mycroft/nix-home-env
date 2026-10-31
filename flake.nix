@@ -37,6 +37,23 @@
       url = "github:tontinton/maki";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Agent skills sources, linked by modules/agent-skills
+    mycroft-skills = {
+      url = "github:mycroft/skills";
+      flake = false;
+    };
+    gh-stack = {
+      url = "github:github/gh-stack";
+      flake = false;
+    };
+    superpowers = {
+      url = "github:obra/superpowers";
+      flake = false;
+    };
+    mattpocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
   };
 
   outputs =
@@ -52,6 +69,10 @@
       dagger,
       herdr,
       maki,
+      mycroft-skills,
+      gh-stack,
+      superpowers,
+      mattpocock-skills,
       ...
     }:
     flake-utils.lib.eachSystem [ flake-utils.lib.system.x86_64-linux ] (
@@ -88,6 +109,14 @@
           helmfile = pkgs-helmfile.helmfile;
           herdrPackage = herdr.packages.${system}.default;
           makiPackage = maki.packages.${system}.default;
+          skillSources = {
+            inherit
+              mycroft-skills
+              gh-stack
+              superpowers
+              mattpocock-skills
+              ;
+          };
         };
       in
       {
