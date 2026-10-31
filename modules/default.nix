@@ -2,6 +2,7 @@
   ./agent-skills
   ./alacritty
   ./asoai
+  ./claude-code
   ./fish
   ./git
   ./krewfile
