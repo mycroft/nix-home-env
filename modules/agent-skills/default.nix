@@ -36,7 +36,7 @@ let
       "editing-skills"
       "review"
     ]
-    ++ lib.optionals (lib.elem specialArgs.hostname serviceHosts) serviceSkills
+    ++ hostSkills.${specialArgs.hostname} or [ ]
   ) (name: "${mycroft-skills}/skills/${name}");
 
   # Self-hosted services; their scripts read a token from `pass mcp/<name>`.
@@ -45,10 +45,13 @@ let
     "grafana"
     "outline"
   ];
-  serviceHosts = [
-    "glitter"
-    "nee"
-  ];
+
+  # Extra skills from mycroft-skills, per host.
+  hostSkills = {
+    glitter = serviceSkills;
+    nee = serviceSkills;
+    relax = [ "daily-recap" ];
+  };
 
   # Codex, opencode, pi and maki read ~/.agents/skills; Claude Code only reads its own directory.
   skillDirs = [

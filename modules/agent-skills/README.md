@@ -20,6 +20,7 @@ Linked into `~/.agents/skills` (Codex, opencode, pi, maki) and `~/.claude/skills
 | gitea | Repositories, issues, pull requests and Actions runs on git.mkz.me (glitter and nee only) | `mycroft-skills` |
 | grafana | Metrics, logs, alerts and dashboards on grafana.services.mkz.me (glitter and nee only) | `mycroft-skills` |
 | outline | Reading and writing the Outline wiki at outline.iop.cx (glitter and nee only) | `mycroft-skills` |
+| daily-recap | Daily recap: open PRs sorted into review / fix / merge, next actions per task, and a review request to post (relax only) | `mycroft-skills` |
 | teach | `/teach`: multi-session tutoring on a topic, keeping lessons and learning records in the current directory | `mattpocock-skills` |
 | grill-me | `/grill-me`: relentless interview to sharpen a plan or design (runs grilling) | `mattpocock-skills` |
 | grill-with-docs | `/grill-with-docs`: the same interview, writing ADRs and a glossary as it goes (runs grilling and domain-modeling) | `mattpocock-skills` |
