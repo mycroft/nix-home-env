@@ -85,9 +85,10 @@ nix flake check
 `modules/agent-skills` links each skill directory into `~/.agents/skills` (read by Codex, opencode,
 pi and maki) and `~/.claude/skills` (Claude Code), replacing `npx skills`. Skills come from
 repositories pinned as flake inputs (`mycroft-skills`, `gh-stack`, `superpowers`,
-`mattpocock-skills`), or from the package they document (`hunk-review` from `pkgs.hunk`). Claude Code plugins, which add hooks to
-skills, are linked into `~/.claude/skills` only, where Claude Code loads them as personal plugins
-(worktrunk, from the source of the installed `wt`).
+`mattpocock-skills`), or from the package they document (`hunk-review` from `pkgs.hunk`, `herdr`
+from the input that builds herdr). Claude Code plugins, which add hooks to skills, are linked into
+`~/.claude/skills` only, where Claude Code loads them as personal plugins (worktrunk, from the
+source of the installed `wt`).
 
 - Add a skill: add its name to the module's list, or a new flake input with `flake = false`
   for another repository, then switch.

@@ -26,6 +26,7 @@ Linked into `~/.agents/skills` (Codex, opencode, pi, maki) and `~/.claude/skills
 | grill-with-docs | `/grill-with-docs`: the same interview, writing ADRs and a glossary as it goes (runs grilling and domain-modeling) | `mattpocock-skills` |
 | grilling | The interview itself, asked in rounds of numbered questions with recommended answers | `mattpocock-skills` |
 | domain-modeling | Sharpening a project's domain model: glossary terms and ADRs | `mattpocock-skills` |
+| herdr | Inspecting and controlling Herdr panes, tabs, workspaces and other agents, only when Herdr is named | `herdr` (same input as the installed herdr) |
 | hunk-review | Driving a live Hunk diff review session: navigation, inline comments, highlights | `pkgs.hunk` |
 
 ## Claude Code plugins
@@ -44,5 +45,6 @@ Linked into `~/.agents/skills` only, since Claude Code already gets them from a 
 |---|---|---|
 | worktrunk | Configuring the `wt` CLI, its hooks and worktree paths (no hooks outside Claude Code) | `programs.worktrunk.package` |
 
-Sources are flake inputs (`mycroft-skills`, `gh-stack`, `superpowers`, `mattpocock-skills`)
-unless they name a package, in which case the skill follows the installed version of that package.
+Sources are flake inputs (`mycroft-skills`, `gh-stack`, `superpowers`, `mattpocock-skills`,
+`herdr`) unless they name a package, in which case the skill follows the installed version of that
+package. The `herdr` input also builds the herdr package, so that skill matches it too.

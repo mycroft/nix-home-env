@@ -115,6 +115,7 @@
               gh-stack
               superpowers
               mattpocock-skills
+              herdr
               ;
           };
         };

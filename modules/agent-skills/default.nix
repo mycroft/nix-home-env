@@ -11,6 +11,7 @@ let
     gh-stack
     superpowers
     mattpocock-skills
+    herdr
     ;
 
   # Skill name -> skill directory. Repositories are pinned in flake.lock, so `nix flake update`
@@ -18,6 +19,8 @@ let
   skills = {
     gh-stack = "${gh-stack}/skills/gh-stack";
     hunk-review = "${pkgs.hunk}/share/skills/hunk/hunk-review";
+    # Same flake input as the installed herdr package.
+    herdr = "${herdr}/skills/herdr";
     test-driven-development = "${superpowers}/skills/test-driven-development";
     writing-skills = "${superpowers}/skills/writing-skills";
 
