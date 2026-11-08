@@ -5,8 +5,10 @@ pane_history = true
 
 [keys]
 prefix = "ctrl+a"
-next_tab = ["prefix+n", "prefix+right"]
-previous_tab = ["prefix+p", "prefix+left"]
+next_tab = "prefix+n"
+previous_tab = "prefix+p"
+focus_pane_left = ["prefix+h", "prefix+left"]
+focus_pane_right = ["prefix+l", "prefix+right"]
 
 # Make sure integrations are installed:
 # $ herdr integration status
