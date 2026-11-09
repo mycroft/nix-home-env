@@ -127,7 +127,6 @@ in
         zls
 
         # code: other languages
-        deno
         pyright
 
         # code: misc
@@ -162,17 +161,15 @@ in
         # kubernetes components tools
         natscli
         cmctl
-        tektoncd-cli
 
         # security tools
         nmap
         step-cli
-        # skim # Command-line fuzzy finder written in Rust
         # semgrep # semgrep-core crashes patchelf 0.19.2 in fixupPhase
         syft
         grype
         trivy
-        zizmor
+        # zizmor
 
         # cloud related tools
         rclone
@@ -186,8 +183,6 @@ in
 
         # all other stuff
         unrar
-        cowsay
-        ponysay
         yq-go
         jq
         # ffsend
@@ -208,7 +203,6 @@ in
         rustToolChain
         helmfile
         herdrPackage
-        makiPackage
       ];
   };
 
@@ -344,17 +338,10 @@ in
       };
     };
 
-    taskwarrior = {
-      enable = true;
-      package = pkgs.taskwarrior3;
-      dataLocation = "${config.home.homeDirectory}/.sync/task";
-    };
-
     worktrunk = {
       enable = true;
       enableFishIntegration = true;
     };
-
   };
 
   services.gpg-agent = {
