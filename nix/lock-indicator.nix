@@ -5,16 +5,16 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "lock-indicator";
-  version = "0.5.0";
+  version = "0.6.0";
 
   src = fetchFromGitHub {
     owner = "mycroft";
     repo = "lock-indicator";
     rev = "v${version}";
-    hash = "sha256-i+vulYucW2p1Y9+aJ5+4h3GqdqLw5X0tpHkvBjcBX1I=";
+    hash = "sha256-U6uzs5sZtgyVuxy+K/NRf0e3I6/jDyRtLBK6JlwFPs8=";
   };
 
-  cargoHash = "sha256-4YdSz0f3luubqgekJoArKVSV2fyJYIIGBu7HPZBZjGc=";
+  cargoHash = "sha256-XGoOKZWzxFK49v8EOzyWlSxTuGi+lz92EZAszm3G8Uo=";
 
   meta = {
     description = "Whether gpg keys, AWS SSO sessions, gcloud credentials, Vault tokens and Docker registry credentials are unlocked, for the CLI and for waybar";
