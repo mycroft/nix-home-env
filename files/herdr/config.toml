@@ -31,5 +31,10 @@ prompt_new_tab_name = false
 [ui.sidebar.spaces]
 rows = [["state_icon", "workspace", "branch", "git_status"]]
 
+# Default is [["state_icon", "machine", "workspace", "tab"], ["agent"]]; drop the
+# agent name row so each agent takes a single line.
+[ui.sidebar.agents]
+rows = [["state_icon", "machine", "workspace", "tab"]]
+
 [ui.sound]
 enabled = false
