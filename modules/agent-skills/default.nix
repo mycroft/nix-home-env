@@ -53,7 +53,10 @@ let
   hostSkills = {
     glitter = serviceSkills;
     nee = serviceSkills;
-    relax = [ "daily-recap" ];
+    relax = [
+      "close-session"
+      "daily-recap"
+    ];
   };
 
   # Codex, opencode, pi and maki read ~/.agents/skills; Claude Code only reads its own directory.

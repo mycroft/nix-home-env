@@ -190,11 +190,11 @@
     "mycroft-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1794160284,
-        "narHash": "sha256-Xpd08QCI6+Ll1KcPiDtcRHMQtwGFVjBJFGy9XeAFfl8=",
+        "lastModified": 1794739863,
+        "narHash": "sha256-im+391tzp4wtjiC7j66cPt1RBymfP2qjqCYU58SQRWU=",
         "owner": "mycroft",
         "repo": "skills",
-        "rev": "4ce71381c631d1134d284e78d1c715a8e420cfdb",
+        "rev": "4c56ca7bd2cdf269f6033646e37bda4be95036ae",
         "type": "github"
       },
       "original": {
